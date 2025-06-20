@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -159,3 +160,212 @@
   </footer>
 </body>
 </html>
+=======
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deine Empfehlungen – StyleSwipe</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Outfit', sans-serif;
+      background-color: #fefbf6;
+      color: #1c1c1c;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: #fefbf6;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 40px;
+      box-sizing: border-box;
+      z-index: 999;
+    }
+
+    .logo {
+      height: 80px;
+    }
+
+    nav a {
+      margin-left: 25px;
+      text-decoration: none;
+      color: #1c1c1c;
+      font-weight: 500;
+    }
+
+    main {
+      padding: 150px 40px 60px;
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    h1 {
+      font-size: 42px;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 18px;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    footer {
+      background-color: #ece5dc;
+      color: #1c1c1c;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      font-size: 14px;
+    }
+
+    footer a {
+      color: #1c1c1c;
+      text-decoration: none;
+    }
+
+    /* Cookie Banner */
+    #cookie-banner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: #fff9ed;
+      color: #1c1c1c;
+      padding: 20px;
+      display: none;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 -2px 6px rgba(0,0,0,0.1);
+      z-index: 1000;
+      flex-wrap: wrap;
+    }
+
+    #cookie-banner p {
+      flex: 1 1 300px;
+      margin: 0 20px 10px 0;
+    }
+
+    #cookie-banner button {
+      margin-left: 10px;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    #accept-all {
+      background-color: #d5c8b1;
+      color: white;
+    }
+
+    #accept-necessary {
+      background-color: #ece5dc;
+      color: #1c1c1c;
+    }
+
+    .back-button {
+      background-color: transparent;
+      border: 2px solid #d5c8b1;
+      color: #d5c8b1;
+      padding: 5px 10px;
+      border-radius: 4px;
+      font-weight: 400;
+      cursor: pointer;
+      transition: background-color 0.3s, color 0.3s;
+      font-family: 'Outfit', sans-serif;
+      font-size: 12px;
+      display: inline-block;
+      margin-top: 40px;
+      margin-bottom: 40px;
+    }
+
+    .back-button:hover {
+      background-color: #d5c8b1;
+      color: #fff;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 20px;
+      }
+
+      .logo {
+        height: 60px;
+      }
+
+      nav {
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+      }
+
+      nav a {
+        margin: 0;
+        font-size: 16px;
+      }
+
+      main {
+        padding: 120px 20px 40px;
+      }
+
+      h1 {
+        font-size: 28px;
+      }
+
+      p {
+        font-size: 16px;
+      }
+
+      footer {
+        flex-direction: column;
+        align-items: center;
+        font-size: 13px;
+        gap: 10px;
+        padding: 20px;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="Logo.png" alt="StyleSwipe Logo" class="logo" />
+    <nav>
+      <a href="favoriten.html">Favoriten</a>
+      <a href="empfehlungen.html">Empfehlungen</a>
+      <a href="ueber-uns.html">Über uns</a>
+    </nav>
+  </header>
+
+  <main>
+    <button class="back-button" onclick="window.location.href='index.html'">← Zurück zur Startseite</button>
+
+    <h1>Deine Empfehlungen</h1>
+    <p><strong>Hier findest du deine von KI empfohlenen Artikel.</strong></p>
+  </main>
+
+  <footer>
+    <a href="impressum.html">Impressum</a>
+    <a href="datenschutz.html">Datenschutz</a>
+    <a href="cookies.html">Cookie-Richtlinien</a>
+  </footer>
+</body>
+</html>
+
+>>>>>>> d2dceca (Clean initial commit without VS Code files)
