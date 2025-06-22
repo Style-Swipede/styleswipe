@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Über uns – StyleSwipe</title>
+  <title>Deine Favoriten – StyleSwipe</title>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet" />
   <style>
     body {
@@ -56,6 +56,105 @@
       text-align: left;
     }
 
+    .back-button {
+      background-color: transparent;
+      border: 2px solid #d5c8b1;
+      color: #d5c8b1;
+      padding: 5px 10px;
+      border-radius: 4px;
+      font-weight: 400;
+      cursor: pointer;
+      transition: background-color 0.3s, color 0.3s;
+      font-family: 'Outfit', sans-serif;
+      font-size: 12px;
+      margin-bottom: 20px;
+      display: inline-block;
+    }
+    .back-button:hover {
+      background-color: #d5c8b1;
+      color: #fff;
+    }
+
+    /* Container für Favoritenliste */
+    #favorites-list {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: flex-start;
+    }
+
+    .favorite-card {
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+      width: 280px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .favorite-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .favorite-details {
+      padding: 15px;
+      font-size: 14px;
+      color: #1c1c1c;
+      flex-grow: 1;
+    }
+
+    .favorite-details p {
+      margin: 6px 0;
+    }
+
+    .favorite-actions {
+      padding: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .shop-button {
+      background-color: #1c1c1c;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      padding: 10px 14px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      font-family: 'Outfit', sans-serif;
+      text-decoration: none;
+      text-align: center;
+      transition: background-color 0.3s;
+    }
+
+    .shop-button:hover {
+      background-color: #333;
+    }
+
+    .remove-button {
+      background: transparent;
+      border: 2px solid #d5c8b1;
+      color: #d5c8b1;
+      padding: 6px 12px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 600;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .remove-button:hover {
+      background-color: #d5c8b1;
+      color: white;
+    }
+
     footer {
       background-color: #ece5dc;
       color: #1c1c1c;
@@ -72,107 +171,57 @@
       text-decoration: none;
     }
 
-    /* Cookie Banner */
-    #cookie-banner {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background-color: #fff9ed;
-      color: #1c1c1c;
-      padding: 20px;
-      display: none;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 -2px 6px rgba(0,0,0,0.1);
-      z-index: 1000;
-      flex-wrap: wrap;
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+        gap: 10px;
+      }
+
+      .logo {
+        height: 60px;
+      }
+
+      nav {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+        align-items: center;
+      }
+
+      nav a {
+        margin: 0;
+        font-size: 16px;
+      }
+
+      main {
+        padding: 220px 20px 40px;
+      }
+
+      h1 {
+        font-size: 28px;
+      }
+
+      p {
+        font-size: 16px;
+      }
+
+      .favorite-card {
+        width: 100%;
+      }
+
+      footer {
+        flex-direction: column;
+        align-items: center;
+        font-size: 13px;
+        gap: 10px;
+        padding: 20px;
+        text-align: center;
+      }
     }
-
-    #cookie-banner p {
-      flex: 1 1 300px;
-      margin: 0 20px 10px 0;
-    }
-
-    #cookie-banner button {
-      margin-left: 10px;
-      padding: 8px 16px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: 600;
-    }
-
-    #accept-all {
-      background-color: #d5c8b1;
-      color: white;
-    }
-
-    #accept-necessary {
-      background-color: #ece5dc;
-      color: #1c1c1c;
-    }
-   @media (max-width: 768px) {
-  header {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 20px;
-    gap: 10px;
-  }
-
-  .logo {
-    height: 60px;
-  }
-
-  .language-switcher {
-    font-size: 14px;
-  }
-
-  nav {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 100%;
-    align-items: center;
-  }
-
-  nav a {
-    margin: 0;
-    font-size: 16px;
-  }
-
-  main {
-    padding: 220px 20px 40px; /* <--- mehr Platz unter dem fixierten Header */
-  }
-
-  h1 {
-    font-size: 28px;
-  }
-
-  p {
-    font-size: 16px;
-  }
-
-  .cta-button {
-    width: 100%;
-    max-width: 280px;
-    font-size: 15px;
-  }
-
-  .zentriertes-bild img {
-    max-width: 80%;
-  }
-
-  footer {
-    flex-direction: column;
-    align-items: center;
-    font-size: 13px;
-    gap: 10px;
-    padding: 20px;
-    text-align: center;
-  }
-}
   </style>
 </head>
 <body>
@@ -186,29 +235,16 @@
   </header>
 
   <main>
-    <div style="display: flex; justify-content: flex-start; margin-top: 40px;">
-      <button 
-        style="
-          background-color: transparent;
-          border: 2px solid #d5c8b1;
-          color: #d5c8b1;
-          padding: 5px 10px;
-          border-radius: 4px;
-          font-weight: 400;
-          cursor: pointer;
-          transition: background-color 0.3s, color 0.3s;
-          font-family: 'Outfit', sans-serif;
-          font-size: 12px;
-        " 
-        onmouseover="this.style.backgroundColor='#d5c8b1'; this.style.color='#fff';" 
-        onmouseout="this.style.backgroundColor='transparent'; this.style.color='#d5c8b1';" 
-        onclick="window.location.href='index.html'">
-        ← Zurück zur Startseite
-      </button>
+    <div style="display: flex; justify-content: flex-start;">
+      <button class="back-button" onclick="window.location.href='index.html'">← Zurück zur Startseite</button>
     </div>
 
     <h1>Deine Favoriten</h1>
     <p><strong>Hier findest du deine gespeicherten Artikel.</strong></p>
+
+    <div id="favorites-list">
+      <!-- Favoriten werden hier per JavaScript eingefügt -->
+    </div>
   </main>
 
   <footer>
@@ -216,5 +252,56 @@
     <a href="datenschutz.html">Datenschutz</a>
     <a href="cookies.html">Cookie-Richtlinien</a>
   </footer>
+
+  <script>
+    // Favoriten aus localStorage laden
+    let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+
+    const favoritesList = document.getElementById('favorites-list');
+
+    function renderFavorites() {
+      favoritesList.innerHTML = '';
+      if(favorites.length === 0) {
+        favoritesList.innerHTML = '<p>Du hast noch keine Favoriten gespeichert.</p>';
+        return;
+      }
+
+      favorites.forEach(item => {
+        const card = document.createElement('div');
+        card.classList.add('favorite-card');
+
+        card.innerHTML = `
+          <img src="${item.image}" alt="${item.name}" />
+          <div class="favorite-details">
+            <p><strong>Name:</strong> ${item.name}</p>
+            <p><strong>Marke:</strong> ${item.brand}</p>
+          </div>
+          <div class="favorite-actions">
+            <a href="${item.link}" target="_blank" class="shop-button">Zum Shop</a>
+            <button class="remove-button" data-id="${item.id}">Entfernen</button>
+          </div>
+        `;
+
+        favoritesList.appendChild(card);
+      });
+
+      // Event Listener für Entfernen-Buttons
+      document.querySelectorAll('.remove-button').forEach(button => {
+        button.addEventListener('click', (e) => {
+          const id = e.target.getAttribute('data-id');
+          removeFavorite(id);
+        });
+      });
+    }
+
+    function removeFavorite(id) {
+      favorites = favorites.filter(item => item.id !== id);
+      localStorage.setItem('favorites', JSON.stringify(favorites));
+      renderFavorites();
+    }
+
+    // Favoriten direkt beim Laden anzeigen
+    renderFavorites();
+  </script>
 </body>
 </html>
