@@ -265,10 +265,10 @@
 
     <h1>Swipe dich durch die Styles</h1>
     <p>Swipe nach rechts: "Gefällt mir" </p>
-    <p> Swipe nach links: "Gefällt mir nicht"</p>
+    <p>Swipe nach links: "Gefällt mir nicht"</p>
 
     <div id="swipe-container">
-      <div class="card">
+      <div class="card" data-id="1" data-name="Top" data-brand="H&M" data-link="https://www.hm.com" data-image="Top.png">
         <img src="Top.png" alt="Produkt 1" />
         <div class="details">
           <p><strong>Marke:</strong> H&M</p>
@@ -276,7 +276,7 @@
         <a href="https://www.hm.com" class="shop-button" target="_blank">Sofort zu Produkt weiterleiten</a>
       </div>
 
-      <div class="card">
+      <div class="card" data-id="2" data-name="Jeans" data-brand="Mango" data-link="https://www.mango.com" data-image="Jeans.png">
         <img src="Jeans.png" alt="Produkt 2" />
         <div class="details">
           <p><strong>Marke:</strong> Mango</p>
@@ -284,7 +284,7 @@
         <a href="https://www.mango.com" class="shop-button" target="_blank">Sofort zu Produkt weiterleiten</a>
       </div>
 
-      <div class="card">
+      <div class="card" data-id="3" data-name="Kleid" data-brand="Zara" data-link="https://www.zara.com" data-image="Kleid.png">
         <img src="Kleid.png" alt="Produkt 3" />
         <div class="details">
           <p><strong>Marke:</strong> Zara</p>
@@ -311,6 +311,9 @@
 
     let startX = 0;
     let isSwiping = false;
+
+    // Hole Favoriten aus localStorage oder initialisiere leer
+    let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
 
     container.addEventListener("touchstart", (e) => {
       startX = e.touches[0].clientX;
@@ -345,6 +348,11 @@
     function swipe(direction) {
       if (!currentCard) return;
 
+      // Wenn "Gefällt mir", dann Favoriten speichern
+      if(direction === "right") {
+        addToFavorites(currentCard);
+      }
+
       currentCard.style.transition = "transform 0.5s ease, opacity 0.5s ease";
       currentCard.style.transform = direction === "right" ? "translateX(1000px) rotate(20deg)" : "translateX(-1000px) rotate(-20deg)";
       currentCard.style.opacity = "0";
@@ -359,6 +367,23 @@
       if (!currentCard) return;
       currentCard.style.transition = "transform 0.3s ease";
       currentCard.style.transform = "translateX(0) rotate(0deg)";
+    }
+
+    function addToFavorites(card) {
+      const item = {
+        id: card.getAttribute('data-id'),
+        name: card.getAttribute('data-name'),
+        brand: card.getAttribute('data-brand'),
+        link: card.getAttribute('data-link'),
+        image: card.getAttribute('data-image'),
+      };
+
+      // Doppelte Einträge vermeiden
+      if(!favorites.some(fav => fav.id === item.id)) {
+        favorites.push(item);
+        localStorage.setItem('favorites', JSON.stringify(favorites));
+        console.log('Favorit hinzugefügt:', item);
+      }
     }
   </script>
 </body>
