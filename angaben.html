@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Style-Angaben – StyleSwipe</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Outfit', sans-serif;
+      background-color: #fefbf6;
+      color: #1c1c1c;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: #fefbf6;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 40px;
+      box-sizing: border-box;
+      z-index: 999;
+    }
+
+    .logo {
+      height: 80px;
+    }
+
+    nav a {
+      margin-left: 25px;
+      text-decoration: none;
+      color: #1c1c1c;
+      font-weight: 500;
+    }
+
+    main {
+      padding: 150px 40px 60px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-size: 42px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    label {
+      display: block;
+      margin-top: 1rem;
+      margin-bottom: 0.3rem;
+      font-weight: 500;
+    }
+
+    select, input[type="text"] {
+      width: 100%;
+      padding: 0.7rem;
+      border-radius: 0.6rem;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+
+    button[type="submit"] {
+      width: 100%;
+      padding: 1rem;
+      margin-top: 2rem;
+      background-color: #1c1c1c;
+      color: white;
+      border: none;
+      border-radius: 1rem;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #333;
+    }
+
+    /* Back Button Styling wie Entdecken-Seite */
+    .back-button {
+      background-color: transparent;
+      border: 2px solid #d5c8b1;
+      color: #d5c8b1;
+      padding: 5px 10px;
+      border-radius: 4px;
+      font-weight: 400;
+      cursor: pointer;
+      transition: background-color 0.3s, color 0.3s;
+      font-family: 'Outfit', sans-serif;
+      font-size: 12px;
+      margin-bottom: 30px; /* etwas Abstand nach unten */
+      display: inline-block;
+    }
+
+    .back-button:hover {
+      background-color: #d5c8b1;
+      color: #fff;
+    }
+
+    footer {
+      background-color: #ece5dc;
+      color: #1c1c1c;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      font-size: 14px;
+    }
+
+    footer a {
+      color: #1c1c1c;
+      text-decoration: none;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+        gap: 10px;
+      }
+
+      .logo {
+        height: 60px;
+      }
+
+      nav {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+        align-items: center;
+      }
+
+      nav a {
+        margin: 0;
+        font-size: 16px;
+      }
+
+      main {
+        padding: 220px 20px 40px;
+      }
+
+      h1 {
+        font-size: 28px;
+      }
+
+      footer {
+        flex-direction: column;
+        align-items: center;
+        font-size: 13px;
+        gap: 10px;
+        padding: 20px;
+        text-align: center;
+      }
+
+      .cta-button {
+        width: 100%;
+        max-width: 280px;
+        font-size: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="Logo.png" alt="StyleSwipe Logo" class="logo" />
+    <nav>
+      <a href="favoriten.html">Favoriten</a>
+      <a href="empfehlungen.html">Empfehlungen</a>
+      <a href="ueber-uns.html">Über uns</a>
+    </nav>
+  </header>
+
+  <main>
+    <button class="back-button" onclick="window.location.href='index.html'">← Zurück zur Startseite</button>
+
+    <h1>Style-Angaben</h1>
+    <form action="entdecken.html" method="GET">
+      <label for="anlass">Anlass</label>
+      <select id="anlass" name="anlass">
+        <option value="">Bitte wählen</option>
+        <option value="freizeit">Freizeit</option>
+        <option value="business">Business</option>
+        <option value="party">Party</option>
+        <option value="date">Date</option>
+      </select>
+
+      <label for="groesse">Größe</label>
+      <select id="groesse" name="groesse">
+        <option value="">Bitte wählen</option>
+        <option value="xs">XS</option>
+        <option value="s">S</option>
+        <option value="m">M</option>
+        <option value="l">L</option>
+        <option value="xl">XL</option>
+      </select>
+
+      <label for="farbe">Farbe</label>
+      <input type="text" id="farbe" name="farbe" placeholder="z. B. Beige, Schwarz, Rot" />
+
+      <label for="kategorie">Kategorie</label>
+      <select id="kategorie" name="kategorie">
+        <option value="">Bitte wählen</option>
+        <option value="kleid">Kleid</option>
+        <option value="hose">Hose</option>
+        <option value="oberteil">Oberteil</option>
+        <option value="schuhe">Schuhe</option>
+        <option value="accessoires">Accessoires</option>
+      </select>
+
+      <button type="submit">Weiter</button>
+    </form>
+  </main>
+
+  <footer>
+    <a href="impressum.html">Impressum</a>
+    <a href="datenschutz.html">Datenschutz</a>
+    <a href="cookies.html">Cookie-Richtlinien</a>
+  </footer>
+</body>
+</html>
