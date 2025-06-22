@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Über uns – StyleSwipe</title>
+  <title>StyleSwipe – Swipe deine Outfits</title>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet" />
   <style>
     body {
@@ -38,7 +38,7 @@
     }
 
     main {
-      padding: 150px 40px 60px;
+      padding: 100px 20px 60px;
       max-width: 900px;
       margin: 0 auto;
       text-align: center;
@@ -55,6 +55,111 @@
       line-height: 1.6;
     }
 
+    .back-button {
+      background-color: transparent;
+      border: 2px solid #d5c8b1;
+      color: #d5c8b1;
+      padding: 5px 10px;
+      border-radius: 4px;
+      font-weight: 400;
+      cursor: pointer;
+      font-family: 'Outfit', sans-serif;
+      font-size: 12px;
+      margin-bottom: 20px;
+    }
+
+    .back-button:hover {
+      background-color: #d5c8b1;
+      color: #fff;
+    }
+
+    #swipe-container {
+      position: relative;
+      width: 360px;
+      height: 580px;
+      margin: 20px auto 0 auto;
+    }
+
+    .card {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+      overflow: hidden;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card:nth-child(1) { z-index: 3; }
+    .card:nth-child(2) { z-index: 2; }
+    .card:nth-child(3) { z-index: 1; }
+
+    .card img {
+      width: 100%;
+      height: 75%;
+      object-fit: cover;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .details {
+      flex: 1;
+      padding: 12px 15px 0;
+      font-size: 13px;
+      line-height: 1.4;
+      text-align: left;
+      color: #1c1c1c;
+    }
+
+    .shop-button {
+      margin: 10px 15px 15px;
+      padding: 10px;
+      background-color: #1c1c1c;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      font-family: 'Outfit', sans-serif;
+      transition: background-color 0.3s;
+      text-align: center;
+      text-decoration: none;
+      display: block;
+    }
+
+    .shop-button:hover {
+      background-color: #333;
+    }
+
+    #swipe-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 30px;
+    }
+
+    #swipe-buttons button {
+      padding: 10px 25px;
+      border-radius: 8px;
+      border: 2px solid #d5c8b1;
+      background: transparent;
+      color: #d5c8b1;
+      cursor: pointer;
+      font-weight: 600;
+      font-family: 'Outfit', sans-serif;
+      font-size: 16px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    #swipe-buttons button:hover {
+      background-color: #d5c8b1;
+      color: #fff;
+    }
+
     footer {
       background-color: #ece5dc;
       color: #1c1c1c;
@@ -64,6 +169,7 @@
       gap: 30px;
       flex-wrap: wrap;
       font-size: 14px;
+      margin-top: 80px;
     }
 
     footer a {
@@ -71,125 +177,75 @@
       text-decoration: none;
     }
 
-    /* Cookie Banner */
-    #cookie-banner {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background-color: #fff9ed;
-      color: #1c1c1c;
-      padding: 20px;
-      display: none;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 -2px 6px rgba(0,0,0,0.1);
-      z-index: 1000;
-      flex-wrap: wrap;
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+        gap: 10px;
+      }
+
+      .logo {
+        height: 60px;
+      }
+
+      nav {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+        align-items: center;
+      }
+
+      nav a {
+        margin: 0;
+        font-size: 16px;
+      }
+
+      main {
+        padding: 160px 20px 40px;
+      }
+
+      h1 {
+        font-size: 28px;
+      }
+
+      p {
+        font-size: 16px;
+      }
+
+      #swipe-container {
+        width: 90%;
+        height: 500px;
+      }
+
+      #swipe-buttons {
+        gap: 20px;
+      }
+
+      #swipe-buttons button {
+        flex: 1;
+        font-size: 14px;
+        padding: 10px 0;
+      }
+
+      footer {
+        flex-direction: column;
+        align-items: center;
+        font-size: 13px;
+        gap: 10px;
+        padding: 20px;
+        text-align: center;
+      }
     }
 
-    #cookie-banner p {
-      flex: 1 1 300px;
-      margin: 0 20px 10px 0;
+    /* Buttons ausblenden auf Touch-Geräten */
+    @media (hover: none) and (pointer: coarse) {
+      #swipe-buttons {
+        display: none;
+      }
     }
-
-    #cookie-banner button {
-      margin-left: 10px;
-      padding: 8px 16px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: 600;
-    }
-
-    #accept-all {
-      background-color: #d5c8b1;
-      color: white;
-    }
-
-    #accept-necessary {
-      background-color: #ece5dc;
-      color: #1c1c1c;
-    }
-
-    .back-button {
-      background-color: transparent;
-      border: 2px solid #d5c8b1;
-      color: #d5c8b1;
-      padding: 5px 10px;
-      border-radius: 4px;
-      font-weight: 400;
-      cursor: pointer;
-      transition: background-color 0.3s, color 0.3s;
-      font-family: 'Outfit', sans-serif;
-      font-size: 12px;
-    }
-
-    .back-button:hover {
-      background-color: #d5c8b1;
-      color: #fff;
-    }
-   @media (max-width: 768px) {
-  header {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 20px;
-    gap: 10px;
-  }
-
-  .logo {
-    height: 60px;
-  }
-
-  .language-switcher {
-    font-size: 14px;
-  }
-
-  nav {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 100%;
-    align-items: center;
-  }
-
-  nav a {
-    margin: 0;
-    font-size: 16px;
-  }
-
-  main {
-    padding: 220px 20px 40px; /* <--- mehr Platz unter dem fixierten Header */
-  }
-
-  h1 {
-    font-size: 28px;
-  }
-
-  p {
-    font-size: 16px;
-  }
-
-  .cta-button {
-    width: 100%;
-    max-width: 280px;
-    font-size: 15px;
-  }
-
-  .zentriertes-bild img {
-    max-width: 80%;
-  }
-
-  footer {
-    flex-direction: column;
-    align-items: center;
-    font-size: 13px;
-    gap: 10px;
-    padding: 20px;
-    text-align: center;
-  }
-}
   </style>
 </head>
 <body>
@@ -203,13 +259,43 @@
   </header>
 
   <main>
-    <div style="display: flex; justify-content: flex-start; margin-top: 40px;">
+    <div style="text-align: left;">
       <button class="back-button" onclick="window.location.href='angaben.html'">← Zurück zu Styling-Angaben</button>
     </div>
 
     <h1>Swipe dich durch die Styles</h1>
-    <p>Swipe nach rechts: "Mir gefällt es."</p>
-    <p>Swipe nach links: "Mir gefällt es nicht."</p>
+    <p>Swipe nach rechts: "Gefällt mir" · Swipe nach links: "Gefällt mir nicht"</p>
+
+    <div id="swipe-container">
+      <div class="card">
+        <img src="Top.png" alt="Produkt 1" />
+        <div class="details">
+          <p><strong>Marke:</strong> H&M</p>
+        </div>
+        <a href="https://www.hm.com" class="shop-button" target="_blank">Sofort zu Produkt weiterleiten</a>
+      </div>
+
+      <div class="card">
+        <img src="Jeans.png" alt="Produkt 2" />
+        <div class="details">
+          <p><strong>Marke:</strong> Mango</p>
+        </div>
+        <a href="https://www.mango.com" class="shop-button" target="_blank">Sofort zu Produkt weiterleiten</a>
+      </div>
+
+      <div class="card">
+        <img src="Kleid.png" alt="Produkt 3" />
+        <div class="details">
+          <p><strong>Marke:</strong> Zara</p>
+        </div>
+        <a href="https://www.zara.com" class="shop-button" target="_blank">Sofort zu Produkt weiterleiten</a>
+      </div>
+    </div>
+
+    <div id="swipe-buttons">
+      <button id="swipe-left">← Gefällt nicht</button>
+      <button id="swipe-right">Gefällt mir →</button>
+    </div>
   </main>
 
   <footer>
@@ -217,5 +303,62 @@
     <a href="datenschutz.html">Datenschutz</a>
     <a href="cookies.html">Cookie-Richtlinien</a>
   </footer>
+
+  <script>
+    const container = document.getElementById('swipe-container');
+    let currentCard = container.querySelector(".card");
+
+    let startX = 0;
+    let isSwiping = false;
+
+    container.addEventListener("touchstart", (e) => {
+      startX = e.touches[0].clientX;
+      isSwiping = true;
+    });
+
+    container.addEventListener("touchmove", (e) => {
+      if (!isSwiping || !currentCard) return;
+      const moveX = e.touches[0].clientX - startX;
+      currentCard.style.transform = `translateX(${moveX}px) rotate(${moveX / 20}deg)`;
+    });
+
+    container.addEventListener("touchend", (e) => {
+      if (!isSwiping) return;
+      const endX = e.changedTouches[0].clientX;
+      const diff = endX - startX;
+
+      if (diff > 100) {
+        swipe("right");
+      } else if (diff < -100) {
+        swipe("left");
+      } else {
+        resetCard();
+      }
+
+      isSwiping = false;
+    });
+
+    document.getElementById('swipe-left').addEventListener('click', () => swipe('left'));
+    document.getElementById('swipe-right').addEventListener('click', () => swipe('right'));
+
+    function swipe(direction) {
+      if (!currentCard) return;
+
+      currentCard.style.transition = "transform 0.5s ease, opacity 0.5s ease";
+      currentCard.style.transform = direction === "right" ? "translateX(1000px) rotate(20deg)" : "translateX(-1000px) rotate(-20deg)";
+      currentCard.style.opacity = "0";
+
+      setTimeout(() => {
+        currentCard.remove();
+        currentCard = container.querySelector(".card");
+      }, 500);
+    }
+
+    function resetCard() {
+      if (!currentCard) return;
+      currentCard.style.transition = "transform 0.3s ease";
+      currentCard.style.transform = "translateX(0) rotate(0deg)";
+    }
+  </script>
 </body>
 </html>

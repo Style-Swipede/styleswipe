@@ -220,32 +220,5 @@
     <a href="datenschutz-en.html">Privacy Policy</a>
     <a href="cookies-en.html">Cookie Policy</a>
   </footer>
-
-  <!-- Cookie Banner -->
-  <div id="cookie-banner">
-    <p>We use cookies to optimize your experience. See our <a href="cookies-en.html">Cookie Policy</a> for details.</p>
-    <div>
-      <button id="accept-necessary">Necessary only</button>
-      <button id="accept-all">Accept all</button>
-    </div>
-  </div>
-
-  <script>
-    const cookieBanner = document.getElementById('cookie-banner');
-    const acceptAllBtn = document.getElementById('accept-all');
-    const acceptNecessaryBtn = document.getElementById('accept-necessary');
-
-    if (!localStorage.getItem('cookieConsent')) {
-      cookieBanner.style.display = 'flex';
-    }
-
-    function setCookieConsent(type) {
-      localStorage.setItem('cookieConsent', type);
-      cookieBanner.style.display = 'none';
-    }
-
-    acceptAllBtn.addEventListener('click', () => setCookieConsent('all'));
-    acceptNecessaryBtn.addEventListener('click', () => setCookieConsent('necessary'));
-  </script>
 </body>
 </html>
