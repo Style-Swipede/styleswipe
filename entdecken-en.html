@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About us – StyleSwipe</title>
+  <title>Discover – StyleSwipe</title>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet" />
   <style>
     body {
@@ -55,23 +55,6 @@
       line-height: 1.6;
     }
 
-    footer {
-      background-color: #ece5dc;
-      color: #1c1c1c;
-      padding: 20px 40px;
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      flex-wrap: wrap;
-      font-size: 14px;
-    }
-
-    footer a {
-      color: #1c1c1c;
-      text-decoration: none;
-    }
-
-    /* Back button styling */
     .back-button {
       background-color: transparent;
       border: 2px solid #d5c8b1;
@@ -83,6 +66,9 @@
       transition: background-color 0.3s, color 0.3s;
       font-family: 'Outfit', sans-serif;
       font-size: 12px;
+      margin-bottom: 20px;
+      display: inline-block;
+      text-align: left;
     }
 
     .back-button:hover {
@@ -90,68 +76,179 @@
       color: white;
     }
 
-    /* Responsive Styles */
-   @media (max-width: 768px) {
-  header {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 20px;
-    gap: 10px;
-  }
+    #swipe-container {
+      position: relative;
+      width: 360px;
+      height: 580px;
+      margin: 0 auto;
+    }
 
-  .logo {
-    height: 60px;
-  }
+    .card {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+      overflow: hidden;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
 
-  .language-switcher {
-    font-size: 14px;
-  }
+    .card:nth-child(1) { z-index: 3; }
+    .card:nth-child(2) { z-index: 2; }
+    .card:nth-child(3) { z-index: 1; }
 
-  nav {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 100%;
-    align-items: center;
-  }
+    .card img {
+      width: 100%;
+      height: 75%;
+      object-fit: cover;
+      border-bottom: 1px solid #ddd;
+    }
 
-  nav a {
-    margin: 0;
-    font-size: 16px;
-  }
+    .details {
+      flex: 1;
+      padding: 12px 15px 0;
+      font-size: 13px;
+      line-height: 1.4;
+      text-align: left;
+      color: #1c1c1c;
+    }
 
-  main {
-    padding: 220px 20px 40px; /* <--- mehr Platz unter dem fixierten Header */
-  }
+    .shop-button {
+      margin: 10px 15px 15px;
+      padding: 10px;
+      background-color: #1c1c1c;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      font-family: 'Outfit', sans-serif;
+      transition: background-color 0.3s;
+      text-align: center;
+      text-decoration: none;
+      display: block;
+    }
 
-  h1 {
-    font-size: 28px;
-  }
+    .shop-button:hover {
+      background-color: #333;
+    }
 
-  p {
-    font-size: 16px;
-  }
+    #swipe-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 30px;
+    }
 
-  .cta-button {
-    width: 100%;
-    max-width: 280px;
-    font-size: 15px;
-  }
+    #swipe-buttons button {
+      padding: 10px 25px;
+      border-radius: 8px;
+      border: 2px solid #d5c8b1;
+      background: transparent;
+      color: #d5c8b1;
+      cursor: pointer;
+      font-weight: 600;
+      font-family: 'Outfit', sans-serif;
+      font-size: 16px;
+      transition: background-color 0.3s, color 0.3s;
+    }
 
-  .zentriertes-bild img {
-    max-width: 80%;
-  }
+    #swipe-buttons button:hover {
+      background-color: #d5c8b1;
+      color: #fff;
+    }
 
-  footer {
-    flex-direction: column;
-    align-items: center;
-    font-size: 13px;
-    gap: 10px;
-    padding: 20px;
-    text-align: center;
-  }
-}
+    footer {
+      background-color: #ece5dc;
+      color: #1c1c1c;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      font-size: 14px;
+      margin-top: 80px;
+    }
+
+    footer a {
+      color: #1c1c1c;
+      text-decoration: none;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+        gap: 10px;
+      }
+
+      .logo {
+        height: 60px;
+      }
+
+      nav {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+        align-items: center;
+      }
+
+      nav a {
+        margin: 0;
+        font-size: 16px;
+      }
+
+      main {
+        padding: 220px 20px 40px;
+      }
+
+      h1 {
+        font-size: 28px;
+      }
+
+      p {
+        font-size: 16px;
+      }
+
+      #swipe-container {
+        width: 90%;
+        height: 500px;
+      }
+
+      #swipe-buttons {
+        gap: 20px;
+      }
+
+      #swipe-buttons button {
+        flex: 1;
+        font-size: 14px;
+        padding: 10px 0;
+      }
+
+      footer {
+        flex-direction: column;
+        align-items: center;
+        font-size: 13px;
+        gap: 10px;
+        padding: 20px;
+        text-align: center;
+      }
+    }
+
+    /* Hide buttons on touch devices */
+    @media (hover: none) and (pointer: coarse) {
+      #swipe-buttons {
+        display: none;
+      }
+    }
   </style>
 </head>
 <body>
@@ -165,13 +262,76 @@
   </header>
 
   <main>
-     <div style="display: flex; justify-content: flex-start; margin-top: 40px;">
-      <button class="back-button" onclick="window.location.href='angaben-en.html'">← Back to Styling-Information</button>
+    <div style="text-align: left;">
+      <button class="back-button" onclick="window.location.href='angaben-en.html'">← Back to styling details</button>
     </div>
 
     <h1>Swipe through the styles</h1>
     <p>Swipe right: "I like it."</p>
     <p>Swipe left: "I don't like it."</p>
+
+    <div id="swipe-container">
+      <div class="card" data-id="1" data-name="Top" data-brand="H&M" data-link="https://www.hm.com" data-image="Top.png">
+        <img src="Top.png" alt="Product 1" />
+        <div class="details">
+          <p><strong>Brand:</strong> H&M</p>
+        </div>
+        <a href="https://www.hm.com" class="shop-button" target="_blank" rel="noopener noreferrer">Go to product</a>
+      </div>
+
+      <div class="card" data-id="2" data-name="Jeans" data-brand="Mango" data-link="https://www.mango.com" data-image="Jeans.png">
+        <img src="Jeans.png" alt="Product 2" />
+        <div class="details">
+          <p><strong>Brand:</strong> Mango</p>
+        </div>
+        <a href="https://www.mango.com" class="shop-button" target="_blank" rel="noopener noreferrer">Go to product</a>
+      </div>
+
+      <div class="card" data-id="4" data-name="High Heels" data-brand="About You" data-link="https://www.aboutyou.de" data-image="HighHeels.png">
+        <img src="HighHeels.png" alt="High Heels" />
+        <div class="details">
+          <p><strong>Brand:</strong> About You</p>
+        </div>
+        <a href="https://www.aboutyou.de" class="shop-button" target="_blank" rel="noopener noreferrer">Go to product</a>
+      </div>
+
+      <div class="card" data-id="6" data-name="Jacket" data-brand="Only" data-link="https://www.only.com" data-image="Jacke.png">
+        <img src="Jacke.png" alt="Jacket" />
+        <div class="details">
+          <p><strong>Brand:</strong> Only</p>
+        </div>
+        <a href="https://www.only.com" class="shop-button" target="_blank" rel="noopener noreferrer">Go to product</a>
+      </div>
+
+      <div class="card" data-id="7" data-name="Skirt" data-brand="Bershka" data-link="https://www.bershka.de" data-image="Skirt.png">
+        <img src="Skirt.png" alt="Skirt" />
+        <div class="details">
+          <p><strong>Brand:</strong> Bershka</p>
+        </div>
+        <a href="https://www.bershka.de" class="shop-button" target="_blank" rel="noopener noreferrer">Go to product</a>
+      </div>
+
+      <div class="card" data-id="8" data-name="Sweater" data-brand="Asos" data-link="https://www.asos.de" data-image="Pulli.png">
+        <img src="Pulli.png" alt="Sweater" />
+        <div class="details">
+          <p><strong>Brand:</strong> Asos</p>
+        </div>
+        <a href="https://www.asos.de" class="shop-button" target="_blank" rel="noopener noreferrer">Go to product</a>
+      </div>
+
+      <div class="card" data-id="3" data-name="Dress" data-brand="Zara" data-link="https://www.zara.com" data-image="Kleid.png">
+        <img src="Kleid.png" alt="Product 3" />
+        <div class="details">
+          <p><strong>Brand:</strong> Zara</p>
+        </div>
+        <a href="https://www.zara.com" class="shop-button" target="_blank" rel="noopener noreferrer">Go to product</a>
+      </div>
+    </div>
+
+    <div id="swipe-buttons">
+      <button id="swipe-left">← Dislike</button>
+      <button id="swipe-right">Like →</button>
+    </div>
   </main>
 
   <footer>
@@ -179,5 +339,86 @@
     <a href="datenschutz-en.html">Privacy Policy</a>
     <a href="cookies-en.html">Cookie Policy</a>
   </footer>
+
+  <script>
+    const container = document.getElementById('swipe-container');
+    let currentCard = container.querySelector(".card");
+
+    let startX = 0;
+    let isSwiping = false;
+
+    // Get favorites from localStorage or initialize empty
+    let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+
+    container.addEventListener("touchstart", (e) => {
+      startX = e.touches[0].clientX;
+      isSwiping = true;
+    });
+
+    container.addEventListener("touchmove", (e) => {
+      if (!isSwiping || !currentCard) return;
+      const moveX = e.touches[0].clientX - startX;
+      currentCard.style.transform = `translateX(${moveX}px) rotate(${moveX / 20}deg)`;
+    });
+
+    container.addEventListener("touchend", (e) => {
+      if (!isSwiping) return;
+      const endX = e.changedTouches[0].clientX;
+      const diff = endX - startX;
+
+      if (diff > 100) {
+        swipe("right");
+      } else if (diff < -100) {
+        swipe("left");
+      } else {
+        resetCard();
+      }
+
+      isSwiping = false;
+    });
+
+    document.getElementById('swipe-left').addEventListener('click', () => swipe('left'));
+    document.getElementById('swipe-right').addEventListener('click', () => swipe('right'));
+
+    function swipe(direction) {
+      if (!currentCard) return;
+
+      // Add to favorites if liked
+      if(direction === "right") {
+        addToFavorites(currentCard);
+      }
+
+      currentCard.style.transition = "transform 0.5s ease, opacity 0.5s ease";
+      currentCard.style.transform = direction === "right" ? "translateX(1000px) rotate(20deg)" : "translateX(-1000px) rotate(-20deg)";
+      currentCard.style.opacity = "0";
+
+      setTimeout(() => {
+        currentCard.remove();
+        currentCard = container.querySelector(".card");
+      }, 500);
+    }
+
+    function resetCard() {
+      if (!currentCard) return;
+      currentCard.style.transition = "transform 0.3s ease";
+      currentCard.style.transform = "translateX(0) rotate(0deg)";
+    }
+
+    function addToFavorites(card) {
+      const item = {
+        id: card.getAttribute('data-id'),
+        name: card.getAttribute('data-name'),
+        brand: card.getAttribute('data-brand'),
+        link: card.getAttribute('data-link'),
+        image: card.getAttribute('data-image'),
+      };
+
+      if(!favorites.some(fav => fav.id === item.id)) {
+        favorites.push(item);
+        localStorage.setItem('favorites', JSON.stringify(favorites));
+        console.log('Added to favorites:', item);
+      }
+    }
+  </script>
 </body>
 </html>
