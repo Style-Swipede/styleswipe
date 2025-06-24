@@ -81,6 +81,7 @@
       background-color: #333;
     }
 
+    /* Back Button Styling wie Entdecken-Seite */
     .back-button {
       background-color: transparent;
       border: 2px solid #d5c8b1;
@@ -92,7 +93,7 @@
       transition: background-color 0.3s, color 0.3s;
       font-family: 'Outfit', sans-serif;
       font-size: 12px;
-      margin-bottom: 30px;
+      margin-bottom: 30px; /* etwas Abstand nach unten */
       display: inline-block;
     }
 
@@ -182,7 +183,7 @@
     <button class="back-button" onclick="window.location.href='index.html'">← Zurück zur Startseite</button>
 
     <h1>Style-Angaben</h1>
-    <form id="styleForm">
+    <form action="entdecken.html" method="GET">
       <label for="anlass">Anlass</label>
       <select id="anlass" name="anlass">
         <option value="">Bitte wählen</option>
@@ -224,27 +225,5 @@
     <a href="datenschutz.html">Datenschutz</a>
     <a href="cookies.html">Cookie-Richtlinien</a>
   </footer>
-
-  <script>
-    document.getElementById("styleForm").addEventListener("submit", function(e) {
-      e.preventDefault();
-
-      const anlass = document.getElementById("anlass").value;
-      const groesse = document.getElementById("groesse").value;
-      const farbe = document.getElementById("farbe").value.trim().toLowerCase();
-      const kategorie = document.getElementById("kategorie").value;
-
-      const auswahl = {
-        anlass,
-        groesse,
-        farbe,
-        kategorie
-      };
-
-      localStorage.setItem("styleAuswahl", JSON.stringify(auswahl));
-      window.location.href = "entdecken.html";
-    });
-  </script>
 </body>
 </html>
-
