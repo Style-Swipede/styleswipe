@@ -12,6 +12,7 @@
       background-color: #fefbf6;
       color: #1c1c1c;
     }
+
     header {
       position: fixed;
       top: 0;
@@ -24,30 +25,36 @@
       box-sizing: border-box;
       z-index: 999;
     }
+
     .logo {
       height: 80px;
     }
+
     nav a {
       margin-left: 25px;
       text-decoration: none;
       color: #1c1c1c;
       font-weight: 500;
     }
+
     main {
       padding: 100px 20px 60px;
       max-width: 900px;
       margin: 0 auto;
       text-align: center;
     }
+
     h1 {
       font-size: 42px;
       margin-bottom: 20px;
     }
+
     p {
       font-size: 18px;
       margin-bottom: 20px;
       line-height: 1.6;
     }
+
     .back-button {
       background-color: transparent;
       border: 2px solid #d5c8b1;
@@ -60,35 +67,40 @@
       font-size: 12px;
       margin-bottom: 20px;
     }
+
     .back-button:hover {
       background-color: #d5c8b1;
       color: #fff;
     }
+
     #swipe-container {
       position: relative;
       width: 360px;
       height: 580px;
       margin: 20px auto 0 auto;
     }
+
     .card {
       position: absolute;
       width: 100%;
       height: 100%;
       background: white;
       border-radius: 20px;
-      box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+      box-shadow: none;
       overflow: hidden;
       transition: transform 0.3s ease, opacity 0.3s ease;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
     }
+
     .card img {
       width: 100%;
-      height: 75%;
+      height: 70%;
       object-fit: cover;
       border-bottom: 1px solid #ddd;
     }
+
     .details {
       flex: 1;
       padding: 12px 15px 0;
@@ -97,6 +109,7 @@
       text-align: left;
       color: #1c1c1c;
     }
+
     .shop-button {
       margin: 10px 15px 15px;
       padding: 10px;
@@ -113,15 +126,18 @@
       text-decoration: none;
       display: block;
     }
+
     .shop-button:hover {
       background-color: #333;
     }
+
     #swipe-buttons {
       display: flex;
       justify-content: center;
       gap: 40px;
       margin-top: 30px;
     }
+
     #swipe-buttons button {
       padding: 10px 25px;
       border-radius: 8px;
@@ -134,10 +150,12 @@
       font-size: 16px;
       transition: background-color 0.3s, color 0.3s;
     }
+
     #swipe-buttons button:hover {
       background-color: #d5c8b1;
       color: #fff;
     }
+
     footer {
       background-color: #ece5dc;
       color: #1c1c1c;
@@ -149,10 +167,12 @@
       font-size: 14px;
       margin-top: 80px;
     }
+
     footer a {
       color: #1c1c1c;
       text-decoration: none;
     }
+
     @media (max-width: 768px) {
       header {
         flex-direction: column;
@@ -205,6 +225,7 @@
         text-align: center;
       }
     }
+
     @media (hover: none) and (pointer: coarse) {
       #swipe-buttons {
         display: none;
@@ -251,7 +272,6 @@
     const container = document.getElementById('swipe-container');
     let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
 
-    // Produkte filtern
     const gefiltert = produkte.filter(p => {
       if (filter.kategorie && p.kategorie !== filter.kategorie) return false;
       if (filter.anlass && p.anlass !== filter.anlass) return false;
@@ -260,8 +280,7 @@
       return true;
     });
 
-    // Karten hinzufügen (in Reihenfolge, damit erste sichtbar ganz oben ist)
-    gefiltert.forEach((p, i) => {
+    gefiltert.reverse().forEach((p, i) => {
       const card = document.createElement('div');
       card.className = 'card';
       card.setAttribute('data-id', i);
@@ -271,13 +290,12 @@
       card.setAttribute('data-image', p.bild);
       card.innerHTML = `
         <img src="${p.bild}" alt="${p.name}">
-        <div class="details"><p><strong>Marke:</strong> ${p.marke || 'Unbekannt'}</p></div>
-        <a href="${p.link}" class="shop-button" target="_blank">Sofort zu Produkt weiterleiten</a>
+        <div class="details"><p><strong>${p.name}</strong><br>Marke: ${p.marke}</p></div>
+        <a href="${p.link}" class="shop-button" target="_blank">Zum Shop</a>
       `;
       container.appendChild(card);
     });
 
-    // Startkarte ist immer die oberste (letzte) Karte
     let currentCard = container.querySelector(".card:last-child");
 
     let startX = 0;
@@ -345,7 +363,6 @@
       if (!favorites.some(fav => fav.id === item.id)) {
         favorites.push(item);
         localStorage.setItem('favorites', JSON.stringify(favorites));
-        console.log('Favorit hinzugefügt:', item);
       }
     }
   </script>
