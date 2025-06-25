@@ -1,4 +1,5 @@
 const produkte = [
+  // Alte Artikel (deine ursprüngliche Liste)
   {
     name: "Beiges Top",
     kategorie: "oberteil",
@@ -398,5 +399,42 @@ const produkte = [
     bild: "Jacke.png",
     link: "https://only.de/",
     marke: "Only"
-  }
+  },
+
+  // NEUE ARTIKEL
+
+  // Kleid2 beige
+  { name: "Beiges Kleid 2", kategorie: "kleid", farbe: "beige", groesse: "xs", anlass: "party", bild: "Kleid2.png", link: "https://zalando.de/", marke: "Zalando" },
+  { name: "Beiges Kleid 2", kategorie: "kleid", farbe: "beige", groesse: "s", anlass: "party", bild: "Kleid2.png", link: "https://zalando.de/", marke: "Zalando" },
+  { name: "Beiges Kleid 2", kategorie: "kleid", farbe: "beige", groesse: "m", anlass: "party", bild: "Kleid2.png", link: "https://zalando.de/", marke: "Zalando" },
+  { name: "Beiges Kleid 2", kategorie: "kleid", farbe: "beige", groesse: "l", anlass: "party", bild: "Kleid2.png", link: "https://zalando.de/", marke: "Zalando" },
+  { name: "Beiges Kleid 2", kategorie: "kleid", farbe: "beige", groesse: "xl", anlass: "party", bild: "Kleid2.png", link: "https://zalando.de/", marke: "Zalando" },
+
+  // Partytop schwarz
+  { name: "Schwarzes Partytop", kategorie: "oberteil", farbe: "schwarz", groesse: "xs", anlass: "party", bild: "Partytop.png", link: "https://zalando.de/", marke: "Zalando" },
+  { name: "Schwarzes Partytop", kategorie: "oberteil", farbe: "schwarz", groesse: "s", anlass: "party", bild: "Partytop.png", link: "https://zalando.de/", marke: "Zalando" },
+  { name: "Schwarzes Partytop", kategorie: "oberteil", farbe: "schwarz", groesse: "m", anlass: "party", bild: "Partytop.png", link: "https://zalando.de/", marke: "Zalando" },
+  { name: "Schwarzes Partytop", kategorie: "oberteil", farbe: "schwarz", groesse: "l", anlass: "party", bild: "Partytop.png", link: "https://zalando.de/", marke: "Zalando" },
+  { name: "Schwarzes Partytop", kategorie: "oberteil", farbe: "schwarz", groesse: "xl", anlass: "party", bild: "Partytop.png", link: "https://zalando.de/", marke: "Zalando" },
+
+  // Shorts schwarz
+  { name: "Schwarze Shorts", kategorie: "hose", farbe: "schwarz", groesse: "xs", anlass: "freizeit", bild: "Shorts.png", link: "https://aboutyou.de/", marke: "About You" },
+  { name: "Schwarze Shorts", kategorie: "hose", farbe: "schwarz", groesse: "s", anlass: "freizeit", bild: "Shorts.png", link: "https://aboutyou.de/", marke: "About You" },
+  { name: "Schwarze Shorts", kategorie: "hose", farbe: "schwarz", groesse: "m", anlass: "freizeit", bild: "Shorts.png", link: "https://aboutyou.de/", marke: "About You" },
+  { name: "Schwarze Shorts", kategorie: "hose", farbe: "schwarz", groesse: "l", anlass: "freizeit", bild: "Shorts.png", link: "https://aboutyou.de/", marke: "About You" },
+  { name: "Schwarze Shorts", kategorie: "hose", farbe: "schwarz", groesse: "xl", anlass: "freizeit", bild: "Shorts.png", link: "https://aboutyou.de/", marke: "About You" },
+
+  // Shirt weiß
+  { name: "Weißes Shirt", kategorie: "oberteil", farbe: "weiß", groesse: "xs", anlass: "freizeit", bild: "Shirt.png", link: "https://aboutyou.de/", marke: "About You" },
+  { name: "Weißes Shirt", kategorie: "oberteil", farbe: "weiß", groesse: "s", anlass: "freizeit", bild: "Shirt.png", link: "https://aboutyou.de/", marke: "About You" },
+  { name: "Weißes Shirt", kategorie: "oberteil", farbe: "weiß", groesse: "m", anlass: "freizeit", bild: "Shirt.png", link: "https://aboutyou.de/", marke: "About You" },
+  { name: "Weißes Shirt", kategorie: "oberteil", farbe: "weiß", groesse: "l", anlass: "freizeit", bild: "Shirt.png", link: "https://aboutyou.de/", marke: "About You" },
+  { name: "Weißes Shirt", kategorie: "oberteil", farbe: "weiß", groesse: "xl", anlass: "freizeit", bild: "Shirt.png", link: "https://aboutyou.de/", marke: "About You" },
+
+  // Blazer beige
+  { name: "Beiger Blazer", kategorie: "oberteil", farbe: "beige", groesse: "xs", anlass: "business", bild: "Blazer.png", link: "https://zalando.de/", marke: "Zalando" },
+  { name: "Beiger Blazer", kategorie: "oberteil", farbe: "beige", groesse: "s", anlass: "business", bild: "Blazer.png", link: "https://zalando.de/", marke: "Zalando" },
+  { name: "Beiger Blazer", kategorie: "oberteil", farbe: "beige", groesse: "m", anlass: "business", bild: "Blazer.png", link: "https://zalando.de/", marke: "Zalando" },
+  { name: "Beiger Blazer", kategorie: "oberteil", farbe: "beige", groesse: "l", anlass: "business", bild: "Blazer.png", link: "https://zalando.de/", marke: "Zalando" },
+  { name: "Beiger Blazer", kategorie: "oberteil", farbe: "beige", groesse: "xl", anlass: "business", bild: "Blazer.png", link: "https://zalando.de/", marke: "Zalando" }
 ];
