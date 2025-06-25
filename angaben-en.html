@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Style-Angaben – StyleSwipe</title>
+  <title>Style Preferences – StyleSwipe</title>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
@@ -12,7 +12,6 @@
       background-color: #fefbf6;
       color: #1c1c1c;
     }
-
     header {
       position: fixed;
       top: 0;
@@ -25,37 +24,31 @@
       box-sizing: border-box;
       z-index: 999;
     }
-
     .logo {
       height: 80px;
     }
-
     nav a {
       margin-left: 25px;
       text-decoration: none;
       color: #1c1c1c;
       font-weight: 500;
     }
-
     main {
       padding: 150px 40px 60px;
       max-width: 600px;
       margin: 0 auto;
     }
-
     h1 {
       font-size: 42px;
       margin-bottom: 20px;
       text-align: center;
     }
-
     label {
       display: block;
       margin-top: 1rem;
       margin-bottom: 0.3rem;
       font-weight: 500;
     }
-
     select, input[type="text"] {
       width: 100%;
       padding: 0.7rem;
@@ -63,7 +56,6 @@
       border: 1px solid #ccc;
       font-size: 1rem;
     }
-
     button[type="submit"] {
       width: 100%;
       padding: 1rem;
@@ -76,12 +68,9 @@
       cursor: pointer;
       transition: background-color 0.3s;
     }
-
     button[type="submit"]:hover {
       background-color: #333;
     }
-
-    /* Back Button Styling wie Entdecken-Seite */
     .back-button {
       background-color: transparent;
       border: 2px solid #d5c8b1;
@@ -93,15 +82,13 @@
       transition: background-color 0.3s, color 0.3s;
       font-family: 'Outfit', sans-serif;
       font-size: 12px;
-      margin-bottom: 30px; /* etwas Abstand nach unten */
+      margin-bottom: 30px;
       display: inline-block;
     }
-
     .back-button:hover {
       background-color: #d5c8b1;
       color: #fff;
     }
-
     footer {
       background-color: #ece5dc;
       color: #1c1c1c;
@@ -112,12 +99,10 @@
       flex-wrap: wrap;
       font-size: 14px;
     }
-
     footer a {
       color: #1c1c1c;
       text-decoration: none;
     }
-
     @media (max-width: 768px) {
       header {
         flex-direction: column;
@@ -126,11 +111,9 @@
         padding: 20px;
         gap: 10px;
       }
-
       .logo {
         height: 60px;
       }
-
       nav {
         display: flex;
         flex-direction: column;
@@ -138,20 +121,16 @@
         width: 100%;
         align-items: center;
       }
-
       nav a {
         margin: 0;
         font-size: 16px;
       }
-
       main {
         padding: 220px 20px 40px;
       }
-
       h1 {
         font-size: 28px;
       }
-
       footer {
         flex-direction: column;
         align-items: center;
@@ -160,7 +139,6 @@
         padding: 20px;
         text-align: center;
       }
-
       .cta-button {
         width: 100%;
         max-width: 280px;
@@ -173,57 +151,121 @@
   <header>
     <img src="Logo.png" alt="StyleSwipe Logo" class="logo" />
     <nav>
-      <a href="favoriten-en.html">Favorites</a>
-      <a href="empfehlungen-en.html">Recommendations</a>
-      <a href="ueber-uns-en.html">About us</a>
+      <a href="favoriten.html">Favorites</a>
+      <a href="empfehlungen.html">Recommendations</a>
+      <a href="ueber-uns.html">About us</a>
     </nav>
   </header>
 
   <main>
-    <button class="back-button" onclick="window.location.href='index-en.html'">← Back to homepage</button>
+    <button class="back-button" onclick="window.location.href='index.html'">← Back to homepage</button>
 
-    <h1>Style-Angaben</h1>
-    <form action="entdecken-en.html" method="GET">
+    <h1>Style Preferences</h1>
+    <form id="filterForm">
+      <label for="kategorie">Category</label>
+      <select id="kategorie" name="kategorie">
+        <option value="">Please select</option>
+        <option value="kleid">Dress</option>
+        <option value="hose">Pants</option>
+        <option value="oberteil">Top</option>
+        <option value="schuhe">Shoes</option>
+        <option value="accessoires">Accessories</option>
+      </select>
+
+      <label for="groesse">Size</label>
+      <select id="groesse" name="groesse">
+        <!-- Options are added via JS -->
+      </select>
+
       <label for="anlass">Occasion</label>
       <select id="anlass" name="anlass">
-        <option value="">Please choose</option>
+        <option value="">Please select</option>
         <option value="freizeit">Casual</option>
         <option value="business">Business</option>
         <option value="party">Party</option>
         <option value="date">Date</option>
       </select>
 
-      <label for="groesse">Size</label>
-      <select id="groesse" name="groesse">
-        <option value="">Please choose</option>
-        <option value="xs">XS</option>
-        <option value="s">S</option>
-        <option value="m">M</option>
-        <option value="l">L</option>
-        <option value="xl">XL</option>
-      </select>
+      <label for="farbe">Color</label>
+      <input type="text" id="farbe" name="farbe" placeholder="e.g. beige, black, red" />
 
-      <label for="farbe">Colour</label>
-      <input type="text" id="farbe" name="farbe" placeholder="e.g. Beige, Black, Red" />
-
-      <label for="kategorie">Categorie</label>
-      <select id="kategorie" name="kategorie">
-        <option value="">Please choose</option>
-        <option value="kleid">Dresses</option>
-        <option value="hose">Bottoms</option>
-        <option value="oberteil">Tops</option>
-        <option value="schuhe">Shoes</option>
-        <option value="accessoires">Accessoires</option>
-      </select>
-
-      <button type="submit">Next</button>
+      <button type="submit">Continue</button>
     </form>
   </main>
 
   <footer>
-    <a href="impressum-en.html">Imprint</a>
-    <a href="datenschutz-en.html">Privacy Policy</a>
-    <a href="cookies-en.html">Cookie Policy</a>
+    <a href="impressum.html">Legal Notice</a>
+    <a href="datenschutz.html">Privacy Policy</a>
+    <a href="cookies.html">Cookie Policy</a>
   </footer>
+
+  <script>
+    const groesseSelect = document.getElementById('groesse');
+    const kategorieSelect = document.getElementById('kategorie');
+
+    const kleidungGroessen = [
+      { value: '', text: 'Please select' },
+      { value: 'xs', text: 'XS' },
+      { value: 's', text: 'S' },
+      { value: 'm', text: 'M' },
+      { value: 'l', text: 'L' },
+      { value: 'xl', text: 'XL' }
+    ];
+
+    const schuhGroessen = [
+      { value: '', text: 'Please select' },
+      { value: '37', text: '37' },
+      { value: '38', text: '38' },
+      { value: '39', text: '39' },
+      { value: '40', text: '40' },
+      { value: '41', text: '41' }
+    ];
+
+    function updateGroessen() {
+      let selectedKategorie = kategorieSelect.value;
+      let groessen = selectedKategorie === 'schuhe' ? schuhGroessen : kleidungGroessen;
+
+      let currentValue = groesseSelect.value;
+
+      groesseSelect.innerHTML = '';
+
+      groessen.forEach(opt => {
+        const option = document.createElement('option');
+        option.value = opt.value;
+        option.textContent = opt.text;
+        groesseSelect.appendChild(option);
+      });
+
+      if (groessen.some(g => g.value === currentValue)) {
+        groesseSelect.value = currentValue;
+      } else {
+        groesseSelect.value = '';
+      }
+    }
+
+    kategorieSelect.addEventListener('change', updateGroessen);
+
+    updateGroessen();
+
+    document.getElementById('filterForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const anlass = document.getElementById('anlass').value;
+      const groesse = groesseSelect.value;
+      const farbe = document.getElementById('farbe').value.trim().toLowerCase();
+      const kategorie = kategorieSelect.value;
+
+      const filterDaten = {
+        anlass: anlass,
+        groesse: groesse,
+        farbe: farbe,
+        kategorie: kategorie
+      };
+
+      localStorage.setItem('filterDaten', JSON.stringify(filterDaten));
+
+      window.location.href = 'entdecken.html';
+    });
+  </script>
 </body>
 </html>
