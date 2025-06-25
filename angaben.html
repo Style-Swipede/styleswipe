@@ -81,7 +81,6 @@
       background-color: #333;
     }
 
-    /* Back Button Styling wie Entdecken-Seite */
     .back-button {
       background-color: transparent;
       border: 2px solid #d5c8b1;
@@ -93,7 +92,7 @@
       transition: background-color 0.3s, color 0.3s;
       font-family: 'Outfit', sans-serif;
       font-size: 12px;
-      margin-bottom: 30px; /* etwas Abstand nach unten */
+      margin-bottom: 30px;
       display: inline-block;
     }
 
@@ -183,7 +182,7 @@
     <button class="back-button" onclick="window.location.href='index.html'">← Zurück zur Startseite</button>
 
     <h1>Style-Angaben</h1>
-    <form action="entdecken.html" method="GET">
+    <form id="filterForm">
       <label for="anlass">Anlass</label>
       <select id="anlass" name="anlass">
         <option value="">Bitte wählen</option>
@@ -195,12 +194,7 @@
 
       <label for="groesse">Größe</label>
       <select id="groesse" name="groesse">
-        <option value="">Bitte wählen</option>
-        <option value="xs">XS</option>
-        <option value="s">S</option>
-        <option value="m">M</option>
-        <option value="l">L</option>
-        <option value="xl">XL</option>
+        <!-- Optionen werden per JS gesetzt -->
       </select>
 
       <label for="farbe">Farbe</label>
@@ -225,5 +219,76 @@
     <a href="datenschutz.html">Datenschutz</a>
     <a href="cookies.html">Cookie-Richtlinien</a>
   </footer>
+
+  <script>
+    const groesseSelect = document.getElementById('groesse');
+    const kategorieSelect = document.getElementById('kategorie');
+
+    const kleidungGroessen = [
+      { value: '', text: 'Bitte wählen' },
+      { value: 'xs', text: 'XS' },
+      { value: 's', text: 'S' },
+      { value: 'm', text: 'M' },
+      { value: 'l', text: 'L' },
+      { value: 'xl', text: 'XL' }
+    ];
+
+    const schuhGroessen = [
+      { value: '', text: 'Bitte wählen' },
+      { value: '37', text: '37' },
+      { value: '38', text: '38' },
+      { value: '39', text: '39' },
+      { value: '40', text: '40' },
+      { value: '41', text: '41' }
+    ];
+
+    function updateGroessen() {
+      let selectedKategorie = kategorieSelect.value;
+      let groessen = selectedKategorie === 'schuhe' ? schuhGroessen : kleidungGroessen;
+
+      let currentValue = groesseSelect.value;
+
+      groesseSelect.innerHTML = '';
+
+      groessen.forEach(opt => {
+        const option = document.createElement('option');
+        option.value = opt.value;
+        option.textContent = opt.text;
+        groesseSelect.appendChild(option);
+      });
+
+      if (groessen.some(g => g.value === currentValue)) {
+        groesseSelect.value = currentValue;
+      } else {
+        groesseSelect.value = '';
+      }
+    }
+
+    kategorieSelect.addEventListener('change', updateGroessen);
+
+    // Initial laden
+    updateGroessen();
+
+    // Form Submission speichern und weiterleiten
+    document.getElementById('filterForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const anlass = document.getElementById('anlass').value;
+      const groesse = groesseSelect.value;
+      const farbe = document.getElementById('farbe').value.trim().toLowerCase();
+      const kategorie = kategorieSelect.value;
+
+      const filterDaten = {
+        anlass: anlass,
+        groesse: groesse,
+        farbe: farbe,
+        kategorie: kategorie
+      };
+
+      localStorage.setItem('filterDaten', JSON.stringify(filterDaten));
+
+      window.location.href = 'entdecken.html';
+    });
+  </script>
 </body>
 </html>
