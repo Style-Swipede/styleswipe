@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Discover – StyleSwipe</title>
+  <title>StyleSwipe – Swipe your outfits</title>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet" />
   <style>
     body {
@@ -38,7 +38,7 @@
     }
 
     main {
-      padding: 150px 40px 60px;
+      padding: 100px 20px 60px;
       max-width: 900px;
       margin: 0 auto;
       text-align: center;
@@ -63,24 +63,21 @@
       border-radius: 4px;
       font-weight: 400;
       cursor: pointer;
-      transition: background-color 0.3s, color 0.3s;
       font-family: 'Outfit', sans-serif;
       font-size: 12px;
       margin-bottom: 20px;
-      display: inline-block;
-      text-align: left;
     }
 
     .back-button:hover {
       background-color: #d5c8b1;
-      color: white;
+      color: #fff;
     }
 
     #swipe-container {
       position: relative;
       width: 360px;
       height: 580px;
-      margin: 0 auto;
+      margin: 20px auto 0 auto;
     }
 
     .card {
@@ -89,7 +86,7 @@
       height: 100%;
       background: white;
       border-radius: 20px;
-      box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+      box-shadow: none;
       overflow: hidden;
       transition: transform 0.3s ease, opacity 0.3s ease;
       display: flex;
@@ -97,13 +94,9 @@
       justify-content: space-between;
     }
 
-    .card:nth-child(1) { z-index: 3; }
-    .card:nth-child(2) { z-index: 2; }
-    .card:nth-child(3) { z-index: 1; }
-
     .card img {
       width: 100%;
-      height: 75%;
+      height: 70%;
       object-fit: cover;
       border-bottom: 1px solid #ddd;
     }
@@ -188,11 +181,9 @@
         padding: 20px;
         gap: 10px;
       }
-
       .logo {
         height: 60px;
       }
-
       nav {
         display: flex;
         flex-direction: column;
@@ -200,39 +191,31 @@
         width: 100%;
         align-items: center;
       }
-
       nav a {
         margin: 0;
         font-size: 16px;
       }
-
       main {
-        padding: 220px 20px 40px;
+        padding: 160px 20px 40px;
       }
-
       h1 {
         font-size: 28px;
       }
-
       p {
         font-size: 16px;
       }
-
       #swipe-container {
         width: 90%;
         height: 500px;
       }
-
       #swipe-buttons {
         gap: 20px;
       }
-
       #swipe-buttons button {
         flex: 1;
         font-size: 14px;
         padding: 10px 0;
       }
-
       footer {
         flex-direction: column;
         align-items: center;
@@ -243,7 +226,6 @@
       }
     }
 
-    /* Hide buttons on touch devices */
     @media (hover: none) and (pointer: coarse) {
       #swipe-buttons {
         display: none;
@@ -255,102 +237,72 @@
   <header>
     <img src="Logo.png" alt="StyleSwipe Logo" class="logo" />
     <nav>
-      <a href="favoriten-en.html">Favorites</a>
-      <a href="empfehlungen-en.html">Recommendations</a>
-      <a href="ueber-uns-en.html">About us</a>
+      <a href="favoriten.html">Favorites</a>
+      <a href="empfehlungen.html">Recommendations</a>
+      <a href="ueber-uns.html">About Us</a>
     </nav>
   </header>
 
   <main>
     <div style="text-align: left;">
-      <button class="back-button" onclick="window.location.href='angaben-en.html'">← Back to styling details</button>
+      <button class="back-button" onclick="window.location.href='angaben-en.html'">← Back to Style Preferences</button>
     </div>
 
     <h1>Swipe through the styles</h1>
-    <p>Swipe right: "I like it."</p>
-    <p>Swipe left: "I don't like it."</p>
+    <p>Swipe right: "Like it"</p>
+    <p>Swipe left: "Don't like it"</p>
 
-    <div id="swipe-container">
-      <div class="card" data-id="1" data-name="Top" data-brand="H&M" data-link="https://www.hm.com" data-image="Top.png">
-        <img src="Top.png" alt="Product 1" />
-        <div class="details">
-          <p><strong>Brand:</strong> H&M</p>
-        </div>
-        <a href="https://www.hm.com" class="shop-button" target="_blank" rel="noopener noreferrer">Go to product</a>
-      </div>
-
-      <div class="card" data-id="2" data-name="Jeans" data-brand="Mango" data-link="https://www.mango.com" data-image="Jeans.png">
-        <img src="Jeans.png" alt="Product 2" />
-        <div class="details">
-          <p><strong>Brand:</strong> Mango</p>
-        </div>
-        <a href="https://www.mango.com" class="shop-button" target="_blank" rel="noopener noreferrer">Go to product</a>
-      </div>
-
-      <div class="card" data-id="4" data-name="High Heels" data-brand="About You" data-link="https://www.aboutyou.de" data-image="HighHeels.png">
-        <img src="HighHeels.png" alt="High Heels" />
-        <div class="details">
-          <p><strong>Brand:</strong> About You</p>
-        </div>
-        <a href="https://www.aboutyou.de" class="shop-button" target="_blank" rel="noopener noreferrer">Go to product</a>
-      </div>
-
-      <div class="card" data-id="6" data-name="Jacket" data-brand="Only" data-link="https://www.only.com" data-image="Jacke.png">
-        <img src="Jacke.png" alt="Jacket" />
-        <div class="details">
-          <p><strong>Brand:</strong> Only</p>
-        </div>
-        <a href="https://www.only.com" class="shop-button" target="_blank" rel="noopener noreferrer">Go to product</a>
-      </div>
-
-      <div class="card" data-id="7" data-name="Skirt" data-brand="Bershka" data-link="https://www.bershka.de" data-image="Skirt.png">
-        <img src="Skirt.png" alt="Skirt" />
-        <div class="details">
-          <p><strong>Brand:</strong> Bershka</p>
-        </div>
-        <a href="https://www.bershka.de" class="shop-button" target="_blank" rel="noopener noreferrer">Go to product</a>
-      </div>
-
-      <div class="card" data-id="8" data-name="Sweater" data-brand="Asos" data-link="https://www.asos.de" data-image="Pulli.png">
-        <img src="Pulli.png" alt="Sweater" />
-        <div class="details">
-          <p><strong>Brand:</strong> Asos</p>
-        </div>
-        <a href="https://www.asos.de" class="shop-button" target="_blank" rel="noopener noreferrer">Go to product</a>
-      </div>
-
-      <div class="card" data-id="3" data-name="Dress" data-brand="Zara" data-link="https://www.zara.com" data-image="Kleid.png">
-        <img src="Kleid.png" alt="Product 3" />
-        <div class="details">
-          <p><strong>Brand:</strong> Zara</p>
-        </div>
-        <a href="https://www.zara.com" class="shop-button" target="_blank" rel="noopener noreferrer">Go to product</a>
-      </div>
-    </div>
+    <div id="swipe-container"></div>
 
     <div id="swipe-buttons">
-      <button id="swipe-left">← Dislike</button>
-      <button id="swipe-right">Like →</button>
+      <button id="swipe-left">← Don't like</button>
+      <button id="swipe-right">Like it →</button>
     </div>
   </main>
 
   <footer>
-    <a href="impressum-en.html">Imprint</a>
-    <a href="datenschutz-en.html">Privacy Policy</a>
-    <a href="cookies-en.html">Cookie Policy</a>
+    <a href="impressum.html">Imprint</a>
+    <a href="datenschutz.html">Privacy</a>
+    <a href="cookies.html">Cookie Policy</a>
   </footer>
 
+  <script src="produkte-en.js"></script>
   <script>
+    const filter = JSON.parse(localStorage.getItem('filterDaten')) || {};
     const container = document.getElementById('swipe-container');
-    let currentCard = container.querySelector(".card");
+    let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+
+    const gefiltert = produkte.filter(p => {
+      if (filter.kategorie && p.kategorie !== filter.kategorie) return false;
+      if (filter.anlass && p.anlass !== filter.anlass) return false;
+      if (filter.groesse && p.groesse !== filter.groesse) return false;
+      if (filter.farbe && !p.farbe.toLowerCase().includes(filter.farbe.toLowerCase())) return false;
+      return true;
+    });
+
+    gefiltert.reverse().forEach((p, i) => {
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.setAttribute('data-id', i);
+      card.setAttribute('data-name', p.name);
+      card.setAttribute('data-brand', p.marke || 'Unknown');
+      card.setAttribute('data-link', p.link);
+      card.setAttribute('data-image', p.bild);
+      card.innerHTML = `
+        <img src="${p.bild}" alt="${p.name}">
+        <div class="details"><p><strong>${p.name}</strong><br>Brand: ${p.marke}</p></div>
+        <a href="${p.link}" class="shop-button" target="_blank">Shop now</a>
+      `;
+      container.appendChild(card);
+    });
+
+    let currentCard = container.querySelector(".card:last-child");
 
     let startX = 0;
     let isSwiping = false;
 
-    // Get favorites from localStorage or initialize empty
-    let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-
     container.addEventListener("touchstart", (e) => {
+      if (!currentCard) return;
       startX = e.touches[0].clientX;
       isSwiping = true;
     });
@@ -365,7 +317,6 @@
       if (!isSwiping) return;
       const endX = e.changedTouches[0].clientX;
       const diff = endX - startX;
-
       if (diff > 100) {
         swipe("right");
       } else if (diff < -100) {
@@ -373,7 +324,6 @@
       } else {
         resetCard();
       }
-
       isSwiping = false;
     });
 
@@ -382,19 +332,17 @@
 
     function swipe(direction) {
       if (!currentCard) return;
-
-      // Add to favorites if liked
-      if(direction === "right") {
-        addToFavorites(currentCard);
-      }
+      if (direction === "right") addToFavorites(currentCard);
 
       currentCard.style.transition = "transform 0.5s ease, opacity 0.5s ease";
-      currentCard.style.transform = direction === "right" ? "translateX(1000px) rotate(20deg)" : "translateX(-1000px) rotate(-20deg)";
+      currentCard.style.transform = direction === "right"
+        ? "translateX(1000px) rotate(20deg)"
+        : "translateX(-1000px) rotate(-20deg)";
       currentCard.style.opacity = "0";
 
       setTimeout(() => {
         currentCard.remove();
-        currentCard = container.querySelector(".card");
+        currentCard = container.querySelector(".card:last-child");
       }, 500);
     }
 
@@ -412,11 +360,9 @@
         link: card.getAttribute('data-link'),
         image: card.getAttribute('data-image'),
       };
-
-      if(!favorites.some(fav => fav.id === item.id)) {
+      if (!favorites.some(fav => fav.id === item.id)) {
         favorites.push(item);
         localStorage.setItem('favorites', JSON.stringify(favorites));
-        console.log('Added to favorites:', item);
       }
     }
   </script>
