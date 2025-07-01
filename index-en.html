@@ -1,172 +1,247 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>StyleSwipe</title>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet">
-<style>
-  body {
-    margin: 0;
-    font-family: 'Outfit', sans-serif;
-    background-color: #fefbf6;
-    color: #1c1c1c;
-  }
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --accent-color: #c9bca5;
+      --accent-color-dark: #a99982;
+      --background-color: #faf7f1;
+      --footer-bg: #ece5dc;
+      --text-color: #1c1c1c;
+      --shadow-light: rgba(0,0,0,0.05);
+      --shadow-dark: rgba(0,0,0,0.1);
+    }
 
-  header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background-color: #fefbf6;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 40px;
-    box-sizing: border-box;
-    z-index: 999;
-  }
+    * {
+      box-sizing: border-box;
+    }
 
-  .logo {
-    height: 80px;
-  }
+    body {
+      margin: 0;
+      font-family: 'Outfit', sans-serif;
+      background-color: var(--background-color);
+      color: var(--text-color);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
 
-  nav {
-    display: flex;
-    align-items: center;
-  }
-
-  nav a {
-    margin-left: 25px;
-    text-decoration: none;
-    color: #1c1c1c;
-    font-weight: 500;
-  }
-
-  main {
-    padding: 150px 40px 60px;
-    text-align: center;
-  }
-
-  h1 {
-    font-size: 42px;
-    margin-bottom: 20px;
-  }
-
-  p {
-    font-size: 18px;
-    margin-bottom: 30px;
-  }
-
-  .cta-button {
-    padding: 12px 24px;
-    background-color: #d5c8b1;
-    border: none;
-    border-radius: 8px;
-    color: #fff;
-    font-size: 16px;
-    font-weight: 500;
-    cursor: pointer;
-  }
-
-  .zentriertes-bild {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 40px 0;
-  }
-
-  .zentriertes-bild img {
-    max-width: 20%;
-    height: auto;
-    border-radius: 12px;
-  }
-
-  footer {
-    background-color: #ece5dc;
-    color: #1c1c1c;
-    padding: 20px 40px;
-    font-size: 14px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .footer-links {
-    display: flex;
-    gap: 30px;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .footer-links a {
-    color: #1c1c1c;
-    text-decoration: none;
-  }
-
-  .affiliate-hinweis {
-    font-size: 12px;
-    color: #5a5a5a;
-    max-width: 600px;
-    margin-top: 10px;
-    text-align: center;
-  }
-
-  /* Responsive Styles */
-  @media (max-width: 768px) {
     header {
-      flex-direction: column;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: var(--footer-bg);
+      box-shadow: 0 2px 8px var(--shadow-light);
+      display: flex;
+      justify-content: space-between;
       align-items: center;
-      padding: 20px;
-      gap: 10px;
-      text-align: center;
+      padding: 15px 50px;
+      z-index: 1000;
+      transition: padding 0.3s ease;
     }
 
     .logo {
-      height: 60px;
+      height: 70px;
+      filter: drop-shadow(0 0 1px var(--accent-color-dark));
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .logo:hover {
+      transform: scale(1.05);
+    }
+
+    .language-switcher {
+      font-weight: 500;
+      font-size: 14px;
+      color: var(--text-color);
+      user-select: none;
+    }
+
+    .language-switcher a {
+      color: var(--text-color);
+      text-decoration: none;
+      margin: 0 6px;
+      transition: color 0.3s ease;
+    }
+
+    .language-switcher a:hover,
+    .language-switcher a:focus {
+      color: var(--accent-color-dark);
+      outline: none;
     }
 
     nav {
-      flex-direction: column;
-      gap: 10px;
-      width: 100%;
-      align-items: center;
+      display: flex;
+      gap: 30px;
     }
 
     nav a {
-      margin: 0;
-      font-size: 16px;
+      font-weight: 600;
+      text-decoration: none;
+      color: var(--text-color);
+      font-size: 17px;
+      padding: 8px 10px;
+      border-radius: 6px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    nav a:hover,
+    nav a:focus {
+      background-color: var(--accent-color);
+      color: #fff;
+      outline: none;
+      box-shadow: 0 3px 6px var(--shadow-dark);
     }
 
     main {
-      padding: 220px 20px 40px;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 180px 40px 60px;
+      text-align: center;
     }
 
     h1 {
-      font-size: 28px;
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+      letter-spacing: 0.03em;
+      color: var(--text-color);
+      text-shadow: 0 1px 2px var(--shadow-light);
     }
 
     p {
-      font-size: 16px;
+      font-size: 1.2rem;
+      margin-bottom: 40px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      color: var(--text-color);
+    }
+
+    p em {
+      font-style: normal;
+      font-weight: 600;
+      font-size: 1.4rem;
+      color: var(--accent-color-dark);
+      display: block;
+      margin-bottom: 15px;
     }
 
     .cta-button {
-      width: 100%;
-      max-width: 280px;
-      font-size: 15px;
+      background: linear-gradient(135deg, var(--accent-color-dark), var(--accent-color));
+      border: none;
+      padding: 16px 42px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: white;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 6px 15px var(--shadow-dark);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      user-select: none;
+      letter-spacing: 0.05em;
+    }
+
+    .cta-button:hover,
+    .cta-button:focus {
+      transform: scale(1.07);
+      box-shadow: 0 10px 25px var(--shadow-dark);
+      outline: none;
+    }
+
+    .zentriertes-bild {
+      margin-top: 60px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     .zentriertes-bild img {
-      max-width: 80%;
+      max-width: 40%;
+      border-radius: 20px;
+      box-shadow: 0 12px 30px var(--shadow-light);
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .zentriertes-bild img:hover {
+      transform: scale(1.05);
+    }
+
+    footer {
+      background: var(--footer-bg);
+      padding: 25px 50px;
+      text-align: center;
+      font-size: 14px;
+      color: var(--text-color);
+      box-shadow: inset 0 1px 0 #fff;
+      user-select: none;
     }
 
     .footer-links {
-      flex-direction: column;
-      gap: 10px;
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
     }
-  }
-</style>
+
+    .footer-links a {
+      color: var(--text-color);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover,
+    .footer-links a:focus {
+      color: var(--accent-color-dark);
+      outline: none;
+    }
+
+    .affiliate-hinweis {
+      max-width: 700px;
+      margin: 0 auto;
+      color: #666;
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        padding: 20px 20px;
+        gap: 12px;
+      }
+
+      main {
+        padding: 140px 20px 40px;
+      }
+
+      nav {
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      nav a {
+        font-size: 16px;
+        padding: 8px 16px;
+      }
+
+      .zentriertes-bild img {
+        max-width: 80%;
+      }
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -183,17 +258,22 @@
 
   <main>
     <h1>Find your perfect outfit</h1>
-    <p>Discover your style with AI-based recommendations.</p>
+    <p><em>Swipe your way to the perfect outfit.</em></p>
     <button class="cta-button" onclick="window.location.href='angaben-en.html'">Explore now</button>
     <div class="zentriertes-bild">
-      <img src="ModelAI.jpg" alt="Model Bild">
+      <img src="ModelAI.jpg" alt="Model Image" />
     </div>
   </main>
 
   <footer>
-    <a href="impressum-en.html">Imprint</a>
-    <a href="datenschutz-en.html">Privacy Policy</a>
-    <a href="cookies-en.html">Cookie Policy</a>
+    <div class="footer-links">
+      <a href="impressum-en.html">Imprint</a>
+      <a href="datenschutz-en.html">Privacy Policy</a>
+      <a href="cookies-en.html">Cookie Policy</a>
+    </div>
+    <div class="affiliate-hinweis">
+      *Some of the links on this website are affiliate links. If you shop through them, we may receive a commission at no additional cost to you.
+    </div>
   </footer>
 
   <script src="https://web.cmp.usercentrics.eu/modules/autoblocker.js"></script>

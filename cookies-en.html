@@ -2,156 +2,236 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Cookie Policy – StyleSwipe</title>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet" />
   <style>
+    :root {
+      --accent-color: #c9bca5;
+      --accent-color-dark: #a99982;
+      --background-color: #fefbf6;
+      --footer-bg: #ece5dc;
+      --text-color: #1c1c1c;
+      --shadow-light: rgba(0,0,0,0.05);
+      --shadow-dark: rgba(0,0,0,0.1);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: 'Outfit', sans-serif;
-      background-color: #fefbf6;
-      color: #1c1c1c;
+      background-color: var(--background-color);
+      color: var(--text-color);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
     header {
       position: fixed;
       top: 0;
       width: 100%;
-      background-color: #fefbf6;
+      background-color: var(--background-color);
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 10px 40px;
+      padding: 15px 50px;
       box-sizing: border-box;
       z-index: 999;
+      box-shadow: 0 2px 8px var(--shadow-light);
+      transition: padding 0.3s ease;
     }
 
     .logo {
-      height: 80px;
+      height: 70px;
+      cursor: pointer;
+      filter: drop-shadow(0 0 1px var(--accent-color-dark));
+      transition: transform 0.3s ease;
+    }
+
+    .logo:hover {
+      transform: scale(1.05);
     }
 
     nav a {
-      margin-left: 25px;
+      margin-left: 30px;
       text-decoration: none;
-      color: #1c1c1c;
-      font-weight: 500;
+      color: var(--text-color);
+      font-weight: 600;
+      font-size: 16px;
+      padding: 8px 12px;
+      border-radius: 8px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      user-select: none;
+    }
+
+    nav a:hover,
+    nav a:focus {
+      background-color: var(--accent-color);
+      color: #fff;
+      outline: none;
+      box-shadow: 0 4px 10px var(--shadow-dark);
     }
 
     main {
-      padding: 150px 40px 60px;
       max-width: 900px;
       margin: 0 auto;
+      padding: 180px 40px 60px;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px var(--shadow-light);
     }
 
     h1 {
-      font-size: 42px;
-      margin-bottom: 20px;
-      text-align: left;
+      font-size: 2.8rem;
+      margin-bottom: 30px;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      color: var(--text-color);
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+      color: var(--accent-color-dark);
     }
 
     p {
-      font-size: 18px;
+      font-size: 1.125rem;
       margin-bottom: 20px;
-      line-height: 1.6;
-      text-align: left;
+      color: var(--text-color);
     }
 
-    footer {
-      background-color: #ece5dc;
-      color: #1c1c1c;
-      padding: 20px 40px;
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      flex-wrap: wrap;
-      font-size: 14px;
+    ul {
+      margin-left: 1.25rem;
+      margin-bottom: 20px;
+      color: var(--text-color);
+      font-size: 1.125rem;
+      list-style-type: disc;
     }
 
-    footer a {
-      color: #1c1c1c;
-      text-decoration: none;
+    ul li {
+      margin-bottom: 10px;
+      line-height: 1.5;
     }
 
     .back-button {
       background-color: transparent;
-      border: 2px solid #d5c8b1;
-      color: #d5c8b1;
-      padding: 5px 10px;
-      border-radius: 4px;
-      font-weight: 400;
+      border: 2px solid var(--accent-color);
+      color: var(--accent-color);
+      padding: 8px 20px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 14px;
       cursor: pointer;
-      transition: background-color 0.3s, color 0.3s;
-      font-family: 'Outfit', sans-serif;
-      font-size: 12px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      display: inline-block;
+      margin-bottom: 40px;
+      user-select: none;
     }
 
-    .back-button:hover {
-      background-color: #d5c8b1;
+    .back-button:hover,
+    .back-button:focus {
+      background-color: var(--accent-color);
       color: #fff;
+      outline: none;
     }
 
-    /* Responsive */
-   @media (max-width: 768px) {
-  header {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 20px;
-    gap: 10px;
-  }
-
-  .logo {
-    height: 60px;
-  }
-
-  .language-switcher {
-    font-size: 14px;
-  }
-
-  nav {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 100%;
-    align-items: center;
-  }
-
-  nav a {
-    margin: 0;
-    font-size: 16px;
-  }
-
-  main {
-    padding: 220px 20px 40px; /* <--- mehr Platz unter dem fixierten Header */
-  }
-
-  h1 {
-    font-size: 28px;
-  }
-
-  p {
-    font-size: 16px;
-  }
-
-  .cta-button {
-    width: 100%;
-    max-width: 280px;
-    font-size: 15px;
-  }
-
-  .zentriertes-bild img {
-    max-width: 80%;
-  }
-
-  footer {
-    flex-direction: column;
-    align-items: center;
-    font-size: 13px;
-    gap: 10px;
-    padding: 20px;
-    text-align: center;
-  }
+footer {
+  background: var(--footer-bg);
+  padding: 25px 50px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--text-color);
+  box-shadow: inset 0 1px 0 #fff;
+  user-select: none;
 }
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.footer-links a {
+  color: var(--text-color);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover,
+.footer-links a:focus {
+  color: var(--accent-color-dark);
+  outline: none;
+}
+
+.affiliate-hinweis {
+  max-width: 700px;
+  margin: 0 auto;
+  color: #666;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 20px 20px;
+        gap: 15px;
+      }
+
+      .logo {
+        height: 60px;
+      }
+
+      nav {
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+        align-items: center;
+      }
+
+      nav a {
+        margin: 0;
+        font-size: 16px;
+        padding: 8px 16px;
+      }
+
+      main {
+        padding: 140px 20px 40px;
+        margin: 0 15px;
+        border-radius: 12px;
+      }
+
+      h1 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+      }
+
+      h2 {
+        font-size: 1.4rem;
+      }
+
+      p, ul li {
+        font-size: 1rem;
+      }
+
+      footer {
+        font-size: 13px;
+        gap: 10px;
+        padding: 20px 20px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -160,78 +240,83 @@
     <nav>
       <a href="favoriten-en.html">Favorites</a>
       <a href="empfehlungen-en.html">Recommendations</a>
-      <a href="ueber-uns-en.html">About us</a>
+      <a href="ueber-uns-en.html">About Us</a>
     </nav>
   </header>
 
   <main>
     <div style="display: flex; justify-content: flex-start; margin-top: 40px;">
-      <button class="back-button" onclick="window.location.href='index-en.html'">← Back to homepage</button>
+      <button class="back-button" onclick="window.location.href='index-en.html'">← Back to Homepage</button>
     </div>
 
     <h1>Cookie Policy</h1>
 
     <section>
       <h2>1. General Information</h2>
-      <p>This Cookie Policy informs you about the use of cookies on the website <strong>StyleSwipe</strong> (hereinafter referred to as "we" or "us").</p>
-      <p><strong>Controller for data processing:</strong><br>
+      <p>This cookie policy informs you about the use of cookies on the <strong>StyleSwipe</strong> website (hereinafter "we" or "us").</p>
+      <p><strong>Data Controller:</strong><br>
       StyleSwipe<br>
       Owner: Aileen Faulhaber<br>
       Lange Steige 36<br>
       78665 Frittlingen<br>
       Germany<br>
       info@styleswipe.de</p>
-      <p>For more information, please see our <a href="datenschutz-en.html">Privacy Policy</a> and <a href="impressum-en.html">Legal Notice</a>.</p>
+      <p>More information can be found in our <a href="privacy-policy-en.html">Privacy Policy</a> and <a href="imprint-en.html">Imprint</a>.</p>
     </section>
 
     <section>
-      <h2>2. What Are Cookies?</h2>
-      <p>Cookies are small text files stored on your device when you visit our website. They allow us to recognize your browser on future visits, save preferences, and analyze website usage.</p>
+      <h2>2. What are Cookies?</h2>
+      <p>Cookies are small text files stored on your device when you visit our website. They allow us to recognize your browser on subsequent visits, save preferences, and analyze usage of our website statistically.</p>
     </section>
 
     <section>
       <h2>3. Types of Cookies</h2>
-      <p>We use the following types of cookies:</p>
+      <p>We use the following types of cookies on our website:</p>
       <ul>
-        <li><strong>Strictly necessary cookies:</strong> Required for the operation of the website and cannot be disabled.</li>
-        <li><strong>Functional cookies:</strong> Enable features like language selection or user preferences.</li>
+        <li><strong>Strictly necessary cookies:</strong> Required for the website’s functionality and cannot be disabled.</li>
+        <li><strong>Functional cookies:</strong> Enable additional functions like language selection or user settings.</li>
         <li><strong>Analytics and statistics cookies:</strong> Help us understand how users interact with our site.</li>
-        <li><strong>Marketing and tracking cookies:</strong> Used for personalized content or advertising, set only with your consent.</li>
+        <li><strong>Marketing and tracking cookies:</strong> Used to display targeted content or advertising. These are used only with your consent.</li>
       </ul>
     </section>
 
     <section>
       <h2>4. Legal Basis</h2>
-      <p>Strictly necessary cookies are based on <strong>Art. 6(1)(f) GDPR</strong> (legitimate interest).</p>
-      <p>All other cookies are used only with your consent according to <strong>Art. 6(1)(a) GDPR</strong>.</p>
+      <p>Strictly necessary cookies are used based on <strong>Art. 6 para. 1 lit. f GDPR</strong> (legitimate interest).</p>
+      <p>Other cookies are only used with your consent under <strong>Art. 6 para. 1 lit. a GDPR</strong>.</p>
     </section>
 
     <section>
       <h2>5. Changing Cookie Settings</h2>
-      <p>You can withdraw or adjust your consent at any time via our cookie banner. Alternatively, you can block or delete cookies through your browser settings.</p>
+      <p>You can revoke or adjust your consent anytime via our cookie banner. Alternatively, you can block or delete cookies via your browser settings.</p>
     </section>
 
     <section>
       <h2>6. Storage Duration</h2>
-      <p>The duration varies. Session cookies are deleted when the browser is closed. Others remain until deleted or they expire.</p>
+      <p>The storage duration of cookies varies. Session cookies are deleted when you close your browser. Other cookies remain stored until they expire or are deleted.</p>
     </section>
 
     <section>
-      <h2>7. Third-Party Providers & Tools</h2>
-      <p>If we use tools from third parties (e.g., Google Analytics, Awin), cookies may be set. See our Privacy Policy for details.</p>
+      <h2>7. Third Parties & Tools</h2>
+      <p>If we use third-party tools like Google Analytics or Awin, these may also set cookies. Details are in our privacy policy.</p>
     </section>
 
     <section>
-      <h2>8. Changes to This Policy</h2>
-      <p>We reserve the right to update this Cookie Policy. The current version is always available on our website.</p>
+      <h2>8. Changes to this Policy</h2>
+      <p>We reserve the right to update this cookie policy. The current version is always available on our website.</p>
       <p><strong>Last updated:</strong> June 2025</p>
     </section>
   </main>
 
   <footer>
-    <a href="impressum-en.html">Imprint</a>
-    <a href="datenschutz-en.html">Privacy Policy</a>
-    <a href="cookies-en.html">Cookie Policy</a>
+    <div class="footer-links">
+      <a href="impressum-en.html">Imprint</a>
+      <a href="datenschutz-en.html">Privacy Policy</a>
+      <a href="cookies-en.html">Cookie Policy</a>
+    </div>
+    <div class="affiliate-disclaimer">
+      *Some links on this website are affiliate links. If you purchase through these links, we may receive a commission at no extra cost to you.
+    </div>
   </footer>
 </body>
 </html>

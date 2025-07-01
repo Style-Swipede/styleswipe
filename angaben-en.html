@@ -2,147 +2,236 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Style Preferences – StyleSwipe</title>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Style Details – StyleSwipe</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet" />
   <style>
+    :root {
+      --accent-color: #c9bca5;
+      --accent-color-dark: #a99982;
+      --background-color: #faf7f1;
+      --footer-bg: #ece5dc;
+      --text-color: #1c1c1c;
+      --shadow-light: rgba(0,0,0,0.05);
+      --shadow-dark: rgba(0,0,0,0.1);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: 'Outfit', sans-serif;
-      background-color: #fefbf6;
-      color: #1c1c1c;
+      background-color: var(--background-color);
+      color: var(--text-color);
+      line-height: 1.6;
     }
+
     header {
       position: fixed;
       top: 0;
       width: 100%;
-      background-color: #fefbf6;
+      background: var(--footer-bg);
+      box-shadow: 0 2px 8px var(--shadow-light);
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 10px 40px;
-      box-sizing: border-box;
-      z-index: 999;
+      padding: 15px 50px;
+      z-index: 1000;
     }
+
     .logo {
-      height: 80px;
+      height: 70px;
+      filter: drop-shadow(0 0 1px var(--accent-color-dark));
+      cursor: pointer;
+      transition: transform 0.3s ease;
     }
-    nav a {
-      margin-left: 25px;
-      text-decoration: none;
-      color: #1c1c1c;
+
+    .logo:hover {
+      transform: scale(1.05);
+    }
+
+    .language-switcher {
       font-weight: 500;
+      font-size: 14px;
+      color: var(--text-color);
+      user-select: none;
+      margin-right: 30px;
     }
+
+    .language-switcher a {
+      color: var(--text-color);
+      text-decoration: none;
+      margin: 0 6px;
+      transition: color 0.3s ease;
+    }
+
+    .language-switcher a:hover,
+    .language-switcher a:focus {
+      color: var(--accent-color-dark);
+    }
+
+    nav {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+    }
+
+    nav a {
+      font-weight: 600;
+      text-decoration: none;
+      color: var(--text-color);
+      font-size: 17px;
+      padding: 8px 10px;
+      border-radius: 6px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    nav a:hover,
+    nav a:focus {
+      background-color: var(--accent-color);
+      color: #fff;
+      box-shadow: 0 3px 6px var(--shadow-dark);
+    }
+
     main {
-      padding: 150px 40px 60px;
       max-width: 600px;
       margin: 0 auto;
+      padding: 180px 20px 60px;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px var(--shadow-light);
     }
+
     h1 {
-      font-size: 42px;
-      margin-bottom: 20px;
+      font-size: 2.8rem;
+      margin-bottom: 25px;
+      font-weight: 700;
       text-align: center;
     }
+
     label {
       display: block;
-      margin-top: 1rem;
-      margin-bottom: 0.3rem;
-      font-weight: 500;
+      margin-top: 1.3rem;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      font-size: 1.05rem;
     }
+
     select, input[type="text"] {
       width: 100%;
-      padding: 0.7rem;
-      border-radius: 0.6rem;
-      border: 1px solid #ccc;
+      padding: 12px 16px;
+      border-radius: 12px;
+      border: 1.5px solid #ccc;
       font-size: 1rem;
+      font-family: 'Outfit', sans-serif;
     }
-    button[type="submit"] {
+
+    select:focus, input[type="text"]:focus {
+      border-color: var(--accent-color-dark);
+      box-shadow: 0 0 8px var(--accent-color-dark);
+      outline: none;
+    }
+
+    .continue-button {
       width: 100%;
-      padding: 1rem;
-      margin-top: 2rem;
-      background-color: #1c1c1c;
-      color: white;
+      padding: 16px 0;
+      margin-top: 2.5rem;
+      background: linear-gradient(135deg, var(--accent-color-dark), var(--accent-color));
       border: none;
-      border-radius: 1rem;
-      font-size: 1rem;
+      border-radius: 50px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: white;
       cursor: pointer;
-      transition: background-color 0.3s;
+      box-shadow: 0 6px 18px var(--shadow-dark);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      letter-spacing: 0.05em;
     }
-    button[type="submit"]:hover {
-      background-color: #333;
+
+    .continue-button:hover,
+    .continue-button:focus {
+      transform: scale(1.05);
+      box-shadow: 0 10px 28px var(--shadow-dark);
+      outline: none;
     }
+
     .back-button {
       background-color: transparent;
-      border: 2px solid #d5c8b1;
-      color: #d5c8b1;
-      padding: 5px 10px;
-      border-radius: 4px;
-      font-weight: 400;
+      border: 2px solid var(--accent-color);
+      color: var(--accent-color);
+      padding: 8px 20px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 14px;
       cursor: pointer;
-      transition: background-color 0.3s, color 0.3s;
-      font-family: 'Outfit', sans-serif;
-      font-size: 12px;
-      margin-bottom: 30px;
+      margin-bottom: 40px;
       display: inline-block;
     }
-    .back-button:hover {
-      background-color: #d5c8b1;
+
+    .back-button:hover,
+    .back-button:focus {
+      background-color: var(--accent-color);
       color: #fff;
     }
+
     footer {
-      background-color: #ece5dc;
-      color: #1c1c1c;
-      padding: 20px 40px;
+      background: var(--footer-bg);
+      padding: 25px 50px;
+      text-align: center;
+      font-size: 14px;
+      color: var(--text-color);
+    }
+
+    .footer-links {
       display: flex;
       justify-content: center;
-      gap: 30px;
+      gap: 40px;
       flex-wrap: wrap;
-      font-size: 14px;
+      margin-bottom: 12px;
     }
-    footer a {
-      color: #1c1c1c;
+
+    .footer-links a {
+      color: var(--text-color);
       text-decoration: none;
+      font-weight: 500;
     }
+
+    .footer-links a:hover,
+    .footer-links a:focus {
+      color: var(--accent-color-dark);
+    }
+
+    .affiliate-note {
+      max-width: 700px;
+      margin: 0 auto;
+      color: #666;
+      font-size: 13px;
+    }
+
     @media (max-width: 768px) {
       header {
         flex-direction: column;
-        align-items: center;
-        text-align: center;
         padding: 20px;
-        gap: 10px;
+        gap: 12px;
       }
-      .logo {
-        height: 60px;
-      }
-      nav {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        width: 100%;
-        align-items: center;
-      }
-      nav a {
-        margin: 0;
-        font-size: 16px;
-      }
+
       main {
-        padding: 220px 20px 40px;
+        padding: 140px 20px 40px;
+        margin: 0 15px;
+        border-radius: 12px;
       }
-      h1 {
-        font-size: 28px;
+
+      nav {
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
       }
-      footer {
-        flex-direction: column;
-        align-items: center;
-        font-size: 13px;
-        gap: 10px;
-        padding: 20px;
-        text-align: center;
-      }
-      .cta-button {
-        width: 100%;
-        max-width: 280px;
-        font-size: 15px;
+
+      nav a {
+        font-size: 16px;
+        padding: 8px 16px;
       }
     }
   </style>
@@ -150,60 +239,66 @@
 <body>
   <header>
     <img src="Logo.png" alt="StyleSwipe Logo" class="logo" />
+    <div class="language-switcher">
+      <a href="index.html">German</a> | <a href="index-en.html">English</a>
+    </div>
     <nav>
-      <a href="favoriten.html">Favorites</a>
-      <a href="empfehlungen.html">Recommendations</a>
-      <a href="ueber-uns.html">About us</a>
+      <a href="favoriten-en.html">Favorites</a>
+      <a href="empfehlungen-en.html">Recommendations</a>
+      <a href="ueber-uns-en.html">About Us</a>
     </nav>
   </header>
 
   <main>
-    <button class="back-button" onclick="window.location.href='index.html'">← Back to homepage</button>
+    <button class="back-button" onclick="window.location.href='index-en.html'">← Back to Home</button>
 
-    <h1>Style Preferences</h1>
+    <h1>Style Details</h1>
     <form id="filterForm">
-      <label for="kategorie">Category</label>
-      <select id="kategorie" name="kategorie">
+      <label for="category">Category</label>
+      <select id="category" name="category">
         <option value="">Please select</option>
-        <option value="kleid">Dress</option>
-        <option value="hose">Pants</option>
-        <option value="oberteil">Top</option>
-        <option value="schuhe">Shoes</option>
-        <option value="accessoires">Accessories</option>
+        <option value="dress">Dress</option>
+        <option value="pants">Pants</option>
+        <option value="top">Top</option>
+        <option value="shoes">Shoes</option>
+        <option value="accessories">Accessories</option>
       </select>
 
-      <label for="groesse">Size</label>
-      <select id="groesse" name="groesse">
-        <!-- Options are added via JS -->
-      </select>
+      <label for="size">Size</label>
+      <select id="size" name="size"></select>
 
-      <label for="anlass">Occasion</label>
-      <select id="anlass" name="anlass">
+      <label for="occasion">Occasion</label>
+      <select id="occasion" name="occasion">
         <option value="">Please select</option>
-        <option value="freizeit">Casual</option>
+        <option value="casual">Casual</option>
         <option value="business">Business</option>
         <option value="party">Party</option>
         <option value="date">Date</option>
       </select>
 
-      <label for="farbe">Color</label>
-      <input type="text" id="farbe" name="farbe" placeholder="e.g. beige, black, red" />
+      <label for="color">Color</label>
+      <input type="text" id="color" name="color" placeholder="e.g. Beige, Black, Red" />
 
-      <button type="submit">Continue</button>
+      <button type="submit" class="continue-button">Continue</button>
     </form>
   </main>
 
   <footer>
-    <a href="impressum.html">Imprint</a>
-    <a href="datenschutz.html">Privacy Policy</a>
-    <a href="cookies.html">Cookie Policy</a>
+    <div class="footer-links">
+      <a href="impressum-en.html">Imprint</a>
+      <a href="datenschutz-en.html">Privacy Policy</a>
+      <a href="cookies-en.html">Cookie Policy</a>
+    </div>
+    <div class="affiliate-note">
+      *Some of the links on this website are affiliate links. If you purchase through them, we may earn a commission – at no extra cost to you.
+    </div>
   </footer>
 
   <script>
-    const groesseSelect = document.getElementById('groesse');
-    const kategorieSelect = document.getElementById('kategorie');
+    const sizeSelect = document.getElementById('size');
+    const categorySelect = document.getElementById('category');
 
-    const kleidungGroessen = [
+    const clothingSizes = [
       { value: '', text: 'Please select' },
       { value: 'xs', text: 'XS' },
       { value: 's', text: 'S' },
@@ -212,7 +307,7 @@
       { value: 'xl', text: 'XL' }
     ];
 
-    const schuhGroessen = [
+    const shoeSizes = [
       { value: '', text: 'Please select' },
       { value: '37', text: '37' },
       { value: '38', text: '38' },
@@ -221,49 +316,46 @@
       { value: '41', text: '41' }
     ];
 
-    function updateGroessen() {
-      let selectedKategorie = kategorieSelect.value;
-      let groessen = selectedKategorie === 'schuhe' ? schuhGroessen : kleidungGroessen;
+    function updateSizes() {
+      const selectedCategory = categorySelect.value;
+      const sizes = selectedCategory === 'shoes' ? shoeSizes : clothingSizes;
 
-      let currentValue = groesseSelect.value;
+      const currentValue = sizeSelect.value;
+      sizeSelect.innerHTML = '';
 
-      groesseSelect.innerHTML = '';
-
-      groessen.forEach(opt => {
+      sizes.forEach(opt => {
         const option = document.createElement('option');
         option.value = opt.value;
         option.textContent = opt.text;
-        groesseSelect.appendChild(option);
+        sizeSelect.appendChild(option);
       });
 
-      if (groessen.some(g => g.value === currentValue)) {
-        groesseSelect.value = currentValue;
+      if (sizes.some(s => s.value === currentValue)) {
+        sizeSelect.value = currentValue;
       } else {
-        groesseSelect.value = '';
+        sizeSelect.value = '';
       }
     }
 
-    kategorieSelect.addEventListener('change', updateGroessen);
-
-    updateGroessen();
+    categorySelect.addEventListener('change', updateSizes);
+    updateSizes();
 
     document.getElementById('filterForm').addEventListener('submit', function(event) {
       event.preventDefault();
 
-      const anlass = document.getElementById('anlass').value;
-      const groesse = groesseSelect.value;
-      const farbe = document.getElementById('farbe').value.trim().toLowerCase();
-      const kategorie = kategorieSelect.value;
+      const occasion = document.getElementById('occasion').value;
+      const size = sizeSelect.value;
+      const color = document.getElementById('color').value.trim().toLowerCase();
+      const category = categorySelect.value;
 
-      const filterDaten = {
-        anlass: anlass,
-        groesse: groesse,
-        farbe: farbe,
-        kategorie: kategorie
+      const filterData = {
+        occasion: occasion,
+        size: size,
+        color: color,
+        category: category
       };
 
-      localStorage.setItem('filterDaten', JSON.stringify(filterDaten));
-
+      localStorage.setItem('filterData', JSON.stringify(filterData));
       window.location.href = 'entdecken-en.html';
     });
   </script>

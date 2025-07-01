@@ -4,193 +4,196 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About Us – StyleSwipe</title>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet" />
   <style>
+    :root {
+      --accent-color: #c9bca5;
+      --accent-color-dark: #a99982;
+      --background-color: #fefbf6;
+      --footer-bg: #ece5dc;
+      --text-color: #1c1c1c;
+      --shadow-light: rgba(0, 0, 0, 0.05);
+      --shadow-dark: rgba(0, 0, 0, 0.1);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: 'Outfit', sans-serif;
-      background-color: #fefbf6;
-      color: #1c1c1c;
+      background-color: var(--background-color);
+      color: var(--text-color);
+      line-height: 1.6;
     }
 
     header {
       position: fixed;
       top: 0;
       width: 100%;
-      background-color: #fefbf6;
+      background-color: var(--background-color);
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 10px 40px;
-      box-sizing: border-box;
+      padding: 15px 50px;
+      box-shadow: 0 2px 8px var(--shadow-light);
       z-index: 999;
     }
 
     .logo {
-      height: 80px;
+      height: 70px;
+      cursor: pointer;
+      filter: drop-shadow(0 0 1px var(--accent-color-dark));
+      transition: transform 0.3s ease;
+    }
+
+    .logo:hover {
+      transform: scale(1.05);
     }
 
     nav a {
-      margin-left: 25px;
+      margin-left: 30px;
       text-decoration: none;
-      color: #1c1c1c;
-      font-weight: 500;
+      color: var(--text-color);
+      font-weight: 600;
+      font-size: 16px;
+      padding: 8px 12px;
+      border-radius: 8px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    nav a:hover,
+    nav a:focus {
+      background-color: var(--accent-color);
+      color: #fff;
+      box-shadow: 0 4px 10px var(--shadow-dark);
+      outline: none;
     }
 
     main {
-      padding: 150px 40px 60px;
       max-width: 900px;
       margin: 0 auto;
+      padding: 180px 40px 60px;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px var(--shadow-light);
     }
 
     h1 {
-      font-size: 42px;
-      margin-bottom: 20px;
-      text-align: left;
+      font-size: 2.8rem;
+      margin-bottom: 30px;
+      font-weight: 700;
+      letter-spacing: 0.03em;
     }
 
     p {
-      font-size: 18px;
+      font-size: 1.125rem;
       margin-bottom: 20px;
-      line-height: 1.6;
-      text-align: left;
     }
 
-    footer {
-      background-color: #ece5dc;
-      color: #1c1c1c;
-      padding: 20px 40px;
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      flex-wrap: wrap;
-      font-size: 14px;
-    }
-
-    footer a {
-      color: #1c1c1c;
-      text-decoration: none;
+    a {
+      color: var(--accent-color-dark);
+      text-decoration: underline;
     }
 
     .back-button {
       background-color: transparent;
-      border: 2px solid #d5c8b1;
-      color: #d5c8b1;
-      padding: 5px 10px;
-      border-radius: 4px;
-      font-weight: 400;
-      cursor: pointer;
-      transition: background-color 0.3s, color 0.3s;
-      font-family: 'Outfit', sans-serif;
-      font-size: 12px;
-    }
-
-    .back-button:hover {
-      background-color: #d5c8b1;
-      color: #fff;
-    }
-
-    /* Cookie Banner */
-    #cookie-banner {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background-color: #fff9ed;
-      color: #1c1c1c;
-      padding: 20px;
-      display: none;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 -2px 6px rgba(0,0,0,0.1);
-      z-index: 1000;
-      flex-wrap: wrap;
-    }
-
-    #cookie-banner p {
-      flex: 1 1 300px;
-      margin: 0 20px 10px 0;
-    }
-
-    #cookie-banner button {
-      margin-left: 10px;
-      padding: 8px 16px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
+      border: 2px solid var(--accent-color);
+      color: var(--accent-color);
+      padding: 8px 20px;
+      border-radius: 50px;
       font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      display: inline-block;
+      margin-bottom: 40px;
     }
 
-    #accept-all {
-      background-color: #d5c8b1;
-      color: white;
+    .back-button:hover,
+    .back-button:focus {
+      background-color: var(--accent-color);
+      color: #fff;
+      outline: none;
     }
 
-    #accept-necessary {
-      background-color: #ece5dc;
-      color: #1c1c1c;
+    footer {
+      background: var(--footer-bg);
+      padding: 25px 50px;
+      text-align: center;
+      font-size: 14px;
+      color: var(--text-color);
+      box-shadow: inset 0 1px 0 #fff;
+      user-select: none;
     }
-   @media (max-width: 768px) {
-  header {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 20px;
-    gap: 10px;
-  }
 
-  .logo {
-    height: 60px;
-  }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
 
-  .language-switcher {
-    font-size: 14px;
-  }
+    .footer-links a {
+      color: var(--text-color);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
 
-  nav {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 100%;
-    align-items: center;
-  }
+    .footer-links a:hover,
+    .footer-links a:focus {
+      color: var(--accent-color-dark);
+      outline: none;
+    }
 
-  nav a {
-    margin: 0;
-    font-size: 16px;
-  }
+    .affiliate-hinweis {
+      max-width: 700px;
+      margin: 0 auto;
+      color: #666;
+      font-size: 13px;
+      line-height: 1.4;
+    }
 
-  main {
-    padding: 220px 20px 40px; /* <--- mehr Platz unter dem fixierten Header */
-  }
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        gap: 15px;
+      }
 
-  h1 {
-    font-size: 28px;
-  }
+      .logo {
+        height: 60px;
+      }
 
-  p {
-    font-size: 16px;
-  }
+      nav {
+        flex-direction: column;
+        gap: 12px;
+        align-items: center;
+      }
 
-  .cta-button {
-    width: 100%;
-    max-width: 280px;
-    font-size: 15px;
-  }
+      main {
+        padding: 140px 20px 40px;
+        margin: 0 15px;
+        border-radius: 12px;
+      }
 
-  .zentriertes-bild img {
-    max-width: 80%;
-  }
+      h1 {
+        font-size: 2rem;
+      }
 
-  footer {
-    flex-direction: column;
-    align-items: center;
-    font-size: 13px;
-    gap: 10px;
-    padding: 20px;
-    text-align: center;
-  }
-}
+      p {
+        font-size: 1rem;
+      }
+
+      footer {
+        font-size: 13px;
+        padding: 20px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -199,26 +202,34 @@
     <nav>
       <a href="favoriten-en.html">Favorites</a>
       <a href="empfehlungen-en.html">Recommendations</a>
-      <a href="about-us.html">About us</a>
+      <a href="ueber-uns-en.html">About us</a>
     </nav>
   </header>
 
   <main>
-    <div style="display: flex; justify-content: flex-start; margin-top: 40px;">
-      <button class="back-button" onclick="window.location.href='index-en.html'">← Back to homepage</button>
-    </div>
+    <button class="back-button" onclick="window.location.href='index-en.html'">← Back to homepage</button>
 
     <h1>About Us</h1>
     <p>StyleSwipe is your digital fashion advisor.</p>
-    <p>Our goal is to suggest suitable outfits in a smart and simple way – based on AI, your personal style, and current trends.</p>
-    <p>We believe that fashion should be fun and personal. That’s why we help you find your perfect look with just a few clicks.</p>
-    <p>With just one swipe, you’ll receive personalized outfit recommendations that truly match your style. Our AI analyzes trends, colors, and cuts to present you with tailored looks – like a digital stylist who knows you.</p>
+    <p>Our goal is to smartly and easily suggest outfits that suit you — based on AI, your personal style, and current trends.</p>
+    <p>We believe fashion should be fun and unique. That’s why we help you find your perfect look with just a few clicks.</p>
+    <p>With a simple swipe, you get personalized outfit recommendations that truly match your style. Our AI analyzes trends, colors, and cuts to present looks tailored for you — like a digital stylist who knows you.</p>
+    <p>Follow us on Instagram: 
+      <a href="https://instagram.com/styleswipe.de" target="_blank" rel="noopener noreferrer">
+        @styleswipe.de
+      </a>
+    </p>
   </main>
 
   <footer>
-    <a href="impressum-en.html">Imprint</a>
-    <a href="datenschutz-en.html">Privacy Policy</a>
-    <a href="cookies-en.html">Cookie Policy</a>
+    <div class="footer-links">
+      <a href="impressum-en.html">Imprint</a>
+      <a href="datenschutz-en.html">Privacy Policy</a>
+      <a href="cookies-en.html">Cookie Policy</a>
+    </div>
+    <div class="affiliate-hinweis">
+      *Some of the links on this website are affiliate links. If you purchase through them, we may earn a commission at no extra cost to you.
+    </div>
   </footer>
 </body>
 </html>

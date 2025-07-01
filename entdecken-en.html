@@ -1,83 +1,139 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>StyleSwipe – Swipe your outfits</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Entdecken – StyleSwipe</title>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet" />
   <style>
+    :root {
+      --accent-color: #c9bca5;
+      --accent-color-dark: #a99982;
+      --background-color: #fefbf6;
+      --footer-bg: #ece5dc;
+      --text-color: #1c1c1c;
+      --shadow-light: rgba(0,0,0,0.05);
+      --shadow-dark: rgba(0,0,0,0.1);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: 'Outfit', sans-serif;
-      background-color: #fefbf6;
-      color: #1c1c1c;
+      background-color: var(--background-color);
+      color: var(--text-color);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
     header {
       position: fixed;
       top: 0;
       width: 100%;
-      background-color: #fefbf6;
+      background-color: var(--background-color);
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 10px 40px;
-      box-sizing: border-box;
+      padding: 15px 50px;
+      box-shadow: 0 2px 8px var(--shadow-light);
       z-index: 999;
+      user-select: none;
     }
 
     .logo {
-      height: 80px;
+      height: 70px;
+      cursor: pointer;
+      filter: drop-shadow(0 0 1px var(--accent-color-dark));
+      transition: transform 0.3s ease;
+    }
+
+    .logo:hover {
+      transform: scale(1.05);
     }
 
     nav a {
-      margin-left: 25px;
+      margin-left: 30px;
       text-decoration: none;
-      color: #1c1c1c;
-      font-weight: 500;
+      color: var(--text-color);
+      font-weight: 600;
+      font-size: 16px;
+      padding: 8px 12px;
+      border-radius: 50px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      user-select: none;
+    }
+
+    nav a:hover,
+    nav a:focus {
+      background-color: var(--accent-color);
+      color: #fff;
+      outline: none;
+      box-shadow: 0 4px 10px var(--shadow-dark);
     }
 
     main {
-      padding: 100px 20px 60px;
       max-width: 900px;
       margin: 0 auto;
-      text-align: center;
+      padding: 180px 40px 60px;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px var(--shadow-light);
+      user-select: none;
     }
 
-    h1 {
-      font-size: 42px;
-      margin-bottom: 20px;
-    }
-
-    p {
-      font-size: 18px;
-      margin-bottom: 20px;
-      line-height: 1.6;
+    /* Back-Button Container so er oben links in eigenem Block ist */
+    .back-container {
+      display: flex;
+      justify-content: flex-start;
+      margin-bottom: 40px;
     }
 
     .back-button {
       background-color: transparent;
-      border: 2px solid #d5c8b1;
-      color: #d5c8b1;
-      padding: 5px 10px;
-      border-radius: 4px;
-      font-weight: 400;
+      border: 2px solid var(--accent-color);
+      color: var(--accent-color);
+      padding: 8px 20px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 14px;
       cursor: pointer;
-      font-family: 'Outfit', sans-serif;
-      font-size: 12px;
-      margin-bottom: 20px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      user-select: none;
     }
 
-    .back-button:hover {
-      background-color: #d5c8b1;
+    .back-button:hover,
+    .back-button:focus {
+      background-color: var(--accent-color);
       color: #fff;
+      outline: none;
     }
 
+    h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      letter-spacing: 0.03em;
+      text-align: center;
+      color: var(--text-color);
+    }
+
+    p {
+      font-size: 1.125rem;
+      margin: 5px 0 20px;
+      text-align: center;
+      color: var(--text-color);
+    }
+
+    /* Swipe Container ohne schwarzen Rahmen */
     #swipe-container {
       position: relative;
       width: 360px;
       height: 580px;
-      margin: 20px auto 0 auto;
+      margin: 0 auto;
     }
 
     .card {
@@ -86,7 +142,6 @@
       height: 100%;
       background: white;
       border-radius: 20px;
-      box-shadow: none;
       overflow: hidden;
       transition: transform 0.3s ease, opacity 0.3s ease;
       display: flex;
@@ -98,137 +153,153 @@
       width: 100%;
       height: 70%;
       object-fit: cover;
-      border-bottom: 1px solid #ddd;
     }
 
     .details {
-      flex: 1;
-      padding: 12px 15px 0;
-      font-size: 13px;
-      line-height: 1.4;
+      padding: 12px 16px 0;
+      font-size: 14px;
       text-align: left;
-      color: #1c1c1c;
+      color: var(--text-color);
     }
 
     .shop-button {
-      margin: 10px 15px 15px;
+      margin: 10px 16px 16px;
       padding: 10px;
-      background-color: #1c1c1c;
+      background-color: var(--text-color);
       color: white;
       border: none;
       border-radius: 10px;
       font-size: 14px;
       font-weight: 500;
       cursor: pointer;
-      font-family: 'Outfit', sans-serif;
-      transition: background-color 0.3s;
-      text-align: center;
       text-decoration: none;
       display: block;
+      user-select: none;
     }
 
     .shop-button:hover {
       background-color: #333;
     }
 
+    /* Swipe Buttons unten, Style an Back-Button angelehnt */
     #swipe-buttons {
       display: flex;
       justify-content: center;
-      gap: 40px;
+      gap: 30px;
       margin-top: 30px;
     }
 
     #swipe-buttons button {
-      padding: 10px 25px;
-      border-radius: 8px;
-      border: 2px solid #d5c8b1;
+      padding: 8px 20px;
+      border-radius: 50px;
+      border: 2px solid var(--accent-color);
       background: transparent;
-      color: #d5c8b1;
+      color: var(--accent-color);
       cursor: pointer;
       font-weight: 600;
-      font-family: 'Outfit', sans-serif;
-      font-size: 16px;
-      transition: background-color 0.3s, color 0.3s;
+      font-size: 14px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      user-select: none;
     }
 
     #swipe-buttons button:hover {
-      background-color: #d5c8b1;
+      background-color: var(--accent-color);
       color: #fff;
     }
 
     footer {
-      background-color: #ece5dc;
-      color: #1c1c1c;
-      padding: 20px 40px;
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      flex-wrap: wrap;
+      background: var(--footer-bg);
+      padding: 25px 50px;
+      text-align: center;
       font-size: 14px;
+      color: var(--text-color);
+      box-shadow: inset 0 1px 0 #fff;
+      user-select: none;
       margin-top: 80px;
     }
 
-    footer a {
-      color: #1c1c1c;
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+
+    .footer-links a {
+      color: var(--text-color);
       text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover,
+    .footer-links a:focus {
+      color: var(--accent-color-dark);
+      outline: none;
+    }
+
+    .affiliate-hinweis {
+      max-width: 700px;
+      margin: 0 auto;
+      color: #666;
+      font-size: 13px;
+      line-height: 1.4;
     }
 
     @media (max-width: 768px) {
       header {
         flex-direction: column;
         align-items: center;
-        text-align: center;
-        padding: 20px;
-        gap: 10px;
+        padding: 20px 20px;
+        gap: 15px;
       }
+
       .logo {
         height: 60px;
       }
+
       nav {
-        display: flex;
         flex-direction: column;
-        gap: 10px;
+        gap: 12px;
         width: 100%;
         align-items: center;
       }
+
       nav a {
-        margin: 0;
+        margin-left: 0;
         font-size: 16px;
+        padding: 8px 16px;
       }
+
       main {
-        padding: 160px 20px 40px;
+        padding: 140px 20px 40px;
+        margin: 0 15px;
+        border-radius: 12px;
       }
+
       h1 {
-        font-size: 28px;
+        font-size: 2rem;
+        margin-bottom: 20px;
       }
+
       p {
-        font-size: 16px;
+        font-size: 1rem;
       }
+
       #swipe-container {
         width: 90%;
         height: 500px;
+        margin: 0 auto;
       }
+
       #swipe-buttons {
         gap: 20px;
-      }
-      #swipe-buttons button {
-        flex: 1;
-        font-size: 14px;
-        padding: 10px 0;
-      }
-      footer {
         flex-direction: column;
-        align-items: center;
-        font-size: 13px;
-        gap: 10px;
-        padding: 20px;
-        text-align: center;
       }
-    }
 
-    @media (hover: none) and (pointer: coarse) {
-      #swipe-buttons {
-        display: none;
+      #swipe-buttons button {
+        width: 100%;
       }
     }
   </style>
@@ -237,33 +308,38 @@
   <header>
     <img src="Logo.png" alt="StyleSwipe Logo" class="logo" />
     <nav>
-      <a href="favoriten.html">Favorites</a>
-      <a href="empfehlungen.html">Recommendations</a>
-      <a href="ueber-uns.html">About Us</a>
+      <a href="favoriten-en.html">Favorites</a>
+      <a href="empfehlungen-en.html">Recommendations</a>
+      <a href="ueber-uns-en.html">About us</a>
     </nav>
   </header>
 
   <main>
-    <div style="text-align: left;">
-      <button class="back-button" onclick="window.location.href='angaben-en.html'">← Back to Style Preferences</button>
+    <div class="back-container">
+      <button class="back-button" onclick="window.location.href='angaben-en.html'">← Go back to the Style Details</button>
     </div>
 
-    <h1>Swipe through the styles</h1>
-    <p>Swipe right: "Like it"</p>
-    <p>Swipe left: "Don't like it"</p>
+    <h1>Swipe through all the styles</h1>
+    <p>Swipe to the right: „I like it“</p>
+    <p>Swipe to the left: „I don't like it“</p>
 
     <div id="swipe-container"></div>
 
     <div id="swipe-buttons">
-      <button id="swipe-left">← Don't like</button>
-      <button id="swipe-right">Like it →</button>
+      <button id="swipe-left">← I don't like it</button>
+      <button id="swipe-right">I like it →</button>
     </div>
   </main>
 
   <footer>
-    <a href="impressum.html">Imprint</a>
-    <a href="datenschutz.html">Privacy</a>
-    <a href="cookies.html">Cookie Policy</a>
+    <div class="footer-links">
+      <a href="impressum-en.html">Imprint</a>
+      <a href="datenschutz-en.html">Privacy Policy</a>
+      <a href="cookies-en.html">Cookie Policy</a>
+    </div>
+    <div class="affiliate-hinweis">
+     *Some of the links on this website are affiliate links. If you purchase through them, we may earn a commission at no extra cost to you.
+    </div>
   </footer>
 
   <script src="produkte-en.js"></script>
@@ -285,13 +361,13 @@
       card.className = 'card';
       card.setAttribute('data-id', i);
       card.setAttribute('data-name', p.name);
-      card.setAttribute('data-brand', p.marke || 'Unknown');
+      card.setAttribute('data-brand', p.marke || 'Unbekannt');
       card.setAttribute('data-link', p.link);
       card.setAttribute('data-image', p.bild);
       card.innerHTML = `
         <img src="${p.bild}" alt="${p.name}">
-        <div class="details"><p><strong>${p.name}</strong><br>Brand: ${p.marke}</p></div>
-        <a href="${p.link}" class="shop-button" target="_blank">Shop now</a>
+        <div class="details"><p><strong>${p.name}</strong><br>Marke: ${p.marke}</p></div>
+        <a href="${p.link}" class="shop-button" target="_blank">To the shop</a>
       `;
       container.appendChild(card);
     });

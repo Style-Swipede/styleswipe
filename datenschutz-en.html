@@ -4,210 +4,210 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Privacy Policy – StyleSwipe</title>
-  <meta name="description" content="Find out how StyleSwipe handles your data in our privacy policy. We take your privacy seriously.">
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet" />
   <style>
+    :root {
+      --accent-color: #c9bca5;
+      --accent-color-dark: #a99982;
+      --background-color: #fefbf6;
+      --footer-bg: #ece5dc;
+      --text-color: #1c1c1c;
+      --shadow-light: rgba(0,0,0,0.05);
+      --shadow-dark: rgba(0,0,0,0.1);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: 'Outfit', sans-serif;
-      background-color: #fefbf6;
-      color: #1c1c1c;
+      background-color: var(--background-color);
+      color: var(--text-color);
+      line-height: 1.6;
     }
 
     header {
       position: fixed;
       top: 0;
       width: 100%;
-      background-color: #fefbf6;
+      background-color: var(--background-color);
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 10px 40px;
-      box-sizing: border-box;
+      padding: 15px 50px;
+      box-shadow: 0 2px 8px var(--shadow-light);
       z-index: 999;
     }
 
     .logo {
-      height: 80px;
+      height: 70px;
+      cursor: pointer;
+      filter: drop-shadow(0 0 1px var(--accent-color-dark));
+      transition: transform 0.3s ease;
+    }
+
+    .logo:hover {
+      transform: scale(1.05);
     }
 
     nav a {
-      margin-left: 25px;
+      margin-left: 30px;
       text-decoration: none;
-      color: #1c1c1c;
-      font-weight: 500;
+      color: var(--text-color);
+      font-weight: 600;
+      font-size: 16px;
+      padding: 8px 12px;
+      border-radius: 8px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    nav a:hover,
+    nav a:focus {
+      background-color: var(--accent-color);
+      color: #fff;
+      box-shadow: 0 4px 10px var(--shadow-dark);
+      outline: none;
     }
 
     main {
-      padding: 150px 40px 60px;
       max-width: 900px;
       margin: 0 auto;
-      text-align: left;
+      padding: 180px 40px 60px;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px var(--shadow-light);
     }
 
     h1 {
-      font-size: 42px;
-      margin-bottom: 20px;
+      font-size: 2.8rem;
+      margin-bottom: 30px;
+      font-weight: 700;
+      letter-spacing: 0.03em;
     }
 
     h2 {
-      margin-top: 30px;
+      font-size: 1.8rem;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
       font-weight: 600;
+      color: var(--accent-color-dark);
     }
 
-    p, ul {
-      font-size: 18px;
-      line-height: 1.6;
+    p {
+      font-size: 1.125rem;
       margin-bottom: 20px;
     }
 
     ul {
-      padding-left: 20px;
+      margin-left: 1.25rem;
+      margin-bottom: 20px;
+      font-size: 1.125rem;
+      list-style-type: disc;
+    }
+
+    ul li {
+      margin-bottom: 10px;
     }
 
     .back-button {
       background-color: transparent;
-      border: 2px solid #d5c8b1;
-      color: #d5c8b1;
-      padding: 5px 10px;
-      border-radius: 4px;
-      font-weight: 400;
+      border: 2px solid var(--accent-color);
+      color: var(--accent-color);
+      padding: 8px 20px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 14px;
       cursor: pointer;
-      transition: background-color 0.3s, color 0.3s;
-      font-family: 'Outfit', sans-serif;
-      font-size: 12px;
+      transition: background-color 0.3s ease, color 0.3s ease;
       display: inline-block;
-      margin-top: 40px;
       margin-bottom: 40px;
     }
 
-    .back-button:hover {
-      background-color: #d5c8b1;
+    .back-button:hover,
+    .back-button:focus {
+      background-color: var(--accent-color);
       color: #fff;
+      outline: none;
     }
 
-    footer {
-      background-color: #ece5dc;
-      color: #1c1c1c;
-      padding: 20px 40px;
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      flex-wrap: wrap;
-      font-size: 14px;
-    }
-
-    footer a {
-      color: #1c1c1c;
-      text-decoration: none;
-    }
-
-    #cookie-banner {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background-color: #fff9ed;
-      color: #1c1c1c;
-      padding: 20px;
-      display: none;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 -2px 6px rgba(0,0,0,0.1);
-      z-index: 1000;
-      flex-wrap: wrap;
-    }
-
-    #cookie-banner p {
-      flex: 1 1 300px;
-      margin: 0 20px 10px 0;
-    }
-
-    #cookie-banner a {
-      text-decoration: underline;
-      color: #1c1c1c;
-    }
-
-    #cookie-banner button {
-      margin-left: 10px;
-      padding: 8px 16px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: 600;
-      font-family: 'Outfit', sans-serif;
-    }
-
-    #accept-all {
-      background-color: #d5c8b1;
-      color: white;
-    }
-
-    #accept-necessary {
-      background-color: #ece5dc;
-      color: #1c1c1c;
-    }
-   @media (max-width: 768px) {
-  header {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 20px;
-    gap: 10px;
-  }
-
-  .logo {
-    height: 60px;
-  }
-
-  .language-switcher {
-    font-size: 14px;
-  }
-
-  nav {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 100%;
-    align-items: center;
-  }
-
-  nav a {
-    margin: 0;
-    font-size: 16px;
-  }
-
-  main {
-    padding: 220px 20px 40px; /* <--- mehr Platz unter dem fixierten Header */
-  }
-
-  h1 {
-    font-size: 28px;
-  }
-
-  p {
-    font-size: 16px;
-  }
-
-  .cta-button {
-    width: 100%;
-    max-width: 280px;
-    font-size: 15px;
-  }
-
-  .zentriertes-bild img {
-    max-width: 80%;
-  }
-
-  footer {
-    flex-direction: column;
-    align-items: center;
-    font-size: 13px;
-    gap: 10px;
-    padding: 20px;
-    text-align: center;
-  }
+footer {
+  background: var(--footer-bg);
+  padding: 25px 50px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--text-color);
+  box-shadow: inset 0 1px 0 #fff;
+  user-select: none;
 }
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.footer-links a {
+  color: var(--text-color);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover,
+.footer-links a:focus {
+  color: var(--accent-color-dark);
+  outline: none;
+}
+
+.affiliate-hinweis {
+  max-width: 700px;
+  margin: 0 auto;
+  color: #666;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        gap: 15px;
+      }
+
+      .logo {
+        height: 60px;
+      }
+
+      nav {
+        flex-direction: column;
+        gap: 12px;
+        align-items: center;
+      }
+
+      main {
+        padding: 140px 20px 40px;
+        margin: 0 15px;
+        border-radius: 12px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      h2 {
+        font-size: 1.4rem;
+      }
+
+      p, ul li {
+        font-size: 1rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -216,57 +216,56 @@
     <nav>
       <a href="favoriten-en.html">Favorites</a>
       <a href="empfehlungen-en.html">Recommendations</a>
-      <a href="ueber-uns-en.html">About us</a>
+      <a href="ueber-uns-en.html">About Us</a>
     </nav>
   </header>
 
   <main>
-    <button class="back-button" onclick="window.location.href='index-en.html'">← Back to homepage</button>
+    <button class="back-button" onclick="window.location.href='index-en.html'">← Back to Home</button>
 
     <h1>Privacy Policy</h1>
 
     <h2>1. Controller</h2>
     <p>
-      StyleSwipe – Aileen Faulhaber<br>
-      Lange Steige 36<br>
-      78665 Frittlingen<br>
-      Germany<br>
-      E‑mail: datenschutz@styleswipe.de
+      StyleSwipe – Aileen Faulhaber<br />
+      Lange Steige 36<br />
+      78665 Frittlingen<br />
+      Germany<br />
+      Email: privacy@styleswipe.de
     </p>
 
     <h2>2. Collection and Storage of Personal Data</h2>
     <p>
-      We collect personal data when you visit our website, register, or otherwise submit information to us. 
-      The data we process may include your name, e‑mail address, and usage data (e.g., pages visited, date/time).
+      We collect personal data when you visit our website, register, or provide us with information in other ways. The processed data includes, for example, name, email address, usage data (e.g., visited pages, date/time).
     </p>
 
     <h2>3. Purpose of Processing</h2>
     <ul>
       <li>Provision and operation of the website</li>
-      <li>Personalized outfit recommendations</li>
-      <li>Improvement of our services</li>
-      <li>Communication with you (e.g., e‑mail newsletters, support)</li>
+      <li>Personalization of outfit recommendations</li>
+      <li>Improvement of our service offerings</li>
+      <li>Communication with you (e.g., email newsletter, support)</li>
     </ul>
 
     <h2>4. Cookies and Tracking Technologies</h2>
     <p>
-      We use cookies and similar technologies (e.g., local storage) to enable features such as the cookie banner, session management, and anonymized usage analytics. 
-      You can adjust your consent via our cookie banner at any time or reject cookies via your browser settings.
+      We use cookies and similar technologies (e.g., Local Storage) to enable functions such as the cookie banner, session management, and anonymized usage analyses.  
+      You can adjust your consent at any time via our cookie banner or object in your browser settings.
     </p>
 
     <h2>5. Analytics Tools</h2>
     <p>
-      For statistical purposes, we use a strictly anonymized analytics tool that does not identify individuals or transmit personal data to third parties.
+      For statistical evaluations, we use a purely anonymized web analytics tool that does not allow conclusions about your person and does not transmit personal data to third parties.
     </p>
 
-    <h2>6. Disclosure of Data to Third Parties</h2>
+    <h2>6. Data Sharing with Third Parties</h2>
     <p>
-      Your data will only be shared with third parties if legally permitted, if you have given consent, or if necessary to fulfill a contract (e.g., hosting providers).
+      Your data will only be transferred to third parties if legally permitted, you have given your consent, or it is necessary for contract fulfillment (e.g., hosting providers).
     </p>
 
-    <h2>7. Retention Period</h2>
+    <h2>7. Data Retention Period</h2>
     <p>
-      We store personal data only as long as necessary for the stated purposes or as required by law.
+      We only store personal data as long as necessary for the stated purposes or as required by law.
     </p>
 
     <h2>8. Your Rights</h2>
@@ -276,31 +275,30 @@
       <li>Deletion or restriction of processing</li>
       <li>Objection to processing</li>
       <li>Data portability</li>
-      <li>Withdrawal of previously given consent</li>
+      <li>Revocation of given consents</li>
     </ul>
-    <p>To exercise your rights, please contact us at datenschutz@styleswipe.de.</p>
+    <p>Please contact us at privacy@styleswipe.de to exercise your rights.</p>
 
     <h2>9. Data Security</h2>
     <p>
-      We take technical and organizational measures to protect your data against loss, destruction, unauthorized access, or unlawful processing.
+      We take technical and organizational measures to protect your data against loss, destruction, access by third parties, or unauthorized processing.
     </p>
 
     <h2>10. Changes to This Policy</h2>
     <p>
-      We may update this privacy policy if necessary. Please revisit this page regularly to stay informed.
+      We update our privacy policy as needed. The current date can be found at the top of this page. Please visit this page regularly.
     </p>
   </main>
 
   <footer>
-    <a href="impressum-en.html">Imprint</a>
-    <a href="datenschutz-en.html">Privacy Policy</a>
-    <a href="cookies-en.html">Cookie Policy</a>
+    <div class="footer-links">
+      <a href="impressum-en.html">Imprint</a>
+      <a href="datenschutz-en.html">Privacy Policy</a>
+      <a href="cookies-en.html">Cookie Policy</a>
+    </div>
+    <div class="affiliate-note">
+      *Some of the links on this website are affiliate links. If you purchase through them, we may receive a commission at no extra cost to you.
+    </div>
   </footer>
-
-  <div id="cookie-banner">
-    <p>We use cookies to optimize your experience. Read more in our <a href="cookies-en.html">Cookie Policy</a>.</p>
-    <div>
-      <button id="accept-necessary">Essential only</button>
-  </div>
 </body>
 </html>
