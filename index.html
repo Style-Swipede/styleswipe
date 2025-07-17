@@ -30,6 +30,7 @@
       -moz-osx-font-smoothing: grayscale;
     }
 
+    /* HEADER als vertikale Stapelung */
     header {
       position: fixed;
       top: 0;
@@ -37,12 +38,11 @@
       background: var(--footer-bg);
       box-shadow: 0 2px 8px var(--shadow-light);
       display: flex;
-      justify-content: space-between;
+      flex-direction: column;
       align-items: center;
-      padding: 15px 50px;
+      padding: 15px 20px;
       z-index: 1000;
-      transition: padding 0.3s ease;
-      flex-wrap: nowrap; /* Keine Umbrüche im Header */
+      gap: 8px;
     }
 
     .logo {
@@ -50,7 +50,6 @@
       filter: drop-shadow(0 0 1px var(--accent-color-dark));
       cursor: pointer;
       transition: transform 0.3s ease;
-      flex-shrink: 0;
     }
 
     .logo:hover {
@@ -62,15 +61,13 @@
       font-size: 14px;
       color: var(--text-color);
       user-select: none;
-      white-space: nowrap; /* keine Zeilenumbrüche */
-      margin: 0 20px;
-      flex-shrink: 0;
+      white-space: nowrap;
     }
 
     .language-switcher a {
       color: var(--text-color);
       text-decoration: none;
-      margin: 0 6px;
+      margin: 0 8px;
       transition: color 0.3s ease;
     }
 
@@ -83,7 +80,8 @@
     nav {
       display: flex;
       gap: 30px;
-      flex-shrink: 0;
+      justify-content: center;
+      flex-wrap: nowrap;
     }
 
     nav a {
@@ -96,7 +94,7 @@
       transition: background-color 0.3s ease, color 0.3s ease;
       cursor: pointer;
       user-select: none;
-      white-space: nowrap; /* keine Zeilenumbrüche */
+      white-space: nowrap;
     }
 
     nav a:hover,
@@ -110,7 +108,7 @@
     main {
       max-width: 960px;
       margin: 0 auto;
-      padding: 120px 40px 60px; /* Padding oben an Header-Höhe anpassen */
+      padding: 230px 40px 60px; /* mehr padding-top wegen gestapeltem Header */
       text-align: center;
     }
 
@@ -196,7 +194,7 @@
       display: flex;
       justify-content: center;
       gap: 40px;
-      flex-wrap: nowrap; /* Keine Umbrüche */
+      flex-wrap: nowrap;
       margin-bottom: 12px;
     }
 
@@ -226,12 +224,11 @@
     @media (max-width: 768px) {
       header {
         padding: 15px 20px;
-        justify-content: center;
-        gap: 20px;
+        gap: 6px;
       }
 
       main {
-        padding: 140px 20px 40px;
+        padding: 240px 20px 40px; /* mehr padding oben wegen Header */
       }
 
       h1 {
@@ -241,7 +238,7 @@
       }
 
       nav {
-        gap: 15px;
+        gap: 20px;
       }
 
       nav a {
@@ -301,3 +298,4 @@
   <script id="usercentrics-cmp" src="https://web.cmp.usercentrics.eu/ui/loader.js" data-settings-id="QsgxY82B8BkQyZ" async></script>
 </body>
 </html>
+
