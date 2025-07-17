@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Recommendations – StyleSwipe</title>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet" />
   <style>
@@ -12,8 +12,8 @@
       --background-color: #fefbf6;
       --footer-bg: #ece5dc;
       --text-color: #1c1c1c;
-      --shadow-light: rgba(0,0,0,0.05);
-      --shadow-dark: rgba(0,0,0,0.1);
+      --shadow-light: rgba(0,0,0,0.07);
+      --shadow-dark: rgba(0,0,0,0.12);
     }
 
     *, *::before, *::after {
@@ -25,179 +25,222 @@
       font-family: 'Outfit', sans-serif;
       background-color: var(--background-color);
       color: var(--text-color);
-      line-height: 1.6;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      user-select: none;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
 
     header {
       position: fixed;
       top: 0;
       width: 100%;
-      background-color: var(--background-color);
+      background-color: #ffffffdd; /* leicht transparent */
+      backdrop-filter: saturate(180%) blur(10px);
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 15px 50px;
-      box-shadow: 0 2px 8px var(--shadow-light);
-      z-index: 999;
+      padding: 20px 60px;
+      box-shadow: 0 2px 12px var(--shadow-light);
+      z-index: 1000;
+      user-select: none;
+      transition: padding 0.3s ease;
     }
 
     .logo {
-      height: 70px;
+      height: 60px;
       cursor: pointer;
-      filter: drop-shadow(0 0 1px var(--accent-color-dark));
-      transition: transform 0.3s ease;
+      filter: drop-shadow(0 0 2px var(--accent-color-dark));
+      transition: transform 0.25s ease;
     }
 
-    .logo:hover {
-      transform: scale(1.05);
+    .logo:hover,
+    .logo:focus {
+      transform: scale(1.08);
+      outline: none;
+    }
+
+    nav {
+      display: flex;
+      gap: 30px;
     }
 
     nav a {
-      margin-left: 30px;
       text-decoration: none;
       color: var(--text-color);
       font-weight: 600;
-      font-size: 16px;
-      padding: 8px 12px;
-      border-radius: 8px;
-      transition: background-color 0.3s ease, color 0.3s ease;
+      font-size: 17px;
+      padding: 8px 16px;
+      border-radius: 40px;
+      transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+      user-select: none;
     }
 
     nav a:hover,
     nav a:focus {
       background-color: var(--accent-color);
       color: #fff;
-      box-shadow: 0 4px 10px var(--shadow-dark);
+      box-shadow: 0 5px 15px var(--shadow-dark);
       outline: none;
     }
 
     main {
-      max-width: 900px;
+      flex-grow: 1;
+      max-width: 850px;
       margin: 0 auto;
-      padding: 180px 40px 60px;
+      padding: 160px 40px 80px;
       background: #fff;
-      border-radius: 16px;
-      box-shadow: 0 8px 24px var(--shadow-light);
+      border-radius: 20px;
+      box-shadow: 0 12px 36px var(--shadow-light);
+      user-select: text;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 30px;
     }
 
     h1 {
-      font-size: 2.8rem;
-      margin-bottom: 30px;
+      font-size: 3rem;
       font-weight: 700;
-      letter-spacing: 0.03em;
+      letter-spacing: 0.04em;
+      color: var(--text-color);
+      margin: 0;
     }
 
     p {
-      font-size: 1.125rem;
-      margin-bottom: 20px;
+      font-size: 1.25rem;
+      max-width: 600px;
+      color: var(--text-color);
+      margin: 0;
+      line-height: 1.6;
     }
 
     .back-button {
-      background-color: transparent;
-      border: 2px solid var(--accent-color);
-      color: var(--accent-color);
-      padding: 8px 20px;
+      background-color: var(--accent-color);
+      color: #fff;
+      padding: 12px 30px;
+      border: none;
       border-radius: 50px;
-      font-weight: 600;
-      font-size: 14px;
+      font-weight: 700;
+      font-size: 16px;
       cursor: pointer;
-      transition: background-color 0.3s ease, color 0.3s ease;
-      display: inline-block;
-      margin-bottom: 40px;
+      box-shadow: 0 5px 15px var(--shadow-dark);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      user-select: none;
+      align-self: flex-start;
     }
 
     .back-button:hover,
     .back-button:focus {
-      background-color: var(--accent-color);
-      color: #fff;
+      background-color: var(--accent-color-dark);
+      outline: none;
+      box-shadow: 0 8px 22px var(--shadow-dark);
+    }
+
+    footer {
+      background: var(--footer-bg);
+      padding: 30px 60px;
+      text-align: center;
+      font-size: 14px;
+      color: var(--text-color);
+      box-shadow: inset 0 1px 0 #fff;
+      user-select: none;
+      margin-top: auto;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 50px;
+      flex-wrap: wrap;
+      margin-bottom: 15px;
+    }
+
+    .footer-links a {
+      color: var(--text-color);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+      user-select: none;
+      font-size: 15px;
+    }
+
+    .footer-links a:hover,
+    .footer-links a:focus {
+      color: var(--accent-color-dark);
       outline: none;
     }
 
-footer {
-  background: var(--footer-bg);
-  padding: 25px 50px;
-  text-align: center;
-  font-size: 14px;
-  color: var(--text-color);
-  box-shadow: inset 0 1px 0 #fff;
-  user-select: none;
-}
-
-.footer-links {
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  flex-wrap: wrap;
-  margin-bottom: 12px;
-}
-
-.footer-links a {
-  color: var(--text-color);
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.3s ease;
-}
-
-.footer-links a:hover,
-.footer-links a:focus {
-  color: var(--accent-color-dark);
-  outline: none;
-}
-
-.affiliate-hinweis {
-  max-width: 700px;
-  margin: 0 auto;
-  color: #666;
-  font-size: 13px;
-  line-height: 1.4;
-}
+    .affiliate-hinweis {
+      max-width: 720px;
+      margin: 0 auto;
+      color: #666;
+      font-size: 13px;
+      line-height: 1.5;
+      font-style: italic;
+    }
 
     @media (max-width: 768px) {
       header {
+        padding: 15px 30px;
         flex-direction: column;
-        align-items: center;
-        padding: 20px;
-        gap: 15px;
+        gap: 12px;
       }
 
       .logo {
-        height: 60px;
+        height: 50px;
       }
 
       nav {
-        flex-direction: column;
-        gap: 12px;
-        align-items: center;
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
       }
 
       main {
-        padding: 140px 20px 40px;
-        margin: 0 15px;
-        border-radius: 12px;
+        padding: 120px 20px 60px;
+        border-radius: 14px;
+        max-width: 95%;
+        text-align: center;
       }
 
       h1 {
-        font-size: 2rem;
+        font-size: 2.2rem;
       }
 
       p {
-        font-size: 1rem;
+        font-size: 1.1rem;
+        max-width: 100%;
+      }
+
+      .back-button {
+        align-self: center;
+        padding: 10px 25px;
+        font-size: 15px;
       }
 
       footer {
+        padding: 20px 30px;
         font-size: 13px;
-        padding: 20px;
+      }
+
+      .footer-links {
+        gap: 25px;
       }
     }
   </style>
 </head>
 <body>
   <header>
-    <img src="Logo.png" alt="StyleSwipe Logo" class="logo" />
+    <img src="Logo.png" alt="StyleSwipe Logo" class="logo" tabindex="0" />
     <nav>
-      <a href="favoriten-en.html">Favorites</a>
-      <a href="empfehlungen-en.html">Recommendations</a>
-      <a href="ueber-uns-en.html">About Us</a>
+      <a href="favoriten-en.html" tabindex="0">Favorites</a>
+      <a href="empfehlungen-en.html" tabindex="0">Recommendations</a>
+      <a href="ueber-uns-en.html" tabindex="0">About Us</a>
     </nav>
   </header>
 
@@ -206,19 +249,17 @@ footer {
 
     <h1>Your Recommendations</h1>
     <p>Based on your preferences, we’ve curated outfit suggestions just for you. Have fun discovering your personal style!</p>
-
-    <!-- You can insert your dynamic product cards here -->
   </main>
 
-<footer>
-  <div class="footer-links">
-    <a href="impressum-en.html">Imprint</a>
-    <a href="datenschutz-en.html">Privacy Policy</a>
-    <a href="cookie-en.html">Cookie Policy</a>
-  </div>
-  <div class="affiliate-hinweis">
-    *Some of the links on this website are affiliate links. If you purchase through them, we may earn a commission at no extra cost to you.
-  </div>
-</footer>
+  <footer>
+    <div class="footer-links">
+      <a href="impressum-en.html" tabindex="0">Imprint</a>
+      <a href="datenschutz-en.html" tabindex="0">Privacy Policy</a>
+      <a href="cookie-en.html" tabindex="0">Cookie Policy</a>
+    </div>
+    <div class="affiliate-hinweis">
+      *Some of the links on this website are affiliate links. If you purchase through them, we may earn a commission at no extra cost to you.
+    </div>
+  </footer>
 </body>
 </html>
