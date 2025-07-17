@@ -30,6 +30,7 @@
       -moz-osx-font-smoothing: grayscale;
     }
 
+    /* HEADER als vertikale Stapelung */
     header {
       position: fixed;
       top: 0;
@@ -37,11 +38,11 @@
       background: var(--footer-bg);
       box-shadow: 0 2px 8px var(--shadow-light);
       display: flex;
-      justify-content: space-between;
+      flex-direction: column;
       align-items: center;
-      padding: 15px 50px;
+      padding: 15px 20px;
       z-index: 1000;
-      transition: padding 0.3s ease;
+      gap: 8px;
     }
 
     .logo {
@@ -60,12 +61,13 @@
       font-size: 14px;
       color: var(--text-color);
       user-select: none;
+      white-space: nowrap;
     }
 
     .language-switcher a {
       color: var(--text-color);
       text-decoration: none;
-      margin: 0 6px;
+      margin: 0 8px;
       transition: color 0.3s ease;
     }
 
@@ -78,6 +80,8 @@
     nav {
       display: flex;
       gap: 30px;
+      justify-content: center;
+      flex-wrap: nowrap;
     }
 
     nav a {
@@ -90,6 +94,7 @@
       transition: background-color 0.3s ease, color 0.3s ease;
       cursor: pointer;
       user-select: none;
+      white-space: nowrap;
     }
 
     nav a:hover,
@@ -103,7 +108,7 @@
     main {
       max-width: 960px;
       margin: 0 auto;
-      padding: 180px 40px 60px;
+      padding: 230px 40px 60px; /* Platz für Header */
       text-align: center;
     }
 
@@ -189,7 +194,7 @@
       display: flex;
       justify-content: center;
       gap: 40px;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
       margin-bottom: 12px;
     }
 
@@ -198,6 +203,7 @@
       text-decoration: none;
       font-weight: 500;
       transition: color 0.3s ease;
+      white-space: nowrap;
     }
 
     .footer-links a:hover,
@@ -217,28 +223,40 @@
     /* Responsive */
     @media (max-width: 768px) {
       header {
-        flex-direction: column;
-        padding: 20px 20px;
-        gap: 12px;
+        padding: 15px 20px;
+        gap: 6px;
       }
 
       main {
-        padding: 140px 20px 40px;
+        padding: 240px 20px 40px;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        word-wrap: break-word;
+        line-height: 1.2;
       }
 
       nav {
         gap: 20px;
-        flex-wrap: wrap;
-        justify-content: center;
       }
 
       nav a {
-        font-size: 16px;
-        padding: 8px 16px;
+        font-size: 14px;
+        padding: 6px 10px;
+      }
+
+      .language-switcher {
+        font-size: 14px;
+        margin: 0 10px;
       }
 
       .zentriertes-bild img {
         max-width: 80%;
+      }
+
+      .footer-links {
+        gap: 20px;
       }
     }
   </style>

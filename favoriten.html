@@ -2,82 +2,156 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Deine Favoriten – StyleSwipe</title>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet" />
   <style>
+    :root {
+      --accent-color: #c9bca5;
+      --accent-color-dark: #a99982;
+      --background-color: #fefbf6;
+      --footer-bg: #ece5dc;
+      --text-color: #1c1c1c;
+      --shadow-light: rgba(0,0,0,0.05);
+      --shadow-dark: rgba(0,0,0,0.1);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: 'Outfit', sans-serif;
-      background-color: #fefbf6;
-      color: #1c1c1c;
+      background-color: var(--background-color);
+      color: var(--text-color);
+      line-height: 1.6;
     }
 
     header {
       position: fixed;
       top: 0;
       width: 100%;
-      background-color: #fefbf6;
+      background: var(--footer-bg);
+      box-shadow: 0 2px 8px var(--shadow-light);
+      padding: 15px 50px;
+      z-index: 1000;
       display: flex;
-      justify-content: space-between;
+      flex-direction: column;
       align-items: center;
-      padding: 10px 40px;
-      box-sizing: border-box;
-      z-index: 999;
+      user-select: none;
     }
 
     .logo {
-      height: 80px;
+      height: 70px;
+      filter: drop-shadow(0 0 1px var(--accent-color-dark));
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      margin-bottom: 6px;
+    }
+
+    .logo:hover {
+      transform: scale(1.05);
+    }
+
+    .language-switcher {
+      font-weight: 500;
+      font-size: 14px;
+      color: var(--text-color);
+      margin-bottom: 8px;
+      user-select: none;
+    }
+
+    .language-switcher a {
+      color: var(--text-color);
+      text-decoration: none;
+      margin: 0 8px;
+      transition: color 0.3s ease;
+    }
+
+    .language-switcher a:hover,
+    .language-switcher a:focus {
+      color: var(--accent-color-dark);
+      outline: none;
+    }
+
+    nav {
+      display: flex;
+      gap: 30px;
     }
 
     nav a {
-      margin-left: 25px;
+      font-weight: 600;
       text-decoration: none;
-      color: #1c1c1c;
-      font-weight: 500;
+      color: var(--text-color);
+      font-size: 17px;
+      padding: 8px 12px;
+      border-radius: 6px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    nav a:hover,
+    nav a:focus {
+      background-color: var(--accent-color);
+      color: #fff;
+      outline: none;
+      box-shadow: 0 3px 6px var(--shadow-dark);
     }
 
     main {
-      padding: 150px 40px 60px;
       max-width: 900px;
       margin: 0 auto;
+      padding: 190px 40px 60px;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px var(--shadow-light);
+      text-align: left;
     }
 
     h1 {
-      font-size: 42px;
+      font-size: 2.8rem;
       margin-bottom: 20px;
-      text-align: left;
+      font-weight: 700;
+      letter-spacing: 0.03em;
     }
 
     p {
-      font-size: 18px;
+      font-size: 1.125rem;
       margin-bottom: 20px;
       line-height: 1.6;
-      text-align: left;
+    }
+
+    a {
+      color: var(--accent-color-dark);
+      text-decoration: underline;
     }
 
     .back-button {
       background-color: transparent;
-      border: 2px solid #d5c8b1;
-      color: #d5c8b1;
-      padding: 5px 10px;
-      border-radius: 4px;
-      font-weight: 400;
+      border: 2px solid var(--accent-color);
+      color: var(--accent-color);
+      padding: 8px 20px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 14px;
       cursor: pointer;
-      transition: background-color 0.3s, color 0.3s;
-      font-family: 'Outfit', sans-serif;
-      font-size: 12px;
-      margin-bottom: 20px;
+      transition: background-color 0.3s ease, color 0.3s ease;
       display: inline-block;
-    }
-    .back-button:hover {
-      background-color: #d5c8b1;
-      color: #fff;
+      margin-bottom: 30px;
+      user-select: none;
     }
 
-    /* Container für Favoritenliste */
+    .back-button:hover,
+    .back-button:focus {
+      background-color: var(--accent-color);
+      color: #fff;
+      outline: none;
+    }
+
+    /* Favoritenliste */
     #favorites-list {
-      margin-top: 20px;
       display: flex;
       flex-wrap: wrap;
       gap: 20px;
@@ -105,7 +179,7 @@
     .favorite-details {
       padding: 15px;
       font-size: 14px;
-      color: #1c1c1c;
+      color: var(--text-color);
       flex-grow: 1;
     }
 
@@ -121,7 +195,7 @@
     }
 
     .shop-button {
-      background-color: #1c1c1c;
+      background-color: var(--text-color);
       color: white;
       border: none;
       border-radius: 10px;
@@ -141,8 +215,8 @@
 
     .remove-button {
       background: transparent;
-      border: 2px solid #d5c8b1;
-      color: #d5c8b1;
+      border: 2px solid var(--accent-color);
+      color: var(--accent-color);
       padding: 6px 12px;
       border-radius: 10px;
       cursor: pointer;
@@ -151,62 +225,69 @@
       transition: background-color 0.3s, color 0.3s;
     }
     .remove-button:hover {
-      background-color: #d5c8b1;
+      background-color: var(--accent-color);
       color: white;
     }
 
     footer {
-      background-color: #ece5dc;
-      color: #1c1c1c;
+      background: var(--footer-bg);
+      color: var(--text-color);
       padding: 20px 40px;
       display: flex;
       justify-content: center;
       gap: 30px;
       flex-wrap: wrap;
       font-size: 14px;
+      user-select: none;
     }
 
     footer a {
-      color: #1c1c1c;
+      color: var(--text-color);
       text-decoration: none;
+    }
+
+    footer a:hover,
+    footer a:focus {
+      color: var(--accent-color-dark);
+      outline: none;
     }
 
     @media (max-width: 768px) {
       header {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        padding: 20px;
-        gap: 10px;
+        padding: 20px 20px;
       }
 
       .logo {
         height: 60px;
+        margin-bottom: 4px;
+      }
+
+      .language-switcher {
+        font-size: 13px;
+        margin-bottom: 6px;
       }
 
       nav {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        width: 100%;
-        align-items: center;
+        gap: 20px;
       }
 
       nav a {
-        margin: 0;
         font-size: 16px;
+        padding: 6px 10px;
       }
 
       main {
-        padding: 220px 20px 40px;
+        padding: 170px 20px 40px;
+        margin: 0 15px;
+        border-radius: 12px;
       }
 
       h1 {
-        font-size: 28px;
+        font-size: 2rem;
       }
 
       p {
-        font-size: 16px;
+        font-size: 1rem;
       }
 
       .favorite-card {
@@ -214,12 +295,8 @@
       }
 
       footer {
-        flex-direction: column;
-        align-items: center;
         font-size: 13px;
-        gap: 10px;
         padding: 20px;
-        text-align: center;
       }
     }
   </style>
@@ -227,6 +304,9 @@
 <body>
   <header>
     <img src="Logo.png" alt="StyleSwipe Logo" class="logo" />
+    <div class="language-switcher">
+      <a href="index.html">Deutsch</a> | <a href="index-en.html">English</a>
+    </div>
     <nav>
       <a href="favoriten.html">Favoriten</a>
       <a href="empfehlungen.html">Empfehlungen</a>
@@ -235,9 +315,7 @@
   </header>
 
   <main>
-    <div style="display: flex; justify-content: flex-start;">
-      <button class="back-button" onclick="window.location.href='index.html'">← Zurück zur Startseite</button>
-    </div>
+    <button class="back-button" onclick="window.location.href='index.html'">← Zurück zur Startseite</button>
 
     <h1>Deine Favoriten</h1>
     <p><strong>Hier findest du deine gespeicherten Artikel.</strong></p>
@@ -261,7 +339,7 @@
 
     function renderFavorites() {
       favoritesList.innerHTML = '';
-      if(favorites.length === 0) {
+      if (favorites.length === 0) {
         favoritesList.innerHTML = '<p>Du hast noch keine Favoriten gespeichert.</p>';
         return;
       }
@@ -271,13 +349,13 @@
         card.classList.add('favorite-card');
 
         card.innerHTML = `
-          <img src="${item.image}" alt="${item.name}" />
+          <img src="${item.image || 'fallback-image.jpg'}" alt="${item.name}" />
           <div class="favorite-details">
             <p><strong>Name:</strong> ${item.name}</p>
             <p><strong>Marke:</strong> ${item.brand}</p>
           </div>
           <div class="favorite-actions">
-            <a href="${item.link}" target="_blank" class="shop-button">Zum Shop</a>
+            <a href="${item.link}" target="_blank" rel="noopener noreferrer" class="shop-button">Zum Shop</a>
             <button class="remove-button" data-id="${item.id}">Entfernen</button>
           </div>
         `;
@@ -295,7 +373,7 @@
     }
 
     function removeFavorite(id) {
-      favorites = favorites.filter(item => item.id !== id);
+      favorites = favorites.filter(item => String(item.id) !== String(id));
       localStorage.setItem('favorites', JSON.stringify(favorites));
       renderFavorites();
     }

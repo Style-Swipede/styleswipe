@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Entdecken – StyleSwipe</title>
+  <title>Discover – StyleSwipe</title>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet" />
   <style>
     :root {
@@ -28,6 +28,7 @@
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+      user-select: none;
     }
 
     header {
@@ -64,7 +65,6 @@
       padding: 8px 12px;
       border-radius: 50px;
       transition: background-color 0.3s ease, color 0.3s ease;
-      user-select: none;
     }
 
     nav a:hover,
@@ -82,10 +82,8 @@
       background: #fff;
       border-radius: 16px;
       box-shadow: 0 8px 24px var(--shadow-light);
-      user-select: none;
     }
 
-    /* Back-Button Container so er oben links in eigenem Block ist */
     .back-container {
       display: flex;
       justify-content: flex-start;
@@ -102,7 +100,6 @@
       font-size: 14px;
       cursor: pointer;
       transition: background-color 0.3s ease, color 0.3s ease;
-      user-select: none;
     }
 
     .back-button:hover,
@@ -128,7 +125,6 @@
       color: var(--text-color);
     }
 
-    /* Swipe Container ohne schwarzen Rahmen */
     #swipe-container {
       position: relative;
       width: 360px;
@@ -147,12 +143,14 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      box-shadow: 0 4px 10px var(--shadow-light);
     }
 
     .card img {
       width: 100%;
       height: 70%;
       object-fit: cover;
+      user-select: none;
     }
 
     .details {
@@ -160,6 +158,7 @@
       font-size: 14px;
       text-align: left;
       color: var(--text-color);
+      user-select: text;
     }
 
     .shop-button {
@@ -174,14 +173,17 @@
       cursor: pointer;
       text-decoration: none;
       display: block;
+      text-align: center;
       user-select: none;
+      transition: background-color 0.3s ease;
     }
 
-    .shop-button:hover {
+    .shop-button:hover,
+    .shop-button:focus {
       background-color: #333;
+      outline: none;
     }
 
-    /* Swipe Buttons unten, Style an Back-Button angelehnt */
     #swipe-buttons {
       display: flex;
       justify-content: center;
@@ -199,12 +201,13 @@
       font-weight: 600;
       font-size: 14px;
       transition: background-color 0.3s ease, color 0.3s ease;
-      user-select: none;
     }
 
-    #swipe-buttons button:hover {
+    #swipe-buttons button:hover,
+    #swipe-buttons button:focus {
       background-color: var(--accent-color);
       color: #fff;
+      outline: none;
     }
 
     footer {
@@ -320,14 +323,14 @@
     </div>
 
     <h1>Swipe through all the styles</h1>
-    <p>Swipe to the right: „I like it“</p>
-    <p>Swipe to the left: „I don't like it“</p>
+    <p>Swipe right: "I like it"</p>
+    <p>Swipe left: "I don't like it"</p>
 
-    <div id="swipe-container"></div>
+    <div id="swipe-container" aria-live="polite" aria-label="Swipeable product cards"></div>
 
-    <div id="swipe-buttons">
-      <button id="swipe-left">← I don't like it</button>
-      <button id="swipe-right">I like it →</button>
+    <div id="swipe-buttons" role="group" aria-label="Swipe actions">
+      <button id="swipe-left" aria-label="Swipe left: I don't like it">← I don't like it</button>
+      <button id="swipe-right" aria-label="Swipe right: I like it">I like it →</button>
     </div>
   </main>
 
@@ -338,7 +341,7 @@
       <a href="cookies-en.html">Cookie Policy</a>
     </div>
     <div class="affiliate-hinweis">
-     *Some of the links on this website are affiliate links. If you purchase through them, we may earn a commission at no extra cost to you.
+      *Some of the links on this website are affiliate links. If you purchase through them, we may earn a commission at no extra cost to you.
     </div>
   </footer>
 
@@ -348,7 +351,8 @@
     const container = document.getElementById('swipe-container');
     let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
 
-    const gefiltert = produkte.filter(p => {
+    // Filter products based on stored filter criteria
+    const filtered = produkte.filter(p => {
       if (filter.kategorie && p.kategorie !== filter.kategorie) return false;
       if (filter.anlass && p.anlass !== filter.anlass) return false;
       if (filter.groesse && p.groesse !== filter.groesse) return false;
@@ -356,18 +360,19 @@
       return true;
     });
 
-    gefiltert.reverse().forEach((p, i) => {
+    // Add cards in reverse order so first item is on top
+    filtered.reverse().forEach((p, i) => {
       const card = document.createElement('div');
       card.className = 'card';
       card.setAttribute('data-id', i);
       card.setAttribute('data-name', p.name);
-      card.setAttribute('data-brand', p.marke || 'Unbekannt');
+      card.setAttribute('data-brand', p.marke || 'Unknown');
       card.setAttribute('data-link', p.link);
       card.setAttribute('data-image', p.bild);
       card.innerHTML = `
-        <img src="${p.bild}" alt="${p.name}">
-        <div class="details"><p><strong>${p.name}</strong><br>Marke: ${p.marke}</p></div>
-        <a href="${p.link}" class="shop-button" target="_blank">To the shop</a>
+        <img src="${p.bild}" alt="${p.name}" draggable="false" />
+        <div class="details"><p><strong>${p.name}</strong><br>Brand: ${p.marke || 'Unknown'}</p></div>
+        <a href="${p.link}" class="shop-button" target="_blank" rel="noopener noreferrer">To the shop</a>
       `;
       container.appendChild(card);
     });
@@ -377,19 +382,19 @@
     let startX = 0;
     let isSwiping = false;
 
-    container.addEventListener("touchstart", (e) => {
+    container.addEventListener("touchstart", e => {
       if (!currentCard) return;
       startX = e.touches[0].clientX;
       isSwiping = true;
     });
 
-    container.addEventListener("touchmove", (e) => {
+    container.addEventListener("touchmove", e => {
       if (!isSwiping || !currentCard) return;
       const moveX = e.touches[0].clientX - startX;
       currentCard.style.transform = `translateX(${moveX}px) rotate(${moveX / 20}deg)`;
     });
 
-    container.addEventListener("touchend", (e) => {
+    container.addEventListener("touchend", e => {
       if (!isSwiping) return;
       const endX = e.changedTouches[0].clientX;
       const diff = endX - startX;

@@ -28,17 +28,19 @@
       line-height: 1.6;
     }
 
+    /* HEADER zentriert und vertikal gestapelt */
     header {
       position: fixed;
       top: 0;
       width: 100%;
       background-color: var(--background-color);
       display: flex;
-      justify-content: space-between;
+      flex-direction: column;
       align-items: center;
-      padding: 15px 50px;
+      padding: 15px 20px;
       box-shadow: 0 2px 8px var(--shadow-light);
       z-index: 999;
+      gap: 8px;
     }
 
     .logo {
@@ -52,8 +54,14 @@
       transform: scale(1.05);
     }
 
+    nav {
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+      flex-wrap: nowrap;
+    }
+
     nav a {
-      margin-left: 30px;
       text-decoration: none;
       color: var(--text-color);
       font-weight: 600;
@@ -61,6 +69,7 @@
       padding: 8px 12px;
       border-radius: 8px;
       transition: background-color 0.3s ease, color 0.3s ease;
+      white-space: nowrap;
     }
 
     nav a:hover,
@@ -74,7 +83,7 @@
     main {
       max-width: 900px;
       margin: 0 auto;
-      padding: 180px 40px 60px;
+      padding: 230px 40px 60px; /* mehr Platz oben für fixierten Header */
       background: #fff;
       border-radius: 16px;
       box-shadow: 0 8px 24px var(--shadow-light);
@@ -159,10 +168,8 @@
 
     @media (max-width: 768px) {
       header {
-        flex-direction: column;
-        align-items: center;
         padding: 20px;
-        gap: 15px;
+        gap: 12px;
       }
 
       .logo {
@@ -170,13 +177,11 @@
       }
 
       nav {
-        flex-direction: column;
-        gap: 12px;
-        align-items: center;
+        gap: 20px;
       }
 
       main {
-        padding: 140px 20px 40px;
+        padding: 180px 20px 40px;
         margin: 0 15px;
         border-radius: 12px;
       }
@@ -213,9 +218,9 @@
 
     <p><strong>Information according to § 5 German TMG (Telemedia Act):</strong></p>
     <p>
-      Aileen Faulhaber<br>
-      Lange Steige 36<br>
-      78665 Frittlingen<br>
+      Aileen Faulhaber<br />
+      Lange Steige 36<br />
+      78665 Frittlingen<br />
       Germany
     </p>
 
@@ -226,9 +231,9 @@
 
     <p><strong>Responsible for content according to § 55 para. 2 RStV (German Interstate Broadcasting Agreement):</strong></p>
     <p>
-      Aileen Faulhaber<br>
-      Lange Steige 36<br>
-      78665 Frittlingen<br>
+      Aileen Faulhaber<br />
+      Lange Steige 36<br />
+      78665 Frittlingen<br />
       Germany
     </p>
 
@@ -239,8 +244,8 @@
 
     <p><strong>EU Dispute Resolution:</strong></p>
     <p>
-      The European Commission provides a platform for online dispute resolution (ODR):<br>
-      <a href="https://ec.europa.eu/consumers/odr" target="_blank">https://ec.europa.eu/consumers/odr</a><br>
+      The European Commission provides a platform for online dispute resolution (ODR):<br />
+      <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener noreferrer">https://ec.europa.eu/consumers/odr</a><br />
       You can find our e‑mail address above in this imprint.
     </p>
 

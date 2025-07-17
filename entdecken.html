@@ -28,6 +28,7 @@
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+      user-select: none;
     }
 
     header {
@@ -41,7 +42,6 @@
       padding: 15px 50px;
       box-shadow: 0 2px 8px var(--shadow-light);
       z-index: 999;
-      user-select: none;
     }
 
     .logo {
@@ -50,9 +50,10 @@
       filter: drop-shadow(0 0 1px var(--accent-color-dark));
       transition: transform 0.3s ease;
     }
-
-    .logo:hover {
+    .logo:hover,
+    .logo:focus {
       transform: scale(1.05);
+      outline: none;
     }
 
     nav a {
@@ -61,12 +62,10 @@
       color: var(--text-color);
       font-weight: 600;
       font-size: 16px;
-      padding: 8px 12px;
+      padding: 8px 20px;
       border-radius: 50px;
       transition: background-color 0.3s ease, color 0.3s ease;
-      user-select: none;
     }
-
     nav a:hover,
     nav a:focus {
       background-color: var(--accent-color);
@@ -82,7 +81,7 @@
       background: #fff;
       border-radius: 16px;
       box-shadow: 0 8px 24px var(--shadow-light);
-      user-select: none;
+      text-align: center;
     }
 
     /* Back-Button Container so er oben links in eigenem Block ist */
@@ -102,9 +101,7 @@
       font-size: 14px;
       cursor: pointer;
       transition: background-color 0.3s ease, color 0.3s ease;
-      user-select: none;
     }
-
     .back-button:hover,
     .back-button:focus {
       background-color: var(--accent-color);
@@ -115,25 +112,24 @@
     h1 {
       font-size: 2.8rem;
       font-weight: 700;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
       letter-spacing: 0.03em;
-      text-align: center;
       color: var(--text-color);
     }
 
     p {
       font-size: 1.125rem;
       margin: 5px 0 20px;
-      text-align: center;
       color: var(--text-color);
     }
 
-    /* Swipe Container ohne schwarzen Rahmen */
+    /* Swipe Container */
     #swipe-container {
       position: relative;
       width: 360px;
       height: 580px;
       margin: 0 auto;
+      perspective: 1500px; /* für realistischere 3D-Rotation */
     }
 
     .card {
@@ -143,10 +139,14 @@
       background: white;
       border-radius: 20px;
       overflow: hidden;
-      transition: transform 0.3s ease, opacity 0.3s ease;
+      box-shadow: 0 12px 24px rgba(0,0,0,0.15);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      cursor: grab;
+      user-select: none;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      will-change: transform, opacity;
     }
 
     .card img {
@@ -160,6 +160,7 @@
       font-size: 14px;
       text-align: left;
       color: var(--text-color);
+      flex-grow: 1;
     }
 
     .shop-button {
@@ -175,20 +176,21 @@
       text-decoration: none;
       display: block;
       user-select: none;
+      transition: background-color 0.3s ease;
     }
-
-    .shop-button:hover {
+    .shop-button:hover,
+    .shop-button:focus {
       background-color: #333;
+      outline: none;
     }
 
-    /* Swipe Buttons unten, Style an Back-Button angelehnt */
+    /* Swipe Buttons unten */
     #swipe-buttons {
       display: flex;
       justify-content: center;
       gap: 30px;
       margin-top: 30px;
     }
-
     #swipe-buttons button {
       padding: 8px 20px;
       border-radius: 50px;
@@ -199,12 +201,12 @@
       font-weight: 600;
       font-size: 14px;
       transition: background-color 0.3s ease, color 0.3s ease;
-      user-select: none;
     }
-
-    #swipe-buttons button:hover {
+    #swipe-buttons button:hover,
+    #swipe-buttons button:focus {
       background-color: var(--accent-color);
       color: #fff;
+      outline: none;
     }
 
     footer {
@@ -254,50 +256,41 @@
         padding: 20px 20px;
         gap: 15px;
       }
-
       .logo {
         height: 60px;
       }
-
       nav {
         flex-direction: column;
         gap: 12px;
         width: 100%;
         align-items: center;
       }
-
       nav a {
         margin-left: 0;
         font-size: 16px;
         padding: 8px 16px;
       }
-
       main {
         padding: 140px 20px 40px;
         margin: 0 15px;
         border-radius: 12px;
       }
-
       h1 {
         font-size: 2rem;
         margin-bottom: 20px;
       }
-
       p {
         font-size: 1rem;
       }
-
       #swipe-container {
         width: 90%;
         height: 500px;
         margin: 0 auto;
       }
-
       #swipe-buttons {
         gap: 20px;
         flex-direction: column;
       }
-
       #swipe-buttons button {
         width: 100%;
       }
@@ -306,36 +299,36 @@
 </head>
 <body>
   <header>
-    <img src="Logo.png" alt="StyleSwipe Logo" class="logo" />
+    <img src="Logo.png" alt="StyleSwipe Logo" class="logo" tabindex="0" />
     <nav>
-      <a href="favoriten.html">Favoriten</a>
-      <a href="empfehlungen.html">Empfehlungen</a>
-      <a href="ueber-uns.html">Über uns</a>
+      <a href="favoriten.html" tabindex="0">Favoriten</a>
+      <a href="empfehlungen.html" tabindex="0">Empfehlungen</a>
+      <a href="ueber-uns.html" tabindex="0">Über uns</a>
     </nav>
   </header>
 
   <main>
     <div class="back-container">
-      <button class="back-button" onclick="window.location.href='angaben.html'">← Zurück zu Styling-Angaben</button>
+      <button class="back-button" onclick="window.location.href='angaben.html'" aria-label="Zurück zu Styling-Angaben">← Zurück zu Styling-Angaben</button>
     </div>
 
     <h1>Swipe dich durch die Styles</h1>
     <p>Swipe nach rechts: „Gefällt mir“</p>
     <p>Swipe nach links: „Gefällt mir nicht“</p>
 
-    <div id="swipe-container"></div>
+    <div id="swipe-container" aria-live="polite" aria-atomic="true"></div>
 
-    <div id="swipe-buttons">
-      <button id="swipe-left">← Gefällt nicht</button>
-      <button id="swipe-right">Gefällt mir →</button>
+    <div id="swipe-buttons" role="group" aria-label="Swipe Buttons">
+      <button id="swipe-left" aria-label="Gefällt mir nicht">← Gefällt nicht</button>
+      <button id="swipe-right" aria-label="Gefällt mir">Gefällt mir →</button>
     </div>
   </main>
 
   <footer>
     <div class="footer-links">
-      <a href="impressum.html">Impressum</a>
-      <a href="datenschutz.html">Datenschutz</a>
-      <a href="cookies.html">Cookie-Richtlinien</a>
+      <a href="impressum.html" tabindex="0">Impressum</a>
+      <a href="datenschutz.html" tabindex="0">Datenschutz</a>
+      <a href="cookies.html" tabindex="0">Cookie-Richtlinien</a>
     </div>
     <div class="affiliate-hinweis">
       *Einige der Links auf dieser Website sind Affiliate-Links. Wenn du über sie einkaufst, erhalten wir eventuell eine Provision – ohne zusätzliche Kosten für dich.
@@ -344,11 +337,14 @@
 
   <script src="produkte.js"></script>
   <script>
+    // Filterkriterien aus localStorage laden (oder leere defaults)
     const filter = JSON.parse(localStorage.getItem('filterDaten')) || {};
+
     const container = document.getElementById('swipe-container');
     let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
 
-    const gefiltert = produkte.filter(p => {
+    // Produkte filtern
+    const filteredProducts = produkte.filter(p => {
       if (filter.kategorie && p.kategorie !== filter.kategorie) return false;
       if (filter.anlass && p.anlass !== filter.anlass) return false;
       if (filter.groesse && p.groesse !== filter.groesse) return false;
@@ -356,59 +352,72 @@
       return true;
     });
 
-    gefiltert.reverse().forEach((p, i) => {
+    // Produkte rückwärts einfügen, damit das letzte Produkt ganz oben liegt
+    filteredProducts.reverse().forEach((product, index) => {
       const card = document.createElement('div');
       card.className = 'card';
-      card.setAttribute('data-id', i);
-      card.setAttribute('data-name', p.name);
-      card.setAttribute('data-brand', p.marke || 'Unbekannt');
-      card.setAttribute('data-link', p.link);
-      card.setAttribute('data-image', p.bild);
+      card.dataset.id = index;
+      card.dataset.name = product.name;
+      card.dataset.brand = product.marke || 'Unbekannt';
+      card.dataset.link = product.link;
+      card.dataset.image = product.bild;
+
       card.innerHTML = `
-        <img src="${p.bild}" alt="${p.name}">
-        <div class="details"><p><strong>${p.name}</strong><br>Marke: ${p.marke}</p></div>
-        <a href="${p.link}" class="shop-button" target="_blank">Zum Shop</a>
+        <img src="${product.bild}" alt="${product.name}">
+        <div class="details"><p><strong>${product.name}</strong><br>Marke: ${product.marke}</p></div>
+        <a href="${product.link}" class="shop-button" target="_blank" rel="noopener noreferrer">Zum Shop</a>
       `;
       container.appendChild(card);
     });
 
     let currentCard = container.querySelector(".card:last-child");
 
+    // Swipe-Variablen
     let startX = 0;
     let isSwiping = false;
 
-    container.addEventListener("touchstart", (e) => {
+    // Touch-Events fürs Swipen
+    container.addEventListener("touchstart", e => {
       if (!currentCard) return;
       startX = e.touches[0].clientX;
       isSwiping = true;
+      currentCard.style.transition = ''; // Transition für flüssiges Ziehen entfernen
     });
 
-    container.addEventListener("touchmove", (e) => {
+    container.addEventListener("touchmove", e => {
       if (!isSwiping || !currentCard) return;
       const moveX = e.touches[0].clientX - startX;
       currentCard.style.transform = `translateX(${moveX}px) rotate(${moveX / 20}deg)`;
     });
 
-    container.addEventListener("touchend", (e) => {
+    container.addEventListener("touchend", e => {
       if (!isSwiping) return;
       const endX = e.changedTouches[0].clientX;
       const diff = endX - startX;
       if (diff > 100) {
-        swipe("right");
+        swipe('right');
       } else if (diff < -100) {
-        swipe("left");
+        swipe('left');
       } else {
         resetCard();
       }
       isSwiping = false;
     });
 
+    // Buttons click events
     document.getElementById('swipe-left').addEventListener('click', () => swipe('left'));
     document.getElementById('swipe-right').addEventListener('click', () => swipe('right'));
 
+    /**
+     * Führt das Swipe aus, entfernt Karte aus DOM und speichert bei "right" Favorit
+     * @param {'left'|'right'} direction
+     */
     function swipe(direction) {
       if (!currentCard) return;
-      if (direction === "right") addToFavorites(currentCard);
+
+      if (direction === 'right') {
+        addToFavorites(currentCard);
+      }
 
       currentCard.style.transition = "transform 0.5s ease, opacity 0.5s ease";
       currentCard.style.transform = direction === "right"
@@ -422,19 +431,26 @@
       }, 500);
     }
 
+    /**
+     * Setzt die Karte zurück in die Ausgangsposition
+     */
     function resetCard() {
       if (!currentCard) return;
       currentCard.style.transition = "transform 0.3s ease";
       currentCard.style.transform = "translateX(0) rotate(0deg)";
     }
 
+    /**
+     * Favorit speichern, falls noch nicht in der Liste
+     * @param {HTMLElement} card
+     */
     function addToFavorites(card) {
       const item = {
-        id: card.getAttribute('data-id'),
-        name: card.getAttribute('data-name'),
-        brand: card.getAttribute('data-brand'),
-        link: card.getAttribute('data-link'),
-        image: card.getAttribute('data-image'),
+        id: card.dataset.id,
+        name: card.dataset.name,
+        brand: card.dataset.brand,
+        link: card.dataset.link,
+        image: card.dataset.image,
       };
       if (!favorites.some(fav => fav.id === item.id)) {
         favorites.push(item);
