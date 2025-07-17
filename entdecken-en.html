@@ -1,3 +1,4 @@
+<!-- discover-en.html (Header + Footer jetzt einheitlich) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,8 +13,8 @@
       --background-color: #fefbf6;
       --footer-bg: #ece5dc;
       --text-color: #1c1c1c;
-      --shadow-light: rgba(0,0,0,0.05);
-      --shadow-dark: rgba(0,0,0,0.1);
+      --shadow-light: rgba(0, 0, 0, 0.05);
+      --shadow-dark: rgba(0, 0, 0, 0.1);
     }
 
     *, *::before, *::after {
@@ -42,7 +43,6 @@
       padding: 15px 50px;
       box-shadow: 0 2px 8px var(--shadow-light);
       z-index: 999;
-      user-select: none;
     }
 
     .logo {
@@ -56,6 +56,11 @@
       transform: scale(1.05);
     }
 
+    nav {
+      display: flex;
+      align-items: center;
+    }
+
     nav a {
       margin-left: 30px;
       text-decoration: none;
@@ -63,7 +68,7 @@
       font-weight: 600;
       font-size: 16px;
       padding: 8px 12px;
-      border-radius: 50px;
+      border-radius: 8px;
       transition: background-color 0.3s ease, color 0.3s ease;
     }
 
@@ -71,142 +76,7 @@
     nav a:focus {
       background-color: var(--accent-color);
       color: #fff;
-      outline: none;
       box-shadow: 0 4px 10px var(--shadow-dark);
-    }
-
-    main {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 180px 40px 60px;
-      background: #fff;
-      border-radius: 16px;
-      box-shadow: 0 8px 24px var(--shadow-light);
-    }
-
-    .back-container {
-      display: flex;
-      justify-content: flex-start;
-      margin-bottom: 40px;
-    }
-
-    .back-button {
-      background-color: transparent;
-      border: 2px solid var(--accent-color);
-      color: var(--accent-color);
-      padding: 8px 20px;
-      border-radius: 50px;
-      font-weight: 600;
-      font-size: 14px;
-      cursor: pointer;
-      transition: background-color 0.3s ease, color 0.3s ease;
-    }
-
-    .back-button:hover,
-    .back-button:focus {
-      background-color: var(--accent-color);
-      color: #fff;
-      outline: none;
-    }
-
-    h1 {
-      font-size: 2.8rem;
-      font-weight: 700;
-      margin-bottom: 20px;
-      letter-spacing: 0.03em;
-      text-align: center;
-      color: var(--text-color);
-    }
-
-    p {
-      font-size: 1.125rem;
-      margin: 5px 0 20px;
-      text-align: center;
-      color: var(--text-color);
-    }
-
-    #swipe-container {
-      position: relative;
-      width: 360px;
-      height: 580px;
-      margin: 0 auto;
-    }
-
-    .card {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background: white;
-      border-radius: 20px;
-      overflow: hidden;
-      transition: transform 0.3s ease, opacity 0.3s ease;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      box-shadow: 0 4px 10px var(--shadow-light);
-    }
-
-    .card img {
-      width: 100%;
-      height: 70%;
-      object-fit: cover;
-      user-select: none;
-    }
-
-    .details {
-      padding: 12px 16px 0;
-      font-size: 14px;
-      text-align: left;
-      color: var(--text-color);
-      user-select: text;
-    }
-
-    .shop-button {
-      margin: 10px 16px 16px;
-      padding: 10px;
-      background-color: var(--text-color);
-      color: white;
-      border: none;
-      border-radius: 10px;
-      font-size: 14px;
-      font-weight: 500;
-      cursor: pointer;
-      text-decoration: none;
-      display: block;
-      text-align: center;
-      user-select: none;
-      transition: background-color 0.3s ease;
-    }
-
-    .shop-button:hover,
-    .shop-button:focus {
-      background-color: #333;
-      outline: none;
-    }
-
-    #swipe-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      margin-top: 30px;
-    }
-
-    #swipe-buttons button {
-      padding: 8px 20px;
-      border-radius: 50px;
-      border: 2px solid var(--accent-color);
-      background: transparent;
-      color: var(--accent-color);
-      cursor: pointer;
-      font-weight: 600;
-      font-size: 14px;
-      transition: background-color 0.3s ease, color 0.3s ease;
-    }
-
-    #swipe-buttons button:hover,
-    #swipe-buttons button:focus {
-      background-color: var(--accent-color);
-      color: #fff;
       outline: none;
     }
 
@@ -254,7 +124,7 @@
       header {
         flex-direction: column;
         align-items: center;
-        padding: 20px 20px;
+        padding: 20px;
         gap: 15px;
       }
 
@@ -265,44 +135,11 @@
       nav {
         flex-direction: column;
         gap: 12px;
-        width: 100%;
         align-items: center;
       }
 
       nav a {
         margin-left: 0;
-        font-size: 16px;
-        padding: 8px 16px;
-      }
-
-      main {
-        padding: 140px 20px 40px;
-        margin: 0 15px;
-        border-radius: 12px;
-      }
-
-      h1 {
-        font-size: 2rem;
-        margin-bottom: 20px;
-      }
-
-      p {
-        font-size: 1rem;
-      }
-
-      #swipe-container {
-        width: 90%;
-        height: 500px;
-        margin: 0 auto;
-      }
-
-      #swipe-buttons {
-        gap: 20px;
-        flex-direction: column;
-      }
-
-      #swipe-buttons button {
-        width: 100%;
       }
     }
   </style>
@@ -313,26 +150,11 @@
     <nav>
       <a href="favoriten-en.html">Favorites</a>
       <a href="empfehlungen-en.html">Recommendations</a>
-      <a href="ueber-uns-en.html">About us</a>
+      <a href="ueber-uns-en.html">About Us</a>
     </nav>
   </header>
 
-  <main>
-    <div class="back-container">
-      <button class="back-button" onclick="window.location.href='angaben-en.html'">← Go back to the Style Details</button>
-    </div>
-
-    <h1>Swipe through all the styles</h1>
-    <p>Swipe right: "I like it"</p>
-    <p>Swipe left: "I don't like it"</p>
-
-    <div id="swipe-container" aria-live="polite" aria-label="Swipeable product cards"></div>
-
-    <div id="swipe-buttons" role="group" aria-label="Swipe actions">
-      <button id="swipe-left" aria-label="Swipe left: I don't like it">← I don't like it</button>
-      <button id="swipe-right" aria-label="Swipe right: I like it">I like it →</button>
-    </div>
-  </main>
+  <!-- ... belasse den Rest deines Main- und Swipe-Codes wie gehabt ... -->
 
   <footer>
     <div class="footer-links">
@@ -344,108 +166,5 @@
       *Some of the links on this website are affiliate links. If you purchase through them, we may earn a commission at no extra cost to you.
     </div>
   </footer>
-
-  <script src="produkte-en.js"></script>
-  <script>
-    const filter = JSON.parse(localStorage.getItem('filterDaten')) || {};
-    const container = document.getElementById('swipe-container');
-    let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-
-    // Filter products based on stored filter criteria
-    const filtered = produkte.filter(p => {
-      if (filter.kategorie && p.kategorie !== filter.kategorie) return false;
-      if (filter.anlass && p.anlass !== filter.anlass) return false;
-      if (filter.groesse && p.groesse !== filter.groesse) return false;
-      if (filter.farbe && !p.farbe.toLowerCase().includes(filter.farbe.toLowerCase())) return false;
-      return true;
-    });
-
-    // Add cards in reverse order so first item is on top
-    filtered.reverse().forEach((p, i) => {
-      const card = document.createElement('div');
-      card.className = 'card';
-      card.setAttribute('data-id', i);
-      card.setAttribute('data-name', p.name);
-      card.setAttribute('data-brand', p.marke || 'Unknown');
-      card.setAttribute('data-link', p.link);
-      card.setAttribute('data-image', p.bild);
-      card.innerHTML = `
-        <img src="${p.bild}" alt="${p.name}" draggable="false" />
-        <div class="details"><p><strong>${p.name}</strong><br>Brand: ${p.marke || 'Unknown'}</p></div>
-        <a href="${p.link}" class="shop-button" target="_blank" rel="noopener noreferrer">To the shop</a>
-      `;
-      container.appendChild(card);
-    });
-
-    let currentCard = container.querySelector(".card:last-child");
-
-    let startX = 0;
-    let isSwiping = false;
-
-    container.addEventListener("touchstart", e => {
-      if (!currentCard) return;
-      startX = e.touches[0].clientX;
-      isSwiping = true;
-    });
-
-    container.addEventListener("touchmove", e => {
-      if (!isSwiping || !currentCard) return;
-      const moveX = e.touches[0].clientX - startX;
-      currentCard.style.transform = `translateX(${moveX}px) rotate(${moveX / 20}deg)`;
-    });
-
-    container.addEventListener("touchend", e => {
-      if (!isSwiping) return;
-      const endX = e.changedTouches[0].clientX;
-      const diff = endX - startX;
-      if (diff > 100) {
-        swipe("right");
-      } else if (diff < -100) {
-        swipe("left");
-      } else {
-        resetCard();
-      }
-      isSwiping = false;
-    });
-
-    document.getElementById('swipe-left').addEventListener('click', () => swipe('left'));
-    document.getElementById('swipe-right').addEventListener('click', () => swipe('right'));
-
-    function swipe(direction) {
-      if (!currentCard) return;
-      if (direction === "right") addToFavorites(currentCard);
-
-      currentCard.style.transition = "transform 0.5s ease, opacity 0.5s ease";
-      currentCard.style.transform = direction === "right"
-        ? "translateX(1000px) rotate(20deg)"
-        : "translateX(-1000px) rotate(-20deg)";
-      currentCard.style.opacity = "0";
-
-      setTimeout(() => {
-        currentCard.remove();
-        currentCard = container.querySelector(".card:last-child");
-      }, 500);
-    }
-
-    function resetCard() {
-      if (!currentCard) return;
-      currentCard.style.transition = "transform 0.3s ease";
-      currentCard.style.transform = "translateX(0) rotate(0deg)";
-    }
-
-    function addToFavorites(card) {
-      const item = {
-        id: card.getAttribute('data-id'),
-        name: card.getAttribute('data-name'),
-        brand: card.getAttribute('data-brand'),
-        link: card.getAttribute('data-link'),
-        image: card.getAttribute('data-image'),
-      };
-      if (!favorites.some(fav => fav.id === item.id)) {
-        favorites.push(item);
-        localStorage.setItem('favorites', JSON.stringify(favorites));
-      }
-    }
-  </script>
 </body>
 </html>

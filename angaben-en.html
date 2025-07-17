@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Style Details – StyleSwipe</title>
+  <title>Style Preferences – StyleSwipe</title>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet" />
   <style>
     :root {
@@ -26,6 +26,8 @@
       background-color: var(--background-color);
       color: var(--text-color);
       line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
     header {
@@ -39,6 +41,13 @@
       align-items: center;
       padding: 15px 50px;
       z-index: 1000;
+      transition: padding 0.3s ease;
+      flex-wrap: wrap;
+    }
+
+    header a.logo-link {
+      display: flex;
+      align-items: center;
     }
 
     .logo {
@@ -57,7 +66,6 @@
       font-size: 14px;
       color: var(--text-color);
       user-select: none;
-      margin-right: 30px;
     }
 
     .language-switcher a {
@@ -70,6 +78,7 @@
     .language-switcher a:hover,
     .language-switcher a:focus {
       color: var(--accent-color-dark);
+      outline: none;
     }
 
     nav {
@@ -86,12 +95,15 @@
       padding: 8px 10px;
       border-radius: 6px;
       transition: background-color 0.3s ease, color 0.3s ease;
+      cursor: pointer;
+      user-select: none;
     }
 
     nav a:hover,
     nav a:focus {
       background-color: var(--accent-color);
       color: #fff;
+      outline: none;
       box-shadow: 0 3px 6px var(--shadow-dark);
     }
 
@@ -105,10 +117,12 @@
     }
 
     h1 {
-      font-size: 2.8rem;
+      font-size: 2.6rem;
       margin-bottom: 25px;
       font-weight: 700;
       text-align: center;
+      letter-spacing: 0.03em;
+      color: var(--text-color);
     }
 
     label {
@@ -125,7 +139,9 @@
       border-radius: 12px;
       border: 1.5px solid #ccc;
       font-size: 1rem;
+      transition: border-color 0.3s ease;
       font-family: 'Outfit', sans-serif;
+      outline-offset: 2px;
     }
 
     select:focus, input[type="text"]:focus {
@@ -134,7 +150,7 @@
       outline: none;
     }
 
-    .continue-button {
+    .weiter-button {
       width: 100%;
       padding: 16px 0;
       margin-top: 2.5rem;
@@ -147,11 +163,12 @@
       cursor: pointer;
       box-shadow: 0 6px 18px var(--shadow-dark);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      user-select: none;
       letter-spacing: 0.05em;
     }
 
-    .continue-button:hover,
-    .continue-button:focus {
+    .weiter-button:hover,
+    .weiter-button:focus {
       transform: scale(1.05);
       box-shadow: 0 10px 28px var(--shadow-dark);
       outline: none;
@@ -166,14 +183,17 @@
       font-weight: 600;
       font-size: 14px;
       cursor: pointer;
-      margin-bottom: 40px;
+      transition: background-color 0.3s ease, color 0.3s ease;
       display: inline-block;
+      margin-bottom: 40px;
+      user-select: none;
     }
 
     .back-button:hover,
     .back-button:focus {
       background-color: var(--accent-color);
       color: #fff;
+      outline: none;
     }
 
     footer {
@@ -182,6 +202,8 @@
       text-align: center;
       font-size: 14px;
       color: var(--text-color);
+      box-shadow: inset 0 1px 0 #fff;
+      user-select: none;
     }
 
     .footer-links {
@@ -196,25 +218,35 @@
       color: var(--text-color);
       text-decoration: none;
       font-weight: 500;
+      transition: color 0.3s ease;
     }
 
     .footer-links a:hover,
     .footer-links a:focus {
       color: var(--accent-color-dark);
+      outline: none;
     }
 
-    .affiliate-note {
+    .affiliate-hinweis {
       max-width: 700px;
       margin: 0 auto;
       color: #666;
       font-size: 13px;
+      line-height: 1.4;
     }
 
     @media (max-width: 768px) {
       header {
         flex-direction: column;
+        align-items: center;
         padding: 20px;
         gap: 12px;
+      }
+
+      nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
       }
 
       main {
@@ -222,83 +254,74 @@
         margin: 0 15px;
         border-radius: 12px;
       }
-
-      nav {
-        gap: 20px;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-
-      nav a {
-        font-size: 16px;
-        padding: 8px 16px;
-      }
     }
   </style>
 </head>
 <body>
   <header>
-    <img src="Logo.png" alt="StyleSwipe Logo" class="logo" />
-    <div class="language-switcher">
-      <a href="index.html">German</a> | <a href="index-en.html">English</a>
-    </div>
+    <a href="index-en.html" class="logo-link">
+      <img src="Logo.png" alt="StyleSwipe Logo" class="logo" />
+    </a>
     <nav>
-      <a href="favoriten-en.html">Favorites</a>
-      <a href="empfehlungen-en.html">Recommendations</a>
-      <a href="ueber-uns-en.html">About Us</a>
+      <a href="favoriten.html">Favorites</a>
+      <a href="empfehlungen.html">Recommendations</a>
+      <a href="ueber-uns.html">About</a>
     </nav>
+    <div class="language-switcher">
+      <a href="angaben.html">Deutsch</a> | <a href="angaben-en.html">English</a>
+    </div>
   </header>
 
   <main>
-    <button class="back-button" onclick="window.location.href='index-en.html'">← Back to Home</button>
+    <button class="back-button" onclick="window.location.href='index-en.html'">← Back to Homepage</button>
 
-    <h1>Style Details</h1>
+    <h1>Style Preferences</h1>
     <form id="filterForm">
-      <label for="category">Category</label>
-      <select id="category" name="category">
+      <label for="kategorie">Category</label>
+      <select id="kategorie" name="kategorie">
         <option value="">Please select</option>
-        <option value="dress">Dress</option>
-        <option value="pants">Pants</option>
-        <option value="top">Top</option>
-        <option value="shoes">Shoes</option>
-        <option value="accessories">Accessories</option>
+        <option value="kleid">Dress</option>
+        <option value="hose">Pants</option>
+        <option value="oberteil">Top</option>
+        <option value="schuhe">Shoes</option>
+        <option value="accessoires">Accessories</option>
       </select>
 
-      <label for="size">Size</label>
-      <select id="size" name="size"></select>
+      <label for="groesse">Size</label>
+      <select id="groesse" name="groesse"></select>
 
-      <label for="occasion">Occasion</label>
-      <select id="occasion" name="occasion">
+      <label for="anlass">Occasion</label>
+      <select id="anlass" name="anlass">
         <option value="">Please select</option>
-        <option value="casual">Casual</option>
+        <option value="freizeit">Casual</option>
         <option value="business">Business</option>
         <option value="party">Party</option>
         <option value="date">Date</option>
       </select>
 
-      <label for="color">Color</label>
-      <input type="text" id="color" name="color" placeholder="e.g. Beige, Black, Red" />
+      <label for="farbe">Color</label>
+      <input type="text" id="farbe" name="farbe" placeholder="e.g. beige, black, red" />
 
-      <button type="submit" class="continue-button">Continue</button>
+      <button type="submit" class="weiter-button">Continue</button>
     </form>
   </main>
 
   <footer>
     <div class="footer-links">
-      <a href="impressum-en.html">Imprint</a>
-      <a href="datenschutz-en.html">Privacy Policy</a>
-      <a href="cookies-en.html">Cookie Policy</a>
+      <a href="impressum.html">Legal Notice</a>
+      <a href="datenschutz.html">Privacy Policy</a>
+      <a href="cookies.html">Cookie Policy</a>
     </div>
-    <div class="affiliate-note">
-      *Some of the links on this website are affiliate links. If you purchase through them, we may earn a commission – at no extra cost to you.
+    <div class="affiliate-hinweis">
+      *Some links on this website are affiliate links. If you purchase through them, we may receive a commission – at no extra cost to you.
     </div>
   </footer>
 
   <script>
-    const sizeSelect = document.getElementById('size');
-    const categorySelect = document.getElementById('category');
+    const groesseSelect = document.getElementById('groesse');
+    const kategorieSelect = document.getElementById('kategorie');
 
-    const clothingSizes = [
+    const kleidungGroessen = [
       { value: '', text: 'Please select' },
       { value: 'xs', text: 'XS' },
       { value: 's', text: 'S' },
@@ -307,7 +330,7 @@
       { value: 'xl', text: 'XL' }
     ];
 
-    const shoeSizes = [
+    const schuhGroessen = [
       { value: '', text: 'Please select' },
       { value: '37', text: '37' },
       { value: '38', text: '38' },
@@ -316,47 +339,46 @@
       { value: '41', text: '41' }
     ];
 
-    function updateSizes() {
-      const selectedCategory = categorySelect.value;
-      const sizes = selectedCategory === 'shoes' ? shoeSizes : clothingSizes;
+    function updateGroessen() {
+      let selectedKategorie = kategorieSelect.value;
+      let groessen = selectedKategorie === 'schuhe' ? schuhGroessen : kleidungGroessen;
 
-      const currentValue = sizeSelect.value;
-      sizeSelect.innerHTML = '';
+      let currentValue = groesseSelect.value;
+      groesseSelect.innerHTML = '';
 
-      sizes.forEach(opt => {
+      groessen.forEach(opt => {
         const option = document.createElement('option');
         option.value = opt.value;
         option.textContent = opt.text;
-        sizeSelect.appendChild(option);
+        groesseSelect.appendChild(option);
       });
 
-      if (sizes.some(s => s.value === currentValue)) {
-        sizeSelect.value = currentValue;
+      if (groessen.some(g => g.value === currentValue)) {
+        groesseSelect.value = currentValue;
       } else {
-        sizeSelect.value = '';
+        groesseSelect.value = '';
       }
     }
 
-    categorySelect.addEventListener('change', updateSizes);
-    updateSizes();
+    kategorieSelect.addEventListener('change', updateGroessen);
+    updateGroessen();
 
     document.getElementById('filterForm').addEventListener('submit', function(event) {
       event.preventDefault();
+      const anlass = document.getElementById('anlass').value;
+      const groesse = groesseSelect.value;
+      const farbe = document.getElementById('farbe').value.trim().toLowerCase();
+      const kategorie = kategorieSelect.value;
 
-      const occasion = document.getElementById('occasion').value;
-      const size = sizeSelect.value;
-      const color = document.getElementById('color').value.trim().toLowerCase();
-      const category = categorySelect.value;
-
-      const filterData = {
-        occasion: occasion,
-        size: size,
-        color: color,
-        category: category
+      const filterDaten = {
+        anlass: anlass,
+        groesse: groesse,
+        farbe: farbe,
+        kategorie: kategorie
       };
 
-      localStorage.setItem('filterData', JSON.stringify(filterData));
-      window.location.href = 'entdecken-en.html';
+      localStorage.setItem('filterDaten', JSON.stringify(filterDaten));
+      window.location.href = 'entdecken.html';
     });
   </script>
 </body>
