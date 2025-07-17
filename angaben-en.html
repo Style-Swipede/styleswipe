@@ -30,6 +30,7 @@
       -moz-osx-font-smoothing: grayscale;
     }
 
+    /* HEADER als vertikale Stapelung (wie Index) */
     header {
       position: fixed;
       top: 0;
@@ -37,17 +38,11 @@
       background: var(--footer-bg);
       box-shadow: 0 2px 8px var(--shadow-light);
       display: flex;
-      justify-content: space-between;
+      flex-direction: column;
       align-items: center;
-      padding: 15px 50px;
+      padding: 15px 20px;
       z-index: 1000;
-      transition: padding 0.3s ease;
-      flex-wrap: wrap;
-    }
-
-    header a.logo-link {
-      display: flex;
-      align-items: center;
+      gap: 8px;
     }
 
     .logo {
@@ -66,12 +61,13 @@
       font-size: 14px;
       color: var(--text-color);
       user-select: none;
+      white-space: nowrap;
     }
 
     .language-switcher a {
       color: var(--text-color);
       text-decoration: none;
-      margin: 0 6px;
+      margin: 0 8px;
       transition: color 0.3s ease;
     }
 
@@ -84,7 +80,8 @@
     nav {
       display: flex;
       gap: 30px;
-      align-items: center;
+      justify-content: center;
+      flex-wrap: nowrap;
     }
 
     nav a {
@@ -97,6 +94,7 @@
       transition: background-color 0.3s ease, color 0.3s ease;
       cursor: pointer;
       user-select: none;
+      white-space: nowrap;
     }
 
     nav a:hover,
@@ -110,19 +108,20 @@
     main {
       max-width: 600px;
       margin: 0 auto;
-      padding: 180px 20px 60px;
+      padding: 230px 20px 60px; /* padding top wegen Header */
       background: #fff;
       border-radius: 16px;
       box-shadow: 0 8px 24px var(--shadow-light);
+      text-align: left;
     }
 
     h1 {
       font-size: 2.6rem;
       margin-bottom: 25px;
       font-weight: 700;
+      color: var(--text-color);
       text-align: center;
       letter-spacing: 0.03em;
-      color: var(--text-color);
     }
 
     label {
@@ -210,7 +209,7 @@
       display: flex;
       justify-content: center;
       gap: 40px;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
       margin-bottom: 12px;
     }
 
@@ -219,6 +218,7 @@
       text-decoration: none;
       font-weight: 500;
       transition: color 0.3s ease;
+      white-space: nowrap;
     }
 
     .footer-links a:hover,
@@ -235,41 +235,46 @@
       line-height: 1.4;
     }
 
+    /* Responsive für Handy */
     @media (max-width: 768px) {
       header {
-        flex-direction: column;
-        align-items: center;
-        padding: 20px;
-        gap: 12px;
-      }
-
-      nav {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 20px;
+        padding: 15px 20px;
+        gap: 6px;
       }
 
       main {
-        padding: 140px 20px 40px;
+        padding: 240px 20px 40px;
         margin: 0 15px;
         border-radius: 12px;
+      }
+
+      nav {
+        gap: 20px;
+      }
+
+      nav a {
+        font-size: 14px;
+        padding: 6px 10px;
+      }
+
+      .language-switcher {
+        font-size: 14px;
+        margin: 0 10px;
       }
     }
   </style>
 </head>
 <body>
   <header>
-    <a href="index-en.html" class="logo-link">
-      <img src="Logo.png" alt="StyleSwipe Logo" class="logo" />
-    </a>
+    <img src="Logo.png" alt="StyleSwipe Logo" class="logo" />
+    <div class="language-switcher">
+      <a href="angaben.html">Deutsch</a> | <a href="angaben-en.html">English</a>
+    </div>
     <nav>
       <a href="favoriten.html">Favorites</a>
       <a href="empfehlungen.html">Recommendations</a>
       <a href="ueber-uns.html">About</a>
     </nav>
-    <div class="language-switcher">
-      <a href="angaben.html">Deutsch</a> | <a href="angaben-en.html">English</a>
-    </div>
   </header>
 
   <main>
