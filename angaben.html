@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Style-Angaben – StyleSwipe</title>
+  <title>Entdecken – StyleSwipe</title>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet" />
   <style>
     :root {
@@ -30,7 +30,6 @@
       -moz-osx-font-smoothing: grayscale;
     }
 
-    /* Header Styles */
     header {
       position: fixed;
       top: 0;
@@ -42,7 +41,6 @@
       align-items: center;
       padding: 15px 50px;
       z-index: 1000;
-      transition: padding 0.3s ease;
       flex-wrap: wrap;
     }
 
@@ -60,26 +58,6 @@
 
     .logo:hover {
       transform: scale(1.05);
-    }
-
-    .language-switcher {
-      font-weight: 500;
-      font-size: 14px;
-      color: var(--text-color);
-      user-select: none;
-    }
-
-    .language-switcher a {
-      color: var(--text-color);
-      text-decoration: none;
-      margin: 0 6px;
-      transition: color 0.3s ease;
-    }
-
-    .language-switcher a:hover,
-    .language-switcher a:focus {
-      color: var(--accent-color-dark);
-      outline: none;
     }
 
     nav {
@@ -108,9 +86,28 @@
       box-shadow: 0 3px 6px var(--shadow-dark);
     }
 
-    /* Main Content Styles */
+    .language-switcher {
+      font-weight: 500;
+      font-size: 14px;
+      color: var(--text-color);
+      user-select: none;
+    }
+
+    .language-switcher a {
+      color: var(--text-color);
+      text-decoration: none;
+      margin: 0 6px;
+      transition: color 0.3s ease;
+    }
+
+    .language-switcher a:hover,
+    .language-switcher a:focus {
+      color: var(--accent-color-dark);
+      outline: none;
+    }
+
     main {
-      max-width: 600px;
+      max-width: 700px;
       margin: 0 auto;
       padding: 180px 20px 60px;
       background: #fff;
@@ -120,85 +117,79 @@
 
     h1 {
       font-size: 2.8rem;
-      margin-bottom: 25px;
       font-weight: 700;
+      margin-bottom: 30px;
       text-align: center;
-      letter-spacing: 0.03em;
       color: var(--text-color);
     }
 
-    label {
-      display: block;
-      margin-top: 1.3rem;
-      margin-bottom: 0.5rem;
-      font-weight: 600;
-      font-size: 1.05rem;
+    .produkt-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
     }
 
-    select, input[type="text"] {
-      width: 100%;
-      padding: 12px 16px;
+    .produkt-card {
+      background: var(--background-color);
       border-radius: 12px;
-      border: 1.5px solid #ccc;
-      font-size: 1rem;
-      transition: border-color 0.3s ease;
-      font-family: 'Outfit', sans-serif;
-      outline-offset: 2px;
-    }
-
-    select:focus, input[type="text"]:focus {
-      border-color: var(--accent-color-dark);
-      box-shadow: 0 0 8px var(--accent-color-dark);
-      outline: none;
-    }
-
-    .weiter-button {
-      width: 100%;
-      padding: 16px 0;
-      margin-top: 2.5rem;
-      background: linear-gradient(135deg, var(--accent-color-dark), var(--accent-color));
-      border: none;
-      border-radius: 50px;
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: white;
+      box-shadow: 0 4px 12px var(--shadow-light);
+      padding: 15px;
       cursor: pointer;
-      box-shadow: 0 6px 18px var(--shadow-dark);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       user-select: none;
-      letter-spacing: 0.05em;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
-    .weiter-button:hover,
-    .weiter-button:focus {
-      transform: scale(1.05);
-      box-shadow: 0 10px 28px var(--shadow-dark);
+    .produkt-card:hover,
+    .produkt-card:focus {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 20px var(--shadow-dark);
       outline: none;
     }
 
-    .back-button {
-      background-color: transparent;
-      border: 2px solid var(--accent-color);
-      color: var(--accent-color);
-      padding: 8px 20px;
-      border-radius: 50px;
+    .produkt-bild {
+      max-width: 100%;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+    }
+
+    .produkt-name {
       font-weight: 600;
-      font-size: 14px;
-      cursor: pointer;
-      transition: background-color 0.3s ease, color 0.3s ease;
-      display: inline-block;
-      margin-bottom: 40px;
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+      text-align: center;
+      color: var(--text-color);
+    }
+
+    .produkt-details {
+      font-size: 0.9rem;
+      color: #555;
+      text-align: center;
+      margin-bottom: 12px;
+    }
+
+    .affiliate-link {
+      background-color: var(--accent-color);
+      color: white;
+      padding: 8px 14px;
+      border-radius: 30px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
       user-select: none;
     }
 
-    .back-button:hover,
-    .back-button:focus {
-      background-color: var(--accent-color);
-      color: #fff;
+    .affiliate-link:hover,
+    .affiliate-link:focus {
+      background-color: var(--accent-color-dark);
       outline: none;
     }
 
-    /* Footer Styles */
     footer {
       background: var(--footer-bg);
       padding: 25px 50px;
@@ -207,6 +198,7 @@
       color: var(--text-color);
       box-shadow: inset 0 1px 0 #fff;
       user-select: none;
+      margin-top: 50px;
     }
 
     .footer-links {
@@ -238,7 +230,6 @@
       line-height: 1.4;
     }
 
-    /* Responsive */
     @media (max-width: 768px) {
       header {
         flex-direction: column;
@@ -267,6 +258,10 @@
         margin: 0 15px;
         border-radius: 12px;
       }
+
+      .produkt-list {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      }
     }
   </style>
 </head>
@@ -286,37 +281,10 @@
   </header>
 
   <main>
-    <button class="back-button" onclick="window.location.href='index.html'">← Zurück zur Startseite</button>
-
-    <h1>Style-Angaben</h1>
-    <form id="filterForm">
-      <label for="kategorie">Kategorie</label>
-      <select id="kategorie" name="kategorie">
-        <option value="">Bitte wählen</option>
-        <option value="kleid">Kleid</option>
-        <option value="hose">Hose</option>
-        <option value="oberteil">Oberteil</option>
-        <option value="schuhe">Schuhe</option>
-        <option value="accessoires">Accessoires</option>
-      </select>
-
-      <label for="groesse">Größe</label>
-      <select id="groesse" name="groesse"></select>
-
-      <label for="anlass">Anlass</label>
-      <select id="anlass" name="anlass">
-        <option value="">Bitte wählen</option>
-        <option value="freizeit">Freizeit</option>
-        <option value="business">Business</option>
-        <option value="party">Party</option>
-        <option value="date">Date</option>
-      </select>
-
-      <label for="farbe">Farbe</label>
-      <input type="text" id="farbe" name="farbe" placeholder="z. B. Beige, Schwarz, Rot" />
-
-      <button type="submit" class="weiter-button">Weiter</button>
-    </form>
+    <h1>Entdecke passende Styles</h1>
+    <div id="produktListe" class="produkt-list" tabindex="0">
+      <!-- Produkte werden per JS geladen -->
+    </div>
   </main>
 
   <footer>
@@ -331,68 +299,87 @@
   </footer>
 
   <script>
-    const groesseSelect = document.getElementById('groesse');
-    const kategorieSelect = document.getElementById('kategorie');
-
-    const kleidungGroessen = [
-      { value: '', text: 'Bitte wählen' },
-      { value: 'xs', text: 'XS' },
-      { value: 's', text: 'S' },
-      { value: 'm', text: 'M' },
-      { value: 'l', text: 'L' },
-      { value: 'xl', text: 'XL' }
-    ];
-
-    const schuhGroessen = [
-      { value: '', text: 'Bitte wählen' },
-      { value: '37', text: '37' },
-      { value: '38', text: '38' },
-      { value: '39', text: '39' },
-      { value: '40', text: '40' },
-      { value: '41', text: '41' }
-    ];
-
-    function updateGroessen() {
-      let selectedKategorie = kategorieSelect.value;
-      let groessen = selectedKategorie === 'schuhe' ? schuhGroessen : kleidungGroessen;
-
-      let currentValue = groesseSelect.value;
-      groesseSelect.innerHTML = '';
-
-      groessen.forEach(opt => {
-        const option = document.createElement('option');
-        option.value = opt.value;
-        option.textContent = opt.text;
-        groesseSelect.appendChild(option);
-      });
-
-      if (groessen.some(g => g.value === currentValue)) {
-        groesseSelect.value = currentValue;
-      } else {
-        groesseSelect.value = '';
+    // Beispiel-Produkte (in Realität dynamisch anhand filterDaten laden)
+    const produkte = [
+      {
+        name: 'Elegantes Kleid',
+        kategorie: 'kleid',
+        groesse: 'm',
+        anlass: 'party',
+        farbe: 'rot',
+        bild: 'kleid-rot.jpg',
+        link: 'https://example.com/produkt/kleid-rot'
+      },
+      {
+        name: 'Business Hose',
+        kategorie: 'hose',
+        groesse: 'l',
+        anlass: 'business',
+        farbe: 'schwarz',
+        bild: 'hose-schwarz.jpg',
+        link: 'https://example.com/produkt/hose-schwarz'
+      },
+      {
+        name: 'Casual Oberteil',
+        kategorie: 'oberteil',
+        groesse: 's',
+        anlass: 'freizeit',
+        farbe: 'beige',
+        bild: 'oberteil-beige.jpg',
+        link: 'https://example.com/produkt/oberteil-beige'
+      },
+      {
+        name: 'Stylische Schuhe',
+        kategorie: 'schuhe',
+        groesse: '38',
+        anlass: 'party',
+        farbe: 'schwarz',
+        bild: 'schuhe-schwarz.jpg',
+        link: 'https://example.com/produkt/schuhe-schwarz'
       }
+      // ...weitere Produkte
+    ];
+
+    // Filterdaten aus localStorage holen
+    const filterDaten = JSON.parse(localStorage.getItem('filterDaten')) || {};
+
+    function passtProdukt(produkt) {
+      // Filter prüfen (leere Werte ignorieren)
+      if (filterDaten.kategorie && produkt.kategorie !== filterDaten.kategorie) return false;
+      if (filterDaten.groesse && produkt.groesse !== filterDaten.groesse) return false;
+      if (filterDaten.anlass && produkt.anlass !== filterDaten.anlass) return false;
+      if (filterDaten.farbe && !produkt.farbe.toLowerCase().includes(filterDaten.farbe.toLowerCase())) return false;
+      return true;
     }
 
-    kategorieSelect.addEventListener('change', updateGroessen);
-    updateGroessen();
+    function zeigeProdukte() {
+      const container = document.getElementById('produktListe');
+      container.innerHTML = '';
 
-    document.getElementById('filterForm').addEventListener('submit', function(event) {
-      event.preventDefault();
-      const anlass = document.getElementById('anlass').value;
-      const groesse = groesseSelect.value;
-      const farbe = document.getElementById('farbe').value.trim().toLowerCase();
-      const kategorie = kategorieSelect.value;
+      const gefilterteProdukte = produkte.filter(passtProdukt);
 
-      const filterDaten = {
-        anlass: anlass,
-        groesse: groesse,
-        farbe: farbe,
-        kategorie: kategorie
-      };
+      if (gefilterteProdukte.length === 0) {
+        container.innerHTML = '<p>Leider wurden keine passenden Produkte gefunden.</p>';
+        return;
+      }
 
-      localStorage.setItem('filterDaten', JSON.stringify(filterDaten));
-      window.location.href = 'entdecken.html';
-    });
+      gefilterteProdukte.forEach(produkt => {
+        const card = document.createElement('article');
+        card.className = 'produkt-card';
+        card.tabIndex = 0;
+
+        card.innerHTML = `
+          <img src="${produkt.bild}" alt="${produkt.name}" class="produkt-bild" />
+          <div class="produkt-name">${produkt.name}</div>
+          <div class="produkt-details">Größe: ${produkt.groesse.toUpperCase()} | Anlass: ${produkt.anlass.charAt(0).toUpperCase() + produkt.anlass.slice(1)}</div>
+          <a href="${produkt.link}" class="affiliate-link" target="_blank" rel="noopener noreferrer">Jetzt shoppen</a>
+        `;
+
+        container.appendChild(card);
+      });
+    }
+
+    zeigeProdukte();
   </script>
 </body>
 </html>
