@@ -12,8 +12,8 @@
       --background-color: #fefbf6;
       --footer-bg: #ece5dc;
       --text-color: #1c1c1c;
-      --shadow-light: rgba(0,0,0,0.07);
-      --shadow-dark: rgba(0,0,0,0.12);
+      --shadow-light: rgba(0,0,0,0.08);
+      --shadow-dark: rgba(0,0,0,0.15);
     }
 
     *, *::before, *::after {
@@ -25,10 +25,7 @@
       font-family: 'Outfit', sans-serif;
       background-color: var(--background-color);
       color: var(--text-color);
-      line-height: 1.65;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      user-select: none;
+      line-height: 1.6;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -38,15 +35,13 @@
       position: fixed;
       top: 0;
       width: 100%;
-      background-color: #fffef8;
+      background-color: var(--background-color);
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 20px 60px;
-      box-shadow: 0 2px 15px var(--shadow-light);
+      box-shadow: 0 3px 15px var(--shadow-light);
       z-index: 1000;
-      user-select: none;
-      transition: padding 0.3s ease;
     }
 
     .logo {
@@ -71,11 +66,10 @@
       text-decoration: none;
       color: var(--text-color);
       font-weight: 600;
-      font-size: 17px;
-      padding: 10px 22px;
+      font-size: 16px;
+      padding: 10px 20px;
       border-radius: 30px;
-      transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
-      user-select: none;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
 
     nav a:hover,
@@ -88,58 +82,51 @@
 
     main {
       flex-grow: 1;
-      max-width: 900px;
+      max-width: 960px;
       margin: 0 auto;
-      padding: 170px 40px 80px;
+      padding: 180px 40px 80px;
       background: #fff;
-      border-radius: 20px;
-      box-shadow: 0 12px 36px var(--shadow-light);
-      user-select: text;
+      border-radius: 24px;
+      box-shadow: 0 15px 40px var(--shadow-light);
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
-      gap: 30px;
     }
 
     h1 {
-      font-size: 3rem;
+      font-size: 2.8rem;
       font-weight: 700;
-      letter-spacing: 0.04em;
-      margin: 0;
-      color: var(--text-color);
+      letter-spacing: 0.03em;
+      margin-bottom: 20px;
     }
 
     p {
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       max-width: 700px;
-      margin: 0;
-      line-height: 1.6;
-      color: var(--text-color);
+      margin-bottom: 40px;
     }
 
     .back-button {
       background-color: var(--accent-color);
       color: #fff;
-      padding: 14px 36px;
       border: none;
       border-radius: 50px;
+      padding: 14px 36px;
       font-weight: 700;
       font-size: 16px;
       cursor: pointer;
-      box-shadow: 0 6px 18px var(--shadow-dark);
+      box-shadow: 0 8px 20px var(--shadow-dark);
       transition: background-color 0.3s ease, box-shadow 0.3s ease;
-      user-select: none;
-      align-self: flex-start;
       text-decoration: none;
-      display: inline-block;
+      margin-bottom: 40px;
     }
 
     .back-button:hover,
     .back-button:focus {
       background-color: var(--accent-color-dark);
       outline: none;
-      box-shadow: 0 8px 25px var(--shadow-dark);
+      box-shadow: 0 10px 30px var(--shadow-dark);
     }
 
     footer {
@@ -149,7 +136,6 @@
       font-size: 14px;
       color: var(--text-color);
       box-shadow: inset 0 1px 0 #fff;
-      user-select: none;
       margin-top: auto;
     }
 
@@ -158,15 +144,14 @@
       justify-content: center;
       gap: 50px;
       flex-wrap: wrap;
-      margin-bottom: 15px;
+      margin-bottom: 16px;
     }
 
     .footer-links a {
       color: var(--text-color);
       text-decoration: none;
-      font-weight: 500;
+      font-weight: 600;
       transition: color 0.3s ease;
-      user-select: none;
       font-size: 15px;
     }
 
@@ -187,9 +172,11 @@
 
     @media (max-width: 768px) {
       header {
-        padding: 15px 30px;
         flex-direction: column;
-        gap: 12px;
+        align-items: center;
+        text-align: center;
+        padding: 20px 30px;
+        gap: 15px;
       }
 
       .logo {
@@ -197,16 +184,15 @@
       }
 
       nav {
-        gap: 20px;
-        flex-wrap: wrap;
-        justify-content: center;
+        flex-direction: column;
+        gap: 18px;
+        align-items: center;
       }
 
       main {
-        padding: 120px 20px 60px;
-        border-radius: 14px;
+        padding: 140px 20px 60px;
         max-width: 95%;
-        text-align: center;
+        border-radius: 20px;
       }
 
       h1 {
@@ -219,18 +205,17 @@
       }
 
       .back-button {
-        align-self: center;
-        padding: 12px 30px;
         font-size: 15px;
+        padding: 12px 28px;
+      }
+
+      .footer-links {
+        gap: 25px;
       }
 
       footer {
         padding: 20px 30px;
         font-size: 13px;
-      }
-
-      .footer-links {
-        gap: 25px;
       }
     }
   </style>

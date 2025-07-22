@@ -12,11 +12,11 @@
       --background-color: #fefbf6;
       --footer-bg: #ece5dc;
       --text-color: #1c1c1c;
-      --shadow-light: rgba(0, 0, 0, 0.05);
-      --shadow-dark: rgba(0, 0, 0, 0.1);
+      --shadow-light: rgba(0, 0, 0, 0.07);
+      --shadow-dark: rgba(0, 0, 0, 0.15);
     }
 
-    * {
+    *, *::before, *::after {
       box-sizing: border-box;
     }
 
@@ -26,49 +26,49 @@
       background-color: var(--background-color);
       color: var(--text-color);
       line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
 
     header {
       position: fixed;
       top: 0;
       width: 100%;
-      background: var(--footer-bg);
-      box-shadow: 0 2px 8px var(--shadow-light);
+      background-color: var(--background-color);
       display: flex;
-      flex-direction: column;
+      justify-content: space-between;
       align-items: center;
-      padding: 15px 20px;
+      padding: 20px 60px;
+      box-shadow: 0 3px 15px var(--shadow-light);
       z-index: 1000;
-      gap: 8px;
     }
 
     .logo {
-      height: 70px;
-      filter: drop-shadow(0 0 1px var(--accent-color-dark));
+      height: 60px;
       cursor: pointer;
+      filter: drop-shadow(0 0 2px var(--accent-color-dark));
       transition: transform 0.3s ease;
     }
 
-    .logo:hover {
+    .logo:hover,
+    .logo:focus {
       transform: scale(1.05);
+      outline: none;
     }
 
     nav {
       display: flex;
       gap: 30px;
-      justify-content: center;
-      flex-wrap: nowrap;
     }
 
     nav a {
-      font-weight: 600;
       text-decoration: none;
       color: var(--text-color);
-      font-size: 17px;
-      padding: 8px 10px;
-      border-radius: 6px;
+      font-weight: 600;
+      font-size: 16px;
+      padding: 10px 20px;
+      border-radius: 30px;
       transition: background-color 0.3s ease, color 0.3s ease;
     }
 
@@ -76,140 +76,158 @@
     nav a:focus {
       background-color: var(--accent-color);
       color: #fff;
-      box-shadow: 0 3px 6px var(--shadow-dark);
+      box-shadow: 0 6px 18px var(--shadow-dark);
       outline: none;
     }
 
     main {
-      max-width: 900px;
+      flex-grow: 1;
+      max-width: 960px;
       margin: 0 auto;
-      padding: 230px 30px 60px;
+      padding: 180px 40px 80px;
       background: #fff;
-      border-radius: 16px;
-      box-shadow: 0 8px 24px var(--shadow-light);
+      border-radius: 24px;
+      box-shadow: 0 15px 40px var(--shadow-light);
     }
 
     h1 {
       font-size: 2.6rem;
       font-weight: 700;
-      text-align: center;
       margin-bottom: 30px;
+      text-align: center;
       letter-spacing: 0.03em;
     }
 
     h2 {
       font-size: 1.6rem;
-      color: var(--accent-color-dark);
       margin-top: 2rem;
       margin-bottom: 1rem;
+      color: var(--accent-color-dark);
+      font-weight: 600;
     }
 
-    p, li {
-      font-size: 1.1rem;
-      color: var(--text-color);
+    p, ul {
+      font-size: 1.125rem;
+      margin-bottom: 20px;
     }
 
     ul {
-      padding-left: 1.25rem;
-      margin-bottom: 2rem;
+      padding-left: 1.5rem;
     }
 
     ul li {
-      margin-bottom: 12px;
-    }
-
-    a {
-      color: var(--accent-color-dark);
-      text-decoration: underline;
+      margin-bottom: 10px;
     }
 
     .back-button {
-      background-color: transparent;
-      border: 2px solid var(--accent-color);
-      color: var(--accent-color);
-      padding: 8px 20px;
+      background-color: var(--accent-color);
+      color: #fff;
+      padding: 12px 32px;
+      border: none;
       border-radius: 50px;
-      font-weight: 600;
-      font-size: 14px;
+      font-weight: 700;
+      font-size: 16px;
       cursor: pointer;
-      transition: background-color 0.3s ease, color 0.3s ease;
       margin-bottom: 40px;
-      display: inline-block;
+      box-shadow: 0 6px 18px var(--shadow-dark);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
     }
 
     .back-button:hover,
     .back-button:focus {
-      background-color: var(--accent-color);
-      color: #fff;
+      background-color: var(--accent-color-dark);
       outline: none;
+      box-shadow: 0 8px 25px var(--shadow-dark);
     }
 
     footer {
       background: var(--footer-bg);
-      padding: 40px 30px;
+      padding: 30px 60px;
       text-align: center;
       font-size: 14px;
       color: var(--text-color);
       box-shadow: inset 0 1px 0 #fff;
-      user-select: none;
-      border-top: 1px solid var(--accent-color);
-      margin-top: 60px;
+      margin-top: auto;
     }
 
     .footer-links {
       display: flex;
       justify-content: center;
-      gap: 30px;
+      gap: 50px;
       flex-wrap: wrap;
-      margin-bottom: 16px;
+      margin-bottom: 15px;
     }
 
     .footer-links a {
       color: var(--text-color);
       text-decoration: none;
       font-weight: 500;
+      font-size: 15px;
       transition: color 0.3s ease;
     }
 
     .footer-links a:hover,
     .footer-links a:focus {
       color: var(--accent-color-dark);
+      outline: none;
     }
 
     .affiliate-hinweis {
-      max-width: 700px;
+      max-width: 720px;
       margin: 0 auto;
       color: #666;
       font-size: 13px;
       line-height: 1.4;
-      padding-top: 8px;
-      border-top: 1px dashed var(--accent-color);
-      margin-top: 20px;
+      font-style: italic;
     }
 
     @media (max-width: 768px) {
       header {
-        padding: 15px;
-        gap: 6px;
-      }
-
-      main {
-        padding: 240px 20px 40px;
-        margin: 0 15px;
-        border-radius: 12px;
-      }
-
-      nav {
-        gap: 20px;
-      }
-
-      nav a {
-        font-size: 14px;
-        padding: 6px 10px;
+        flex-direction: column;
+        padding: 20px 30px;
+        gap: 15px;
       }
 
       .logo {
-        height: 60px;
+        height: 50px;
+      }
+
+      nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 18px;
+      }
+
+      main {
+        padding: 140px 20px 60px;
+        max-width: 95%;
+        border-radius: 20px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      h2 {
+        font-size: 1.4rem;
+      }
+
+      p, ul {
+        font-size: 1rem;
+      }
+
+      .back-button {
+        font-size: 15px;
+        padding: 10px 26px;
+      }
+
+      .footer-links {
+        gap: 25px;
+      }
+
+      footer {
+        padding: 20px 30px;
+        font-size: 13px;
       }
     }
   </style>
@@ -297,5 +315,3 @@
   </footer>
 </body>
 </html>
-
-
